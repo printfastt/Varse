@@ -1,31 +1,1027 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>DashboardView</class>
+ <widget class="QMainWindow" name="DashboardView">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1746</width>
+    <height>1062</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
+  <property name="minimumSize">
+   <size>
+    <width>1000</width>
+    <height>600</height>
+   </size>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <property name="windowTitle">
+   <string>Varse Trading Dashboard</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* Main Window Dark Theme */
+QMainWindow {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+/* Central Widget */
+QWidget#centralwidget {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+/* Frame Styling */
+QFrame {
+    background-color: #2b2b2b;
+    border: 1px solid #555555;
+
+}
+
+QFrame[frameShape=&quot;4&quot;] { /* StyledPanel */
+    background-color: #2b2b2b;
+    border: 1px solid #555555;
+}
+
+QFrame[frameShadow=&quot;16&quot;] { /* Raised */
+    background-color: #3c3c3c;
+    border: 1px solid #666666;
+}
+
+QFrame[frameShadow=&quot;32&quot;] { /* Sunken */
+    background-color: #252525;
+    border: 1px solid #444444;
+}
+
+/* Label Styling */
+QLabel {
+    background-color: transparent;
+    color: #e0e0e0;
+    border: none;
+}
+
+QLabel[font-weight=&quot;75&quot;] {
+    color: #ffffff;
+}
+
+/* Table Widget Styling */
+QTableWidget {
+    background-color: #2b2b2b;
+    alternate-background-color: #3c3c3c;
+    color: #e0e0e0;
+    gridline-color: #555555;
+    border: 1px solid #555555;
+    selection-background-color: #4a90e2;
+    selection-color: #ffffff;
+}
+
+QTableWidget::item {
+    padding: 4px;
+    border: none;
+}
+
+QTableWidget::item:selected {
+    background-color: #4a90e2;
+    color: #ffffff;
+}
+
+QHeaderView::section {
+    background-color: #3c3c3c;
+    color: #e0e0e0;
+    padding: 6px;
+    border: 1px solid #555555;
+    font-weight: bold;
+}
+
+QHeaderView::section:hover {
+    background-color: #4a90e2;
+    color: #ffffff;
+}
+
+/* Tab Widget Styling */
+QTabWidget::pane {
+    border: 1px solid #555555;
+    background-color: #2b2b2b;
+}
+
+QTabWidget::tab-bar {
+    alignment: left;
+}
+
+QTabBar::tab {
+    background-color: #3c3c3c;
+    color: #e0e0e0;
+    padding: 8px 16px;
+    margin-right: 2px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border: 1px solid #555555;
+    border-bottom: none;
+}
+
+QTabBar::tab:selected {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    border-bottom: 1px solid #2b2b2b;
+}
+
+QTabBar::tab:hover {
+    background-color: #4a90e2;
+    color: #ffffff;
+}
+
+/* Line Edit Styling */
+QLineEdit {
+    background-color: #3c3c3c;
+    color: #e0e0e0;
+    border: 1px solid #555555;
+
+    padding: 4px;
+}
+
+QLineEdit:focus {
+    border: 1px solid #4a90e2;
+    background-color: #404040;
+}
+
+QLineEdit::placeholder {
+    color: #888888;
+}
+
+/* Combo Box Styling */
+QComboBox {
+    background-color: #3c3c3c;
+    color: #e0e0e0;
+    border: 1px solid #555555;
+
+    padding: 4px;
+    min-width: 6em;
+}
+
+QComboBox:hover {
+    border: 1px solid #4a90e2;
+}
+
+QComboBox:focus {
+    border: 1px solid #4a90e2;
+    background-color: #404040;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 20px;
+}
+
+QComboBox::down-arrow {
+    image: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #e0e0e0;
+    margin-right: 5px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #3c3c3c;
+    color: #e0e0e0;
+    border: 1px solid #555555;
+    selection-background-color: #4a90e2;
+    selection-color: #ffffff;
+}
+
+/* Push Button Styling */
+QPushButton {
+    background-color: #4a90e2;
+    color: #ffffff;
+    border: 1px solid #3a80d2;
+
+    padding: 4px 8px;
+    font-weight: normal;
+}
+
+QPushButton:hover {
+    background-color: #5ba0f2;
+    border: 1px solid #4a90e2;
+}
+
+QPushButton:pressed {
+    background-color: #3a80d2;
+    border: 1px solid #2a70c2;
+}
+
+QPushButton:disabled {
+    background-color: #555555;
+    color: #888888;
+    border: 1px solid #444444;
+}
+
+/* Text Edit Styling */
+QTextEdit {
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+    border: 1px solid #555555;
+
+    padding: 4px;
+}
+
+QTextEdit:focus {
+    border: 1px solid #4a90e2;
+}
+
+/* Menu Bar Styling */
+QMenuBar {
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+    border-bottom: 1px solid #555555;
+}
+
+QMenuBar::item {
+    background-color: transparent;
+    padding: 6px 10px;
+}
+
+QMenuBar::item:selected {
+    background-color: #4a90e2;
+    color: #ffffff;
+}
+
+QMenuBar::item:pressed {
+    background-color: #3a80d2;
+}
+
+/* Menu Styling */
+QMenu {
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+    border: 1px solid #555555;
+    padding: 4px;
+}
+
+QMenu::item {
+    padding: 6px 20px;
+    border: none;
+}
+
+QMenu::item:selected {
+    background-color: #4a90e2;
+    color: #ffffff;
+}
+
+QMenu::separator {
+    height: 1px;
+    background-color: #555555;
+    margin: 4px 0px;
+}
+
+/* Status Bar Styling */
+QStatusBar {
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+    border-top: 1px solid #555555;
+}
+
+QStatusBar::item {
+    border: none;
+}
+
+/* Splitter Styling */
+QSplitter::handle {
+    background-color: #555555;
+}
+
+QSplitter::handle:horizontal {
+    width: 2px;
+}
+
+QSplitter::handle:vertical {
+    height: 2px;
+}
+
+QSplitter::handle:hover {
+    background-color: #4a90e2;
+}
+
+/* Web Engine View Styling */
+QWebEngineView {
+    background-color: #1e1e1e;
+    border: 1px solid #555555;
+}
+
+/* Scroll Bar Styling */
+QScrollBar:vertical {
+    background-color: #2b2b2b;
+    width: 12px;
+
+}
+
+QScrollBar::handle:vertical {
+    background-color: #555555;
+
+    min-height: 20px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #4a90e2;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar:horizontal {
+    background-color: #2b2b2b;
+    height: 12px;
+
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #555555;
+
+    min-width: 20px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #4a90e2;
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>6</number>
+    </property>
+    <property name="leftMargin">
+     <number>6</number>
+    </property>
+    <property name="topMargin">
+     <number>6</number>
+    </property>
+    <property name="rightMargin">
+     <number>6</number>
+    </property>
+    <property name="bottomMargin">
+     <number>6</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="toolbarFrame">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>45</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="dateLabel">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Date</string>
+         </property>
+         <property name="scaledContents">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QTabWidget" name="assetClassTabs">
+         <property name="maximumSize">
+          <size>
+           <width>405</width>
+           <height>35</height>
+          </size>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <property name="movable">
+          <bool>false</bool>
+         </property>
+         <widget class="QWidget" name="equitiesTab">
+          <attribute name="title">
+           <string>Equities</string>
+          </attribute>
+         </widget>
+         <widget class="QWidget" name="cryptoTab">
+          <attribute name="title">
+           <string>Crypto</string>
+          </attribute>
+         </widget>
+         <widget class="QWidget" name="optionsTab">
+          <attribute name="title">
+           <string>Options</string>
+          </attribute>
+         </widget>
+         <widget class="QWidget" name="bondsTab">
+          <attribute name="title">
+           <string>FI/Bonds</string>
+          </attribute>
+         </widget>
+         <widget class="QWidget" name="commoditiesTab">
+          <attribute name="title">
+           <string>Commodities &amp; Futures</string>
+          </attribute>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QSplitter" name="mainSplitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="leftSplitter">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="childrenCollapsible">
+        <bool>false</bool>
+       </property>
+       <widget class="QFrame" name="holdingsFrame">
+        <property name="minimumSize">
+         <size>
+          <width>300</width>
+          <height>200</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="holdingsLayout">
+         <property name="spacing">
+          <number>5</number>
+         </property>
+         <property name="leftMargin">
+          <number>8</number>
+         </property>
+         <property name="topMargin">
+          <number>8</number>
+         </property>
+         <property name="rightMargin">
+          <number>8</number>
+         </property>
+         <property name="bottomMargin">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="holdingsTitle">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Personal Holdings</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="holdingsTable">
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectRows</enum>
+           </property>
+           <property name="sortingEnabled">
+            <bool>true</bool>
+           </property>
+           <column>
+            <property name="text">
+             <string>Symbol</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Shares</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Avg Price</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Current</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>P&amp;L</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="portfolioSummaryFrame">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Sunken</enum>
+           </property>
+           <layout class="QHBoxLayout" name="portfolioSummaryLayout">
+            <item>
+             <widget class="QLabel" name="totalValueLabel">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Total Value: $0.00</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="totalPnLLabel">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Total P&amp;L: $0.00</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QFrame" name="newsFrame">
+        <property name="minimumSize">
+         <size>
+          <width>300</width>
+          <height>150</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="newsLayout">
+         <property name="spacing">
+          <number>5</number>
+         </property>
+         <property name="leftMargin">
+          <number>8</number>
+         </property>
+         <property name="topMargin">
+          <number>8</number>
+         </property>
+         <property name="rightMargin">
+          <number>8</number>
+         </property>
+         <property name="bottomMargin">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QTabWidget" name="newsTabs">
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <widget class="QWidget" name="economicDataTab">
+            <attribute name="title">
+             <string>Economic Data</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="economicDataLayout">
+             <item>
+              <widget class="QTextEdit" name="economicDataText">
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+               <property name="placeholderText">
+                <string>Economic data will appear here...</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="newsTab">
+            <attribute name="title">
+             <string>Market News</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="newsTabLayout">
+             <item>
+              <widget class="QTextEdit" name="newsText">
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+               <property name="placeholderText">
+                <string>Market news will appear here...</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="sentimentTab">
+            <attribute name="title">
+             <string>Sentiment</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="sentimentLayout">
+             <item>
+              <widget class="QTextEdit" name="sentimentText">
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+               <property name="placeholderText">
+                <string>Market sentiment data will appear here...</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QFrame" name="chartsFrame">
+       <property name="minimumSize">
+        <size>
+         <width>400</width>
+         <height>300</height>
+        </size>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QVBoxLayout" name="chartsLayout">
+        <property name="spacing">
+         <number>5</number>
+        </property>
+        <property name="leftMargin">
+         <number>8</number>
+        </property>
+        <property name="topMargin">
+         <number>8</number>
+        </property>
+        <property name="rightMargin">
+         <number>8</number>
+        </property>
+        <property name="bottomMargin">
+         <number>8</number>
+        </property>
+        <item>
+         <widget class="QFrame" name="chartControlsFrame">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <layout class="QHBoxLayout" name="chartControlsLayout">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <property name="leftMargin">
+            <number>5</number>
+           </property>
+           <property name="topMargin">
+            <number>5</number>
+           </property>
+           <property name="rightMargin">
+            <number>5</number>
+           </property>
+           <property name="bottomMargin">
+            <number>5</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="symbolLabel">
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Symbols:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="symbol1Input">
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>SPY</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="symbol2Input">
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>QQQ</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="timeframeLabel">
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Timeframe:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="timeframeCombo">
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <item>
+              <property name="text">
+               <string>1D</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>1W</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>1M</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>3M</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>1Y</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="refreshButton">
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Refresh</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSplitter" name="chartsSplitter">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="childrenCollapsible">
+           <bool>false</bool>
+          </property>
+          <widget class="QFrame" name="spyChartFrame">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>200</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Sunken</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QWebEngineView" name="spyChartWidget">
+              <property name="styleSheet">
+               <string notr="true">background-color: #1e1e1e;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QFrame" name="qqqChartFrame">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>200</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Sunken</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QWebEngineView" name="qqqChartWidget">
+              <property name="styleSheet">
+               <string notr="true">background-color: #1e1e1e;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>22</height>
+     <width>1746</width>
+     <height>28</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionRefresh"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuView"/>
+   <addaction name="menuHelp"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="sizeGripEnabled">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionRefresh">
+   <property name="text">
+    <string>Refresh Data</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header location="global">QtWebEngineWidgets/QWebEngineView</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
