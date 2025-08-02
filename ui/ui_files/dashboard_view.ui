@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1746</width>
-    <height>1119</height>
+    <width>1274</width>
+    <height>985</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -353,26 +353,32 @@ QScrollBar::sub-line:horizontal {
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
-     <number>6</number>
+     <number>0</number>
     </property>
     <property name="leftMargin">
-     <number>6</number>
+     <number>0</number>
     </property>
     <property name="topMargin">
-     <number>6</number>
+     <number>0</number>
     </property>
     <property name="rightMargin">
-     <number>6</number>
+     <number>0</number>
     </property>
     <property name="bottomMargin">
-     <number>6</number>
+     <number>0</number>
     </property>
     <item>
-     <widget class="QFrame" name="toolbarFrame">
+     <widget class="QFrame" name="frame">
       <property name="maximumSize">
        <size>
         <width>16777215</width>
-        <height>45</height>
+        <height>35</height>
+       </size>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>30</height>
        </size>
       </property>
       <property name="frameShape">
@@ -381,79 +387,53 @@ QScrollBar::sub-line:horizontal {
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <property name="lineWidth">
-       <number>1</number>
-      </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QLabel" name="dateLabel">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
          </property>
          <property name="text">
           <string>Date</string>
          </property>
-         <property name="scaledContents">
-          <bool>false</bool>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>NSDQ</string>
          </property>
         </widget>
        </item>
        <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>NYSE</string>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
+        </widget>
        </item>
        <item>
-        <widget class="QTabWidget" name="assetClassTabs">
+        <widget class="QTabWidget" name="tabWidget">
          <property name="maximumSize">
           <size>
-           <width>405</width>
-           <height>35</height>
+           <width>400</width>
+           <height>16777215</height>
           </size>
          </property>
          <property name="currentIndex">
           <number>0</number>
          </property>
-         <property name="movable">
-          <bool>false</bool>
-         </property>
-         <widget class="QWidget" name="equitiesTab">
+         <widget class="QWidget" name="tab">
           <attribute name="title">
-           <string>Equities</string>
+           <string>Tab 1</string>
           </attribute>
          </widget>
-         <widget class="QWidget" name="cryptoTab">
+         <widget class="QWidget" name="tab_2">
           <attribute name="title">
-           <string>Crypto</string>
-          </attribute>
-         </widget>
-         <widget class="QWidget" name="optionsTab">
-          <attribute name="title">
-           <string>Options</string>
-          </attribute>
-         </widget>
-         <widget class="QWidget" name="bondsTab">
-          <attribute name="title">
-           <string>FI/Bonds</string>
-          </attribute>
-         </widget>
-         <widget class="QWidget" name="commoditiesTab">
-          <attribute name="title">
-           <string>Commodities &amp; Futures</string>
+           <string>Tab 2</string>
           </attribute>
          </widget>
         </widget>
@@ -471,7 +451,7 @@ QScrollBar::sub-line:horizontal {
         <enum>Qt::Vertical</enum>
        </property>
        <property name="childrenCollapsible">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <widget class="QFrame" name="holdingsFrame">
         <property name="minimumSize">
@@ -506,13 +486,21 @@ QScrollBar::sub-line:horizontal {
           <widget class="QLabel" name="holdingsTitle">
            <property name="font">
             <font>
-             <pointsize>12</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <pointsize>-1</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    min-height: 5px;
+    max-height: 15px;
+	font-weight: 400;
+	font-size: 12px;
+}</string>
+           </property>
            <property name="text">
-            <string>Personal Holdings</string>
+            <string>Account</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -521,6 +509,18 @@ QScrollBar::sub-line:horizontal {
          </item>
          <item>
           <widget class="QTableWidget" name="holdingsTable">
+           <property name="styleSheet">
+            <string notr="true">QHeaderView::section {
+    background-color: #2c2c2c;
+    color: #dddddd;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 6px;
+    border: 1px solid #444444;
+    height: 12px;
+}
+</string>
+           </property>
            <property name="alternatingRowColors">
             <bool>true</bool>
            </property>
@@ -537,22 +537,32 @@ QScrollBar::sub-line:horizontal {
            </column>
            <column>
             <property name="text">
-             <string>Shares</string>
+             <string>Last Price$</string>
             </property>
            </column>
            <column>
             <property name="text">
-             <string>Avg Price</string>
+             <string>Change$</string>
             </property>
            </column>
            <column>
             <property name="text">
-             <string>Current</string>
+             <string>Change%</string>
             </property>
            </column>
            <column>
             <property name="text">
-             <string>P&amp;L</string>
+             <string>Quantity#</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Cost Basis$</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Value$</string>
             </property>
            </column>
           </widget>
@@ -643,8 +653,30 @@ QScrollBar::sub-line:horizontal {
          </property>
          <item>
           <widget class="QTabWidget" name="newsTabs">
+           <property name="styleSheet">
+            <string notr="true">QTabBar::tab {
+    background: #2c2c2c;               /* dark gray to match your theme */
+    color: #dddddd;                    /* light text */
+    border: 1px solid #444444;         /* subtle border */
+    padding: 5px 9px;                 /* comfortable spacing */
+    font-size: 12px;
+    border-radius: 0px;                /* remove rounded corners */
+    min-width: 80px;                   /* consistent size */
+}
+
+QTabBar::tab:selected {
+    background: #444444;               /* slightly lighter for selected */
+    font-weight: bold;
+    border-bottom: 1px solid #66aaff;  /* visual indicator of selection */
+}
+
+QTabBar::tab:hover {
+    background: #3a3a3a;
+    color: #ffffff;
+}</string>
+           </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="economicDataTab">
             <attribute name="title">
@@ -687,6 +719,12 @@ QScrollBar::sub-line:horizontal {
             <layout class="QVBoxLayout" name="sentimentLayout">
              <item>
               <widget class="QTextEdit" name="sentimentText">
+               <property name="styleSheet">
+                <string notr="true">QHeaderView::section {
+	font-size: 12px;
+    height: 12px;
+}</string>
+               </property>
                <property name="readOnly">
                 <bool>true</bool>
                </property>
@@ -733,6 +771,15 @@ QScrollBar::sub-line:horizontal {
         </property>
         <item>
          <widget class="QFrame" name="chartControlsFrame">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>60</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -892,6 +939,9 @@ QScrollBar::sub-line:horizontal {
              <height>200</height>
             </size>
            </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
            </property>
@@ -916,6 +966,12 @@ QScrollBar::sub-line:horizontal {
             </property>
             <item>
              <widget class="QWebEngineView" name="spyChartWidget">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>1</horstretch>
+                <verstretch>1</verstretch>
+               </sizepolicy>
+              </property>
               <property name="styleSheet">
                <string notr="true">background-color: #1e1e1e;</string>
               </property>
@@ -974,7 +1030,7 @@ QScrollBar::sub-line:horizontal {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1746</width>
+     <width>1274</width>
      <height>28</height>
     </rect>
    </property>
@@ -1029,6 +1085,17 @@ QScrollBar::sub-line:horizontal {
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>newsText</tabstop>
+  <tabstop>holdingsTable</tabstop>
+  <tabstop>symbol1Input</tabstop>
+  <tabstop>symbol2Input</tabstop>
+  <tabstop>sentimentText</tabstop>
+  <tabstop>economicDataText</tabstop>
+  <tabstop>newsTabs</tabstop>
+  <tabstop>timeframeCombo</tabstop>
+  <tabstop>refreshButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

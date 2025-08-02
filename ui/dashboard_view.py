@@ -24,6 +24,11 @@ class DashboardView(QMainWindow):
         super().__init__()
         uic.loadUi("ui_files/dashboard_view.ui", self)
 
+        # Set even split for charts
+        total_height = self.chartsSplitter.height()
+        half_height = total_height // 2
+        self.chartsSplitter.setSizes([half_height, half_height])
+
         self.ChartView = ChartView(parent=self)
         self.date = str(QDate.currentDate().toPyDate())
 
@@ -63,9 +68,12 @@ class ChartView:
     def chartSymbol(self, symbol, widget):
         try:
             symbol_data = yf.download(symbol, period=self.timeframe_input, interval=self.timeframe_intervals[self.timeframe_input])
-            symbol_closes = symbol_data[['Close']]
+            symbol_closes = symbol_data[['Close']].dropna()
             symbol_closes.columns = symbol_closes.columns.droplevel('Ticker')
-            fig = px.line(symbol_closes, y='Close', x=symbol_closes.index, title=symbol)
+            overall_change = symbol_closes.iloc[-1]-symbol_closes.iloc[0]
+            overall_change_pct = ((symbol_closes.iloc[-1] - symbol_closes.iloc[0]) / symbol_closes.iloc[0]) * 100
+            modified_title = str(symbol) + " " + str(overall_change.iloc[0])
+            fig = px.line(symbol_closes, y='Close', x=symbol_closes.index, title=modified_title)
 
             fig.update_layout(
                 xaxis_title=None,
