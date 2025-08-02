@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1746</width>
-    <height>1062</height>
+    <height>1119</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -392,6 +392,9 @@ QScrollBar::sub-line:horizontal {
            <width>16777215</width>
            <height>16777215</height>
           </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="text">
           <string>Date</string>
@@ -793,20 +796,6 @@ QScrollBar::sub-line:horizontal {
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="timeframeLabel">
-             <property name="font">
-              <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Timeframe:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QComboBox" name="timeframeCombo">
              <property name="maximumSize">
               <size>
@@ -814,29 +803,47 @@ QScrollBar::sub-line:horizontal {
                <height>16777215</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>timeframe</string>
+             </property>
              <item>
               <property name="text">
-               <string>1D</string>
+               <string>1d</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>1W</string>
+               <string>5d</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>1M</string>
+               <string>1mo</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>3M</string>
+               <string>3mo</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>1Y</string>
+               <string>1y</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>2y</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>5y</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>max</string>
               </property>
              </item>
             </widget>

@@ -1,62 +1,73 @@
 import sys
 import yfinance as yf
 from PyQt6.QtCore import QDate
-from PyQt6.QtSensors import QPressureReading
-from PyQt6.QtWidgets import QWidget, QLineEdit, QPushButton, QApplication, QMainWindow, QLabel
+from PyQt6.QtWidgets import QWidget, QLineEdit, QPushButton, QApplication, QMainWindow, QLabel, QComboBox
 from PyQt6 import uic
-import pandas as pd
+# import pandas as pd
 import plotly.express as px
 from PyQt6.QtWebEngineWidgets import QWebEngineView
-from matplotlib.pyplot import xlabel
+# from matplotlib.pyplot import xlabel
 
 
 class DashboardView(QMainWindow):
+    #declaring type for ide
+    dateLabel: QLabel
     symbol1Input: QLineEdit
     symbol2Input: QLineEdit
     refreshButton: QPushButton
     qqqChartWidget: QWebEngineView
     spyChartWidget: QWebEngineView
-    dateLabel: QLabel
+    timeframeCombo: QComboBox
+
 
     def __init__(self):
         super().__init__()
         uic.loadUi("ui_files/dashboard_view.ui", self)
 
-
+        self.ChartView = ChartView(parent=self)
         self.date = str(QDate.currentDate().toPyDate())
+
+        #Configure
+        self.dateLabel.setText(QDate.currentDate().toString())
+
+
+
+class ChartView:
+    def __init__(self, parent: DashboardView):
+        self.parent: DashboardView = parent #prevents pycharm false underlines
+        self.timeframe_intervals = {
+            "1d": "1m",
+            "5d": "5m",
+            "1mo": "1h",
+            "3mo": "1h",
+            "1y": "1d",
+            "2y": "1d",
+            "5y": "1wk",
+            "max": "1wk",
+        }
+
+        self.gridcolor = 'rgba(255, 255, 255, 0.1)'
+
+
+        #user inputs
+        self.timeframe_input = ""
         self.symbol1 = None
         self.symbol2 = None
+
+        #wiring
+        self.parent.refreshButton.clicked.connect(self.pressRefreshButton)
+
+        #load charts on instantiation
         self.pressRefreshButton()
 
-        #Configure buttons
-        self.dateLabel.setText(QDate.currentDate().toString())
-        self.refreshButton.clicked.connect(self.pressRefreshButton)
-
-
-    def pressRefreshButton(self):
-        symbol1_input = self.symbol1Input.text().strip().upper()
-        symbol2_input = self.symbol2Input.text().strip().upper()
-
-        if symbol1_input is not None:
-            self.symbol1 = symbol1_input
-        if symbol2_input is not None:
-            self.symbol2 = symbol2_input
-
-        self.chartSymbol(self.symbol1, self.symbol2)
-
-
-    def chartSymbol(self, symbol1, symbol2):
+    def chartSymbol(self, symbol, widget):
         try:
-            symbol1_data = yf.download(symbol1, period="1d", interval="1m")
-            symbol2_data = yf.download(symbol2, period="1d", interval="1m")
-            symbol1_closes = symbol1_data[['Close']]
-            symbol2_closes = symbol2_data[['Close']]
-            symbol1_closes.columns = symbol1_closes.columns.droplevel('Ticker')
-            symbol2_closes.columns = symbol2_closes.columns.droplevel('Ticker')
-            fig1 = px.line(symbol1_closes, y='Close', x=symbol1_closes.index, title=symbol1)
-            fig2 = px.line(symbol2_closes, y='Close', x=symbol2_closes.index, title=symbol2)
+            symbol_data = yf.download(symbol, period=self.timeframe_input, interval=self.timeframe_intervals[self.timeframe_input])
+            symbol_closes = symbol_data[['Close']]
+            symbol_closes.columns = symbol_closes.columns.droplevel('Ticker')
+            fig = px.line(symbol_closes, y='Close', x=symbol_closes.index, title=symbol)
 
-            fig1.update_layout(
+            fig.update_layout(
                 xaxis_title=None,
                 yaxis_title=None,
                 margin=dict(l=0, r=0, b=0, t=30, pad=0),
@@ -65,75 +76,52 @@ class DashboardView(QMainWindow):
                 paper_bgcolor="black",
                 yaxis=dict(
                     showgrid=True,
-                    gridcolor='rgba(255, 255, 255, 0.1)'
+                    gridcolor=self.gridcolor,
                 ),
                 xaxis=dict(
                     showgrid=True,
-                    gridcolor='rgba(255, 255, 255, 0.1)',
-                # showticklabels=False,
+                    gridcolor=self.gridcolor,
                     title=None
                 )
             )
-            fig2.update_layout(
-                xaxis_title=None,
-                yaxis_title = None,
-                margin=dict(l=0, r=0, b=0, t=30, pad=0),
-                showlegend=False,
-                plot_bgcolor="black",
-                paper_bgcolor="black",
-                yaxis=dict(
-                    showgrid=True,
-                    gridcolor='rgba(255, 255, 255, 0.1)'
-                ),
-                xaxis=dict(
-                    showgrid=True,
-                    gridcolor='rgba(255, 255, 255, 0.1)',
-                    # showticklabels=False,
-                    title=None
-                )
 
-            )
-
-            fig1.update_traces(line=dict(color='blue', width=3))
-            fig2.update_traces(line=dict(color='blue', width=3))
-            html1 = f"""
+            fig.update_traces(line=dict(color='blue', width=3))
+            html = f"""
             <html>
             <head>
                 <style>
                     body {{
-                        margin: 0;
+                        margin: 10px;
                         padding: 0;
                         background-color: black;
                     }}
                 </style>
             </head>
             <body>
-                {fig1.to_html(include_plotlyjs='cdn', full_html=False)}
+                {fig.to_html(include_plotlyjs='cdn', full_html=False)}
             </body>
             </html>
             """
 
-            html2 = f"""
-            <html>
-            <head>
-                <style>
-                    body {{
-                        margin: 0;
-                        padding: 0;
-                        background-color: black;
-                    }}
-                </style>
-            </head>
-            <body>
-                {fig2.to_html(include_plotlyjs='cdn', full_html=False)}
-            </body>
-            </html>
-            """
+            widget.setHtml(html)
 
-            self.spyChartWidget.setHtml(html1)
-            self.qqqChartWidget.setHtml(html2)
+
         except Exception as e:
             print(e)
+
+    def pressRefreshButton(self):
+        symbol1_input = self.parent.symbol1Input.text().strip().upper()
+        symbol2_input = self.parent.symbol2Input.text().strip().upper()
+        self.timeframe_input = self.parent.timeframeCombo.currentText().strip()
+
+        if symbol1_input:
+            self.symbol1 = symbol1_input
+        if symbol2_input:
+            self.symbol2 = symbol2_input
+
+        self.chartSymbol(self.symbol1, self.parent.spyChartWidget)
+        self.chartSymbol(self.symbol2, self.parent.qqqChartWidget)
+
 
 
 if __name__ == "__main__":
@@ -141,5 +129,3 @@ if __name__ == "__main__":
     window = DashboardView()
     window.show()
     sys.exit(app.exec())
-
-
