@@ -7,6 +7,8 @@ from PyQt6 import uic
 import plotly.express as px
 from PyQt6.QtWebEngineWidgets import QWebEngineView
 # from matplotlib.pyplot import xlabel
+from etrade_client.auth.etrade_auth import oauth
+from etrade_client.accounts import Accounts
 
 
 class DashboardView(QMainWindow):
@@ -30,6 +32,7 @@ class DashboardView(QMainWindow):
         self.chartsSplitter.setSizes([half_height, half_height])
 
         self.ChartView = ChartView(parent=self)
+        self.EtradeView = EtradeView(parent=self)
         self.date = str(QDate.currentDate().toPyDate())
 
         #Configure
@@ -129,6 +132,15 @@ class ChartView:
 
         self.chartSymbol(self.symbol1, self.parent.spyChartWidget)
         self.chartSymbol(self.symbol2, self.parent.qqqChartWidget)
+
+class EtradeView:
+    def __init__(self, parent: DashboardView):
+        self.parent: DashboardView = parent
+        self.session, self.base_url = oauth()
+        self.accounts = Accounts(self.session, self.base_url)
+
+
+        self.accounts.account_list()
 
 
 
