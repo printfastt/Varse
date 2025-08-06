@@ -15,11 +15,11 @@ handler.setFormatter(fmt)
 logger.addHandler(handler)
 
 
-class Accounts:
+class AccountsManager:
     def __init__(self, session, base_url):
         self.session = session
         self.base_url = base_url
-        self.accounts = []
+        self.accounts_list = []
         # self.account = None
 
         self._load_accounts()
@@ -40,7 +40,7 @@ class Accounts:
             data = response.json()
             if data is not None and "AccountListResponse" in data and "Accounts" in data["AccountListResponse"] and "Account" in data["AccountListResponse"]["Accounts"]:
                 accounts = data["AccountListResponse"]["Accounts"]["Account"]
-                self.accounts[:] = [Account(d, parent=self) for d in accounts if d.get('accountStatus') != 'CLOSED' and d.get('closedDate') == 0 ]
+                self.accounts_list[:] = [Account(d, parent=self) for d in accounts if d.get('accountStatus') != 'CLOSED' and d.get('closedDate') == 0]
             else:
                 logger.debug("Response Body: %s", response.text)
                 if response is not None and response.headers['Content-Type'] == 'application/json' \

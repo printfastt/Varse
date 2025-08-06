@@ -1,14 +1,15 @@
 import sys
 import yfinance as yf
 from PyQt6.QtCore import QDate
-from PyQt6.QtWidgets import QWidget, QLineEdit, QPushButton, QApplication, QMainWindow, QLabel, QComboBox, QSplitter
+from PyQt6.QtWidgets import QWidget, QLineEdit, QPushButton, QApplication, QMainWindow, QLabel, QComboBox, QSplitter, \
+    QTableWidgetItem, QTableWidget
 from PyQt6 import uic
 # import pandas as pd
 import plotly.express as px
 from PyQt6.QtWebEngineWidgets import QWebEngineView
 # from matplotlib.pyplot import xlabel
 from etrade_client.auth.etrade_auth import oauth
-from etrade_client.accounts import Accounts
+from etrade_client.accountsmanager import AccountsManager
 
 
 class DashboardView(QMainWindow):
@@ -21,6 +22,8 @@ class DashboardView(QMainWindow):
     spyChartWidget: QWebEngineView
     timeframeCombo: QComboBox
     chartsSplitter: QSplitter
+    holdingsTable: QTableWidget
+    holdingsTitle: QLabel
 
 
     def __init__(self):
@@ -64,10 +67,10 @@ class ChartView:
         self.symbol2 = None
 
         #wiring
-        self.parent.refreshButton.clicked.connect(self.pressRefreshButton)
+        self.parent.refreshButton.clicked.connect(self.press_refresh_button)
 
         #load charts on instantiation
-        # self.pressRefreshButton()
+        self.press_refresh_button()
 
     def chart_symbol(self, symbol, widget):
         try:
@@ -121,7 +124,7 @@ class ChartView:
         except Exception as e:
             print(e)
 
-    def pressRefreshButton(self):
+    def press_refresh_button(self):
         symbol1_input = self.parent.symbol1Input.text().strip().upper()
         symbol2_input = self.parent.symbol2Input.text().strip().upper()
         self.timeframe_input = self.parent.timeframeCombo.currentText().strip()
@@ -138,7 +141,19 @@ class EtradeView:
     def __init__(self, parent: DashboardView):
         self.parent: DashboardView = parent
         self.session, self.base_url = oauth()
-        self.accounts = Accounts(self.session, self.base_url)
+        self.accounts_manager = AccountsManager(self.session, self.base_url)
+        self.populate_portfolio_table(self.accounts_manager.accounts_list[2].positions, self.parent.holdingsTable)
+
+    @staticmethod
+    def populate_portfolio_table(positions, widget):
+        widget.setRowCount(len(positions))
+        widget.setColumnCount(len(positions.columns))
+        widget.setHorizontalHeaderLabels(positions.columns)
+
+        for i in range(len(positions)):
+            for j in range(len(positions.columns)):
+                value = str(positions.iloc[i,j])
+                widget.setItem(i, j, QTableWidgetItem(value))
 
 
 if __name__ == "__main__":
@@ -146,3 +161,4 @@ if __name__ == "__main__":
     window = DashboardView()
     window.show()
     sys.exit(app.exec())
+    print("hello")
