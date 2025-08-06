@@ -1,7 +1,7 @@
 import sys
 import yfinance as yf
 from PyQt6.QtCore import QDate
-from PyQt6.QtWidgets import QWidget, QLineEdit, QPushButton, QApplication, QMainWindow, QLabel, QComboBox
+from PyQt6.QtWidgets import QWidget, QLineEdit, QPushButton, QApplication, QMainWindow, QLabel, QComboBox, QSplitter
 from PyQt6 import uic
 # import pandas as pd
 import plotly.express as px
@@ -20,6 +20,7 @@ class DashboardView(QMainWindow):
     qqqChartWidget: QWebEngineView
     spyChartWidget: QWebEngineView
     timeframeCombo: QComboBox
+    chartsSplitter: QSplitter
 
 
     def __init__(self):
@@ -66,9 +67,9 @@ class ChartView:
         self.parent.refreshButton.clicked.connect(self.pressRefreshButton)
 
         #load charts on instantiation
-        self.pressRefreshButton()
+        # self.pressRefreshButton()
 
-    def chartSymbol(self, symbol, widget):
+    def chart_symbol(self, symbol, widget):
         try:
             symbol_data = yf.download(symbol, period=self.timeframe_input, interval=self.timeframe_intervals[self.timeframe_input])
             symbol_closes = symbol_data[['Close']].dropna()
@@ -130,18 +131,14 @@ class ChartView:
         if symbol2_input:
             self.symbol2 = symbol2_input
 
-        self.chartSymbol(self.symbol1, self.parent.spyChartWidget)
-        self.chartSymbol(self.symbol2, self.parent.qqqChartWidget)
+        self.chart_symbol(self.symbol1, self.parent.spyChartWidget)
+        self.chart_symbol(self.symbol2, self.parent.qqqChartWidget)
 
 class EtradeView:
     def __init__(self, parent: DashboardView):
         self.parent: DashboardView = parent
         self.session, self.base_url = oauth()
         self.accounts = Accounts(self.session, self.base_url)
-
-
-        self.accounts.account_list()
-
 
 
 if __name__ == "__main__":
