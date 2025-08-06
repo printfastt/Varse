@@ -23,6 +23,7 @@ class AccountsManager:
         # self.account = None
 
         self._load_accounts()
+        self.num_of_accounts = len(self.accounts_list)
 
 
     def _load_accounts(self):
@@ -112,7 +113,7 @@ class AccountsManager:
 class Account:
     def __init__(self, account, parent=None):
         self.parent = parent
-        self.account = account
+        self.account_info = account
         self.accountIdKey = account.get('accountIdKey')
 
         self.positionsRaw = parent.fetch_portfolio(self.accountIdKey)
@@ -178,7 +179,9 @@ class Account:
                     'totalGain': pos['totalGain'],
                     'totalGainPct': pos['totalGainPct']
                 })
-            self.positions = pd.DataFrame(data)
+                positions = pd.DataFrame(data)
+                positions.index.name = "#"
+                self.positions = positions
         else:
             self.positions = None
             print(f"Account {self.accountIdKey} has no positions")

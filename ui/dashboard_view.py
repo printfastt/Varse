@@ -23,7 +23,7 @@ class DashboardView(QMainWindow):
     timeframeCombo: QComboBox
     chartsSplitter: QSplitter
     holdingsTable: QTableWidget
-    holdingsTitle: QLabel
+    accountcomboBox: QComboBox
 
 
     def __init__(self):
@@ -142,7 +142,21 @@ class EtradeView:
         self.parent: DashboardView = parent
         self.session, self.base_url = oauth()
         self.accounts_manager = AccountsManager(self.session, self.base_url)
-        self.populate_portfolio_table(self.accounts_manager.accounts_list[2].positions, self.parent.holdingsTable)
+        # self.selected_account = self.accounts_manager.num_of_accounts-1
+
+        #wiring
+        self.parent.accountcomboBox.currentIndexChanged.connect(self.on_selection_changed)
+
+        self._populate_accountscomboBox()
+        self.on_selection_changed(self.accounts_manager.num_of_accounts-1)
+
+    def _populate_accountscomboBox(self):
+        for account_index, account in enumerate(self.accounts_manager.accounts_list):
+            self.parent.accountcomboBox.addItem(account.account_info.get('accountDesc') + " - " + str(account.account_info.get('accountId')), account_index)
+
+    def on_selection_changed(self, index):
+        # account_name = self.combo.itemData(index)
+        self.populate_portfolio_table(self.accounts_manager.accounts_list[index].positions, self.parent.holdingsTable)
 
     @staticmethod
     def populate_portfolio_table(positions, widget):
@@ -161,4 +175,4 @@ if __name__ == "__main__":
     window = DashboardView()
     window.show()
     sys.exit(app.exec())
-    print("hello")
+
