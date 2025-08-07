@@ -487,6 +487,12 @@ QScrollBar::sub-line:horizontal {
          </item>
          <item>
           <widget class="QTableWidget" name="holdingsTable">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">QHeaderView::section {
     background-color: #2c2c2c;
@@ -553,45 +559,134 @@ QScrollBar::sub-line:horizontal {
            <property name="frameShadow">
             <enum>QFrame::Sunken</enum>
            </property>
-           <layout class="QHBoxLayout" name="portfolioSummaryLayout">
-            <item>
-             <widget class="QLabel" name="totalValueLabel">
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="1" column="1">
+             <widget class="QLabel" name="label_10">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
               </property>
               <property name="text">
-               <string>Total Value: $0.00</string>
+               <string>TextLabel</string>
               </property>
              </widget>
             </item>
-            <item>
-             <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QLabel" name="totalPnLLabel">
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
+            <item row="1" column="2">
+             <widget class="QLabel" name="label_11">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
               </property>
               <property name="text">
-               <string>Total P&amp;L: $0.00</string>
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="4">
+             <widget class="QLabel" name="label_13">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QLabel" name="label_7">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QLabel" name="label_9">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="4">
+             <widget class="QLabel" name="label_4">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <widget class="QLabel" name="label_12">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="label_5">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>Day's Gain</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_2">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>NAV</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_8">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>TextLabel</string>
               </property>
              </widget>
             </item>
@@ -654,7 +749,7 @@ QTabBar::tab:hover {
 }</string>
            </property>
            <property name="currentIndex">
-            <number>1</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="economicDataTab">
             <attribute name="title">
@@ -785,7 +880,6 @@ QTabBar::tab:hover {
              <property name="font">
               <font>
                <pointsize>9</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -943,7 +1037,7 @@ QTabBar::tab:hover {
              <number>0</number>
             </property>
             <item>
-             <widget class="QWebEngineView" name="spyChartWidget">
+             <widget class="QWebEngineView" name="spyChartWidget" native="true">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>1</horstretch>
@@ -987,7 +1081,7 @@ QTabBar::tab:hover {
              <number>0</number>
             </property>
             <item>
-             <widget class="QWebEngineView" name="qqqChartWidget">
+             <widget class="QWebEngineView" name="qqqChartWidget" native="true">
               <property name="styleSheet">
                <string notr="true">background-color: #1e1e1e;</string>
               </property>
@@ -1009,7 +1103,7 @@ QTabBar::tab:hover {
      <x>0</x>
      <y>0</y>
      <width>1274</width>
-     <height>28</height>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -1022,7 +1116,19 @@ QTabBar::tab:hover {
     <property name="title">
      <string>View</string>
     </property>
+    <widget class="QMenu" name="menuAccount_Table">
+     <property name="title">
+      <string>Account Table</string>
+     </property>
+     <addaction name="actionRefresh_2"/>
+     <addaction name="separator"/>
+     <addaction name="actionSimple"/>
+     <addaction name="actionDynamic"/>
+     <addaction name="actionFull"/>
+     <addaction name="actionCustom"/>
+    </widget>
     <addaction name="actionRefresh"/>
+    <addaction name="menuAccount_Table"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -1052,6 +1158,49 @@ QTabBar::tab:hover {
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="actionRefresh_2">
+   <property name="text">
+    <string>Refresh</string>
+   </property>
+  </action>
+  <action name="actionSimple">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Simple</string>
+   </property>
+  </action>
+  <action name="actionDynamic">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Dynamic</string>
+   </property>
+   <property name="toolTip">
+    <string>Show values which change day-to-day</string>
+   </property>
+  </action>
+  <action name="actionFull">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Full</string>
+   </property>
+  </action>
+  <action name="actionCustom">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Custom</string>
    </property>
   </action>
  </widget>

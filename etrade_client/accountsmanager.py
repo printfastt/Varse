@@ -2,9 +2,8 @@ import logging
 from logging.handlers import RotatingFileHandler
 import json
 import pandas as pd
-
-
-
+from pygments.lexers import q
+import config
 
 logger = logging.getLogger('my_logger')
 logger.setLevel(logging.DEBUG)
@@ -107,6 +106,16 @@ class AccountsManager:
         print("Portfolio API error")
         return None
 
+    def fetch_balances(self, accountIdKey:str, institutionType:str):
+        url = self.base_url + "/v1/accounts/" + accountIdKey + "/balance.json"
+        params = {'instType': institutionType, 'realTimeNAV': 'true'}
+        headers = {"consumerkey": config.CONSUMER_KEY}
+
+        response = self.session.get(url, params=params, headers=headers)
+        logger.debug("Request url: %s", url)
+        logger.debug("Request headers: %s", response.request.headers)
+
+
 
 
 
@@ -119,6 +128,8 @@ class Account:
         self.positionsRaw = parent.fetch_portfolio(self.accountIdKey)
         self.positions = None
         self._build_positions_df()
+
+        self.balancesRaw = parent.fetch_balances(self.accountIdKey, self.account_info.get('institutionType'))
 
     def get_positions_raw(self):
         if self.positionsRaw is not None:
@@ -186,6 +197,11 @@ class Account:
             self.positions = None
             print(f"Account {self.accountIdKey} has no positions")
 
+    def get_balances_raw(self):
+        pass
+
+    def get_balances(self):
+        pass
 
 
 

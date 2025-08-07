@@ -1,12 +1,16 @@
 import sys
 import yfinance as yf
-from PyQt6.QtCore import QDate
+from PIL.SpiderImagePlugin import isInt
+from PyQt6.QtCore import QDate, QObject
+from PyQt6.QtGui import QBrush, QColor, QAction, QActionGroup
 from PyQt6.QtWidgets import QWidget, QLineEdit, QPushButton, QApplication, QMainWindow, QLabel, QComboBox, QSplitter, \
     QTableWidgetItem, QTableWidget
 from PyQt6 import uic
-# import pandas as pd
+import pandas as pd
 import plotly.express as px
 from PyQt6.QtWebEngineWidgets import QWebEngineView
+from PyQt6.uic.Compiler.qtproxies import strict_getattr
+import re
 # from matplotlib.pyplot import xlabel
 from etrade_client.auth.etrade_auth import oauth
 from etrade_client.accountsmanager import AccountsManager
@@ -24,19 +28,40 @@ class DashboardView(QMainWindow):
     chartsSplitter: QSplitter
     holdingsTable: QTableWidget
     accountcomboBox: QComboBox
+    actionSimple : QAction
+    actionDynamic: QAction
+    actionFull: QAction
+    actionCustom: QAction
+
 
 
     def __init__(self):
         super().__init__()
         uic.loadUi("ui_files/dashboard_view.ui", self)
 
-        # Set even split for charts
         total_height = self.chartsSplitter.height()
         half_height = total_height // 2
         self.chartsSplitter.setSizes([half_height, half_height])
 
-        self.ChartView = ChartView(parent=self)
-        self.EtradeView = EtradeView(parent=self)
+        chart_components = {
+            'refreshButton': self.refreshButton,
+            'symbol1Input': self.symbol1Input,
+            'symbol2Input': self.symbol2Input,
+            'timeframeCombo': self.timeframeCombo,
+            'spyChartWidget': self.spyChartWidget,
+            'qqqChartWidget': self.qqqChartWidget
+        }
+        etrade_components = {
+            'accountcomboBox': self.accountcomboBox,
+            'holdingsTable': self.holdingsTable,
+            'actionSimple': self.actionSimple,
+            'actionDynamic': self.actionDynamic,
+            'actionFull': self.actionFull,
+            'actionCustom': self.actionCustom
+        }
+        
+        self.ChartView = ChartView(chart_components)
+        self.EtradeView = EtradeView(etrade_components)
         self.date = str(QDate.currentDate().toPyDate())
 
         #Configure
@@ -45,8 +70,14 @@ class DashboardView(QMainWindow):
 
 
 class ChartView:
-    def __init__(self, parent: DashboardView):
-        self.parent: DashboardView = parent #prevents pycharm false underlines
+    def __init__(self, components):
+        super().__init__()
+        self.refreshButton = components['refreshButton']
+        self.symbol1Input = components['symbol1Input']
+        self.symbol2Input = components['symbol2Input']
+        self.timeframeCombo = components['timeframeCombo']
+        self.spyChartWidget = components['spyChartWidget']
+        self.qqqChartWidget = components['qqqChartWidget']
         self.timeframe_intervals = {
             "1d": "1m",
             "5d": "5m",
@@ -67,7 +98,7 @@ class ChartView:
         self.symbol2 = None
 
         #wiring
-        self.parent.refreshButton.clicked.connect(self.press_refresh_button)
+        self.refreshButton.clicked.connect(self.press_refresh_button)
 
         #load charts on instantiation
         self.press_refresh_button()
@@ -125,49 +156,155 @@ class ChartView:
             print(e)
 
     def press_refresh_button(self):
-        symbol1_input = self.parent.symbol1Input.text().strip().upper()
-        symbol2_input = self.parent.symbol2Input.text().strip().upper()
-        self.timeframe_input = self.parent.timeframeCombo.currentText().strip()
+        symbol1_input = self.symbol1Input.text().strip().upper()
+        symbol2_input = self.symbol2Input.text().strip().upper()
+        self.timeframe_input = self.timeframeCombo.currentText().strip()
 
         if symbol1_input:
             self.symbol1 = symbol1_input
         if symbol2_input:
             self.symbol2 = symbol2_input
 
-        self.chart_symbol(self.symbol1, self.parent.spyChartWidget)
-        self.chart_symbol(self.symbol2, self.parent.qqqChartWidget)
+        self.chart_symbol(self.symbol1, self.spyChartWidget)
+        self.chart_symbol(self.symbol2, self.qqqChartWidget)
 
-class EtradeView:
-    def __init__(self, parent: DashboardView):
-        self.parent: DashboardView = parent
+class EtradeView(QObject):
+    viewModeGroup: QActionGroup
+    def __init__(self, components):
+        super().__init__()
+        self.accountcomboBox = components['accountcomboBox']
+        self.holdingsTable = components['holdingsTable']
+        self.actionSimple = components['actionSimple']
+        self.actionDynamic = components['actionDynamic']
+        self.actionFull = components['actionFull']
+        self.actionCustom = components['actionCustom']
+        self.viewModeGroup = QActionGroup(self)
+
+        #holdingsTable settings
+        self.holdingsTable.horizontalHeader().setStretchLastSection(True)
+
         self.session, self.base_url = oauth()
         self.accounts_manager = AccountsManager(self.session, self.base_url)
-        # self.selected_account = self.accounts_manager.num_of_accounts-1
+        self.current_account_index = None
+        self._init_accountscomboBox()
+        self._init_action_group()
+        self.populate_portfolio_table()
 
-        #wiring
-        self.parent.accountcomboBox.currentIndexChanged.connect(self.on_selection_changed)
 
-        self._populate_accountscomboBox()
-        self.on_selection_changed(self.accounts_manager.num_of_accounts-1)
 
-    def _populate_accountscomboBox(self):
+    def _init_accountscomboBox(self):
         for account_index, account in enumerate(self.accounts_manager.accounts_list):
-            self.parent.accountcomboBox.addItem(account.account_info.get('accountDesc') + " - " + str(account.account_info.get('accountId')), account_index)
+            self.accountcomboBox.addItem(account.account_info.get('accountDesc') + " - " + str(account.account_info.get('accountId')), account_index)
+        start_index = self.accounts_manager.num_of_accounts - 1
+        self.accountcomboBox.setCurrentIndex(start_index)
+        self.current_account_index = start_index
+        self.accountcomboBox.currentIndexChanged.connect(self._on_account_select_changed)
 
-    def on_selection_changed(self, index):
-        # account_name = self.combo.itemData(index)
-        self.populate_portfolio_table(self.accounts_manager.accounts_list[index].positions, self.parent.holdingsTable)
+    def _init_action_group(self):
+        self.viewModeGroup.setExclusive(True)
+        self.viewModeGroup.addAction(self.actionSimple)
+        self.viewModeGroup.addAction(self.actionDynamic)
+        self.viewModeGroup.addAction(self.actionFull)
+        self.viewModeGroup.addAction(self.actionCustom)
+        self.viewModeGroup.triggered.connect(self._on_action_group_viewmode_change)
+        self.actionDynamic.setChecked(True)
 
-    @staticmethod
-    def populate_portfolio_table(positions, widget):
-        widget.setRowCount(len(positions))
-        widget.setColumnCount(len(positions.columns))
-        widget.setHorizontalHeaderLabels(positions.columns)
+    def _on_account_select_changed(self, index):
+        # self.accountcomboBox.setCurrentIndex(index)
+        self.current_account_index = index
+        self.populate_portfolio_table()
 
-        for i in range(len(positions)):
-            for j in range(len(positions.columns)):
-                value = str(positions.iloc[i,j])
-                widget.setItem(i, j, QTableWidgetItem(value))
+    def _on_action_group_viewmode_change(self):
+        self.populate_portfolio_table()
+
+#NOTE NEED TO FINISH FORMATTING
+    def populate_portfolio_table(self):
+
+        def _portfolio_view_select_adjust(df):
+            selected_action = self.viewModeGroup.checkedAction()
+            if selected_action:
+                if selected_action.objectName() == 'actionSimple' or selected_action.objectName() == 'actionDynamic':
+                    df = df[['symbolDescription', 'lastTrade', 'change', 'quantity', 'daysGain', 'daysGainPct', 'totalGain', 'totalGainPct', 'pctOfPortfolio']]
+                elif selected_action.objectName() == 'actionFull':
+                    pass
+                elif selected_action.objectName() == 'actionCustom':
+                    pass
+                return df
+            else:
+                return df
+
+        def _format_columns_with_suffix(data, suffix="%"):
+            if isinstance(data, pd.Series):
+                return data.apply(lambda x: f"{x:.2f}{suffix}" if pd.notnull(x) else "")
+            elif isinstance(data, pd.DataFrame):
+                return data.applymap(lambda x: f"{x:.2f}{suffix}" if pd.notnull(x) else "")
+            else:
+                raise TypeError("Input must be a pandas Series or DataFrame.")
+
+        def _formatter():
+            positions_copy = positions.copy()
+            if self.viewModeGroup.checkedAction().objectName() == 'actionDynamic':
+                positions_copy['lastTrade(d)'] = positions_copy.apply(
+                    lambda row: f"{row['lastTrade']:.2f} ({row['change']:+.2f})", axis=1
+                )
+                positions_copy = positions_copy.drop(columns=['lastTrade', 'change'])
+
+                positions_copy['dayChange'] = positions_copy.apply(
+                    lambda row: f"{row['daysGainPct']:.2f}% ({row['daysGain']:+.2f})", axis=1
+                )
+                positions_copy = positions_copy.drop(columns=['daysGainPct', 'daysGain'])
+
+                cols = positions_copy.columns.tolist()
+                cols.insert(1, cols.pop(cols.index('lastTrade(d)')))
+                cols.insert(2, cols.pop(cols.index('dayChange')))
+                positions_copy = positions_copy[cols]
+
+                # positions_copy['totalGainPct'] = _format_columns_with_suffix(positions_copy['totalGainPct'], '%')
+                # positions_copy['pctOfPortfolio'] = _format_columns_with_suffix(positions_copy['totalGainPct'], '%')
+
+            return positions_copy
+
+        def _plot():
+            positions_copy = _formatter()
+            def _check_if_colored(item, j, value):
+                col_name = positions_copy.columns[j]
+                if 'Pct' in col_name or 'Gain' in col_name or 'change' in col_name:
+                    if isinstance(value, (int, float, complex)):
+                        if value > 0:
+                            item.setForeground(QBrush(QColor('green')))
+                        elif value < 0:
+                            item.setForeground(QBrush(QColor('red')))
+
+                elif col_name == 'lastTrade(d)' or col_name == 'dayChange':
+                    match = re.search(r'\(([-+]?[\d.]+)\)', str(value))
+                    if match:
+                        try:
+                            change_val = float(match.group(1))
+                            if change_val > 0:
+                                item.setForeground(QBrush(QColor('green')))
+                            elif change_val < 0:
+                                item.setForeground(QBrush(QColor('red')))
+                        except ValueError:
+                            pass
+
+
+            self.holdingsTable.setRowCount(len(positions_copy))
+            self.holdingsTable.setColumnCount(len(positions_copy.columns))
+            self.holdingsTable.setHorizontalHeaderLabels(positions_copy.columns)
+            for i in range(len(positions_copy)):
+                for j in range(len(positions_copy.columns)):
+                    value = positions_copy.iloc[i,j]
+                    item = QTableWidgetItem(str(value))
+
+                    _check_if_colored(item, j, value)
+
+                    self.holdingsTable.setItem(i, j, item)
+
+            self.holdingsTable.resizeColumnsToContents()
+
+        positions_full = self.accounts_manager.accounts_list[self.current_account_index].positions.copy()
+        positions = _portfolio_view_select_adjust(positions_full)
+        _plot()
 
 
 if __name__ == "__main__":
