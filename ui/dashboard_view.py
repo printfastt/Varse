@@ -32,6 +32,11 @@ class DashboardView(QMainWindow):
     actionDynamic: QAction
     actionFull: QAction
     actionCustom: QAction
+    todaysGainLossLabel: QLabel
+    todaysGainLossPctLabel: QLabel
+    totalMarketValueLabel: QLabel
+    totalGainLossLabel: QLabel
+    cashBalanceLabel: QLabel
 
 
 
@@ -57,9 +62,14 @@ class DashboardView(QMainWindow):
             'actionSimple': self.actionSimple,
             'actionDynamic': self.actionDynamic,
             'actionFull': self.actionFull,
-            'actionCustom': self.actionCustom
+            'actionCustom': self.actionCustom,
+            'todaysGainLossLabel': self.todaysGainLossLabel,
+            'todaysGainLossPctLabel': self.todaysGainLossPctLabel,
+            'totalMarketValueLabel': self.totalMarketValueLabel,
+            'totalGainLossLabel': self.totalGainLossLabel,
+            'cashBalanceLabel': self.cashBalanceLabel
         }
-        
+
         self.ChartView = ChartView(chart_components)
         self.EtradeView = EtradeView(etrade_components)
         self.date = str(QDate.currentDate().toPyDate())
@@ -172,6 +182,12 @@ class EtradeView(QObject):
     viewModeGroup: QActionGroup
     def __init__(self, components):
         super().__init__()
+        self.todaysGainLossLabel = components['todaysGainLossLabel']
+        self.todaysGainLossPctLabel = components['todaysGainLossPctLabel']
+        self.totalMarketValueLabel = components['totalMarketValueLabel']
+        self.totalGainLossLabel = components['totalGainLossLabel']
+        self.cashBalanceLabel = components['cashBalanceLabel']
+
         self.accountcomboBox = components['accountcomboBox']
         self.holdingsTable = components['holdingsTable']
         self.actionSimple = components['actionSimple']
@@ -189,6 +205,7 @@ class EtradeView(QObject):
         self._init_accountscomboBox()
         self._init_action_group()
         self.populate_portfolio_table()
+        self.populate_accounttables_footer()
 
 
 
@@ -213,6 +230,7 @@ class EtradeView(QObject):
         # self.accountcomboBox.setCurrentIndex(index)
         self.current_account_index = index
         self.populate_portfolio_table()
+        self.populate_accounttables_footer()
 
     def _on_action_group_viewmode_change(self):
         self.populate_portfolio_table()
@@ -305,6 +323,15 @@ class EtradeView(QObject):
         positions_full = self.accounts_manager.accounts_list[self.current_account_index].positions.copy()
         positions = _portfolio_view_select_adjust(positions_full)
         _plot()
+
+    def populate_accounttables_footer(self):
+        accounttotals = self.accounts_manager.accounts_list[self.current_account_index].accounttotals.copy()
+        self.todaysGainLossLabel.setText(f"${accounttotals.loc['todaysGainLoss']:.2f}")
+        self.todaysGainLossPctLabel.setText(f"{accounttotals.loc['todaysGainLossPct']:.2f}%")
+        self.totalMarketValueLabel.setText(f"${accounttotals.loc['totalMarketValue']:.2f}")
+        self.totalGainLossLabel.setText(f"${accounttotals.loc['totalGainLoss']:.2f}")
+        self.cashBalanceLabel.setText(f"${accounttotals.loc['cashBalance']:.2f}")
+
 
 
 if __name__ == "__main__":

@@ -84,10 +84,14 @@ class AccountsManager:
             totalPages:
 
         """
-        url = self.base_url + "/v1/accounts/" + accountIdKey + "/portfolio.json"
-        response = self.session.get(url)
+        url = f"{self.base_url}/v1/accounts/{accountIdKey}/portfolio.json"
+        params = {"totalsRequired": True}
+        # headers = {"consumerkey": config["DEFAULT"]["CONSUMER_KEY"]}
+
+        response = self.session.get(url, params=params)
         logger.debug("Request Header (_fetch_portfolio): %s", response.request.headers)
         positions = {}
+        accountTotals = {}
 
 
         #need to add more thorough error checking
@@ -96,16 +100,26 @@ class AccountsManager:
             logger.debug("Response Body: %s", json.dumps(parsed, indent=4, sort_keys=True))
 
             data = response.json()
-            if data is not None and "PortfolioResponse" in data and "AccountPortfolio" in data["PortfolioResponse"]:
-                for acctPortfolio in data["PortfolioResponse"]["AccountPortfolio"]:
-                    if acctPortfolio is not None and "Position" in acctPortfolio:
-                        for index, position in enumerate(acctPortfolio["Position"]):
-                            positions[index] = position
-                        return positions
+            if data is not None and "PortfolioResponse" in data:
+                try:
+                    if "Totals" in data["PortfolioResponse"]:
+                        accountTotals = data["PortfolioResponse"]["Totals"]
 
-        print("Portfolio API error")
-        return None
+                    if "AccountPortfolio" in data["PortfolioResponse"]:
+                        for acctPortfolio in data["PortfolioResponse"]["AccountPortfolio"]:
+                            if acctPortfolio is not None and "Position" in acctPortfolio:
+                                for index, position in enumerate(acctPortfolio["Position"]):
+                                    positions[index] = position
+                except Exception as e:
+                    logger.error("failed to parse response: %s",e)
+            else:
+                logger.error("Portfolio API error: %s %s", response.status_code if response else None,
+                             response.text if response else None)
+        return positions, accountTotals
 
+
+
+    #not finished.
     def fetch_balances(self, accountIdKey:str, institutionType:str):
         url = self.base_url + "/v1/accounts/" + accountIdKey + "/balance.json"
         params = {'instType': institutionType, 'realTimeNAV': 'true'}
@@ -116,17 +130,26 @@ class AccountsManager:
         logger.debug("Request headers: %s", response.request.headers)
 
 
+
+
 class Account:
     def __init__(self, account, parent=None):
         self.parent = parent
         self.account_info = account
         self.accountIdKey = account.get('accountIdKey')
 
-        self.positionsRaw = parent.fetch_portfolio(self.accountIdKey)
+        self.positionsRaw, self.accounttotalsRaw = parent.fetch_portfolio(self.accountIdKey)
         self.positions = None
+        self.accounttotals = None
         self._build_positions_df()
+        self._build_accounttotals_df()
+
 
         self.balancesRaw = parent.fetch_balances(self.accountIdKey, self.account_info.get('institutionType'))
+        self.balances = None
+        self._build_positions_df()
+
+
 
     def get_positions_raw(self):
         if self.positionsRaw is not None:
@@ -194,11 +217,42 @@ class Account:
             self.positions = None
             print(f"Account {self.accountIdKey} has no positions")
 
+    def get_accounttotals_raw(self):
+        if self.accounttotalsRaw is not None:
+            return self.accounttotalsRaw
+        else:
+            print(f"Account {self.accountIdKey} has no positions")
+            return None
+
+    def get_accounttotals(self):
+        if self.accounttotals is None:
+            self._build_accounttotals_df()
+            return self.accounttotals
+        else:
+            return self.accounttotals
+
+    def _build_accounttotals_df(self):
+        if self.accounttotalsRaw:
+            if isinstance(self.accounttotalsRaw, dict):
+                df = pd.Series(self.accounttotalsRaw)
+                print("hello")
+            else:
+                raise TypeError(f"Unexpected type for accounttotalsRaw: {type(self.accounttotalsRaw)}")
+            self.accounttotals = df
+            print("hello")
+        else:
+            self.accounttotals = None
+            print(f"Account {self.accountIdKey} has no positions")
+
     def get_balances_raw(self):
         pass
 
     def get_balances(self):
         pass
+
+    def _build_balances_df(self):
+        pass
+
 
 
 
