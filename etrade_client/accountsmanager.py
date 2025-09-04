@@ -116,9 +116,6 @@ class AccountsManager:
         logger.debug("Request headers: %s", response.request.headers)
 
 
-
-
-
 class Account:
     def __init__(self, account, parent=None):
         self.parent = parent
