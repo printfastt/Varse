@@ -119,7 +119,6 @@ class AccountsManager:
 
 
 
-    #not finished.
     def fetch_balances(self, accountIdKey:str, institutionType:str):
         url = self.base_url + "/v1/accounts/" + accountIdKey + "/balance.json"
         params = {'instType': institutionType, 'realTimeNAV': 'true'}
@@ -128,6 +127,37 @@ class AccountsManager:
         response = self.session.get(url, params=params, headers=headers)
         logger.debug("Request url: %s", url)
         logger.debug("Request headers: %s", response.request.headers)
+        
+        balances = {}
+        
+        # Error handling and response parsing
+        if response is not None and response.status_code == 200:
+            parsed = json.loads(response.text)
+            logger.debug("Response Body: %s", json.dumps(parsed, indent=4, sort_keys=True))
+            
+            data = response.json()
+            if data is not None and "BalanceResponse" in data:
+                try:
+                    # Extract ComputedBalance data as requested
+                    if "Computed" in data["BalanceResponse"]:
+                        balances = data["BalanceResponse"]["Computed"]
+                    elif "ComputedBalance" in data["BalanceResponse"]:
+                        balances = data["BalanceResponse"]["ComputedBalance"]
+                except Exception as e:
+                    logger.error("Failed to parse balance response: %s", e)
+            else:
+                logger.error("Balance API error: %s %s", response.status_code if response else None,
+                           response.text if response else None)
+        else:
+            logger.debug("Response Body: %s", response.text)
+            if response is not None and response.headers['Content-Type'] == 'application/json' \
+                    and "Error" in response.json() and "message" in response.json()["Error"] \
+                    and response.json()["Error"]["message"] is not None:
+                print("Error: " + response.json()["Error"]["message"])
+            else:
+                print("Error: Balance API service error")
+        
+        return balances
 
 
 
@@ -147,7 +177,7 @@ class Account:
 
         self.balancesRaw = parent.fetch_balances(self.accountIdKey, self.account_info.get('institutionType'))
         self.balances = None
-        self._build_positions_df()
+        self._build_balances_df()
 
 
 
@@ -245,13 +275,32 @@ class Account:
             print(f"Account {self.accountIdKey} has no positions")
 
     def get_balances_raw(self):
-        pass
+        if self.balancesRaw is not None:
+            return self.balancesRaw
+        else:
+            print(f"Account {self.accountIdKey} has no balance data")
+            return None
 
     def get_balances(self):
-        pass
+        if self.balances is None:
+            self._build_balances_df()
+            return self.balances
+        else:
+            return self.balances
 
     def _build_balances_df(self):
-        pass
+        if self.balancesRaw:
+            if isinstance(self.balancesRaw, dict):
+                df = pd.Series(self.balancesRaw)
+                # df.name = "Balance"
+            else:
+                logger.error(f"Unexpected type for balancesRaw: {type(self.balancesRaw)}")
+                df = None
+            self.balances = df
+            print("hello")
+        else:
+            self.balances = None
+            print(f"Account {self.accountIdKey} has no balance data")
 
 
 

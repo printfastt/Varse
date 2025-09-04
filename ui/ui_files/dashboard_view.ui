@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1274</width>
-    <height>985</height>
+    <width>1968</width>
+    <height>1338</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -553,6 +553,12 @@ QScrollBar::sub-line:horizontal {
          </item>
          <item>
           <widget class="QFrame" name="portfolioSummaryFrame">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>104</height>
+            </size>
+           </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
            </property>
@@ -560,8 +566,8 @@ QScrollBar::sub-line:horizontal {
             <enum>QFrame::Sunken</enum>
            </property>
            <layout class="QGridLayout" name="gridLayout">
-            <item row="1" column="1">
-             <widget class="QLabel" name="label_10">
+            <item row="0" column="7">
+             <widget class="QLabel" name="cash">
               <property name="styleSheet">
                <string notr="true">QLabel {
     background-color: transparent;
@@ -569,12 +575,12 @@ QScrollBar::sub-line:horizontal {
 }</string>
               </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Cash&lt;/span&gt;&lt;span style=&quot; font-weight:700; vertical-align:super;&quot;&gt;$&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="2">
-             <widget class="QLabel" name="label_11">
+            <item row="0" column="4">
+             <widget class="QLabel" name="totalPLPct">
               <property name="styleSheet">
                <string notr="true">QLabel {
     background-color: transparent;
@@ -582,24 +588,11 @@ QScrollBar::sub-line:horizontal {
 }</string>
               </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Total P/L&lt;/span&gt;&lt;span style=&quot; font-weight:700; vertical-align:super;&quot;&gt;%&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="4">
-             <widget class="QLabel" name="label_13">
-              <property name="styleSheet">
-               <string notr="true">QLabel {
-    background-color: transparent;
-    border: none;
-}</string>
-              </property>
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
+            <item row="1" column="5">
              <widget class="QLabel" name="totalMarketValueLabel">
               <property name="styleSheet">
                <string notr="true">QLabel {
@@ -612,8 +605,8 @@ QScrollBar::sub-line:horizontal {
               </property>
              </widget>
             </item>
-            <item row="0" column="3">
-             <widget class="QLabel" name="totalGainLossLabel">
+            <item row="3" column="5">
+             <widget class="QLabel" name="marginableSecuritiesPP">
               <property name="styleSheet">
                <string notr="true">QLabel {
     background-color: transparent;
@@ -621,12 +614,12 @@ QScrollBar::sub-line:horizontal {
 }</string>
               </property>
               <property name="text">
-               <string>totalGainLoss</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Marginable Securities PP&lt;/span&gt;&lt;span style=&quot; font-weight:700; vertical-align:super;&quot;&gt;$&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
              </widget>
             </item>
-            <item row="0" column="4">
-             <widget class="QLabel" name="cashBalanceLabel">
+            <item row="0" column="2">
+             <widget class="QLabel" name="dayPLPct">
               <property name="styleSheet">
                <string notr="true">QLabel {
     background-color: transparent;
@@ -634,12 +627,12 @@ QScrollBar::sub-line:horizontal {
 }</string>
               </property>
               <property name="text">
-               <string>cashBalance</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Day P/L&lt;/span&gt;&lt;span style=&quot; font-weight:700; vertical-align:super;&quot;&gt;%&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="3">
-             <widget class="QLabel" name="label_12">
+            <item row="0" column="5">
+             <widget class="QLabel" name="mktValue">
               <property name="styleSheet">
                <string notr="true">QLabel {
     background-color: transparent;
@@ -647,11 +640,24 @@ QScrollBar::sub-line:horizontal {
 }</string>
               </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Mkt Value&lt;/span&gt;&lt;span style=&quot; font-weight:700; vertical-align:super;&quot;&gt;$&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
              </widget>
             </item>
-            <item row="0" column="1">
+            <item row="4" column="4">
+             <widget class="QLabel" name="nonMarginableSecuritiesPPLabel">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>nonMarginableSecuritiesPPLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
              <widget class="QLabel" name="todaysGainLossPctLabel">
               <property name="styleSheet">
                <string notr="true">QLabel {
@@ -664,7 +670,202 @@ QScrollBar::sub-line:horizontal {
               </property>
              </widget>
             </item>
-            <item row="0" column="0">
+            <item row="0" column="1">
+             <widget class="QLabel" name="dayPL">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Day P/L&lt;/span&gt;&lt;span style=&quot; font-weight:700; vertical-align:super;&quot;&gt;$&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="7">
+             <widget class="QLabel" name="cashBalanceLabel">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>cashBalance</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="5">
+             <widget class="QLabel" name="marginableSecuritiesPPLabel">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>marginableSecuritiesPurchasingPowerLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QLabel" name="totalAssets">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Total Assets&lt;/span&gt;&lt;span style=&quot; font-weight:700; vertical-align:super;&quot;&gt;$&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="2">
+             <widget class="QLabel" name="netAcctValue">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Net Acct Value&lt;/span&gt;&lt;span style=&quot; font-weight:700; vertical-align:super;&quot;&gt;$&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="4">
+             <widget class="QLabel" name="nonMarginableSecuritiesPP">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;NonMarginable Securities PP&lt;/span&gt;&lt;span style=&quot; font-weight:700; vertical-align:super;&quot;&gt;$&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLabel" name="totalAssetsLabel">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>totalAssetsLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="3">
+             <widget class="QLabel" name="cashInvestable">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Cash Investable&lt;/span&gt;&lt;span style=&quot; font-weight:700; vertical-align:super;&quot;&gt;$&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QLabel" name="totalPL">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Total P/L&lt;/span&gt;&lt;span style=&quot; font-weight:700; vertical-align:super;&quot;&gt;$&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="7">
+             <widget class="QLabel" name="margin">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Margin&lt;/span&gt;&lt;span style=&quot; font-weight:700; vertical-align:super;&quot;&gt;$&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="7">
+             <widget class="QLabel" name="marginLabel">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>marginLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="3">
+             <widget class="QLabel" name="cashInvestableLabel">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>cashInvestableLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <widget class="QLabel" name="totalGainLossLabel">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>totalGainLoss</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="2">
+             <widget class="QLabel" name="netAccountValueLabel">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>netAccountValueLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="4">
+             <widget class="QLabel" name="totalGainLossPctLabel">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: transparent;
+    border: none;
+}</string>
+              </property>
+              <property name="text">
+               <string>totalGainLossPct</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
              <widget class="QLabel" name="todaysGainLossLabel">
               <property name="styleSheet">
                <string notr="true">QLabel {
@@ -674,19 +875,6 @@ QScrollBar::sub-line:horizontal {
               </property>
               <property name="text">
                <string>todaysGainLoss</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_8">
-              <property name="styleSheet">
-               <string notr="true">QLabel {
-    background-color: transparent;
-    border: none;
-}</string>
-              </property>
-              <property name="text">
-               <string>TextLabel</string>
               </property>
              </widget>
             </item>
@@ -1102,7 +1290,7 @@ QTabBar::tab:hover {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1274</width>
+     <width>1968</width>
      <height>29</height>
     </rect>
    </property>

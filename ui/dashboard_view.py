@@ -32,12 +32,22 @@ class DashboardView(QMainWindow):
     actionDynamic: QAction
     actionFull: QAction
     actionCustom: QAction
+
+    #upper accounttotal footer
     todaysGainLossLabel: QLabel
     todaysGainLossPctLabel: QLabel
-    totalMarketValueLabel: QLabel
     totalGainLossLabel: QLabel
+    totalGainLossPctLabel: QLabel
+    totalMarketValueLabel: QLabel
     cashBalanceLabel: QLabel
 
+    #lower accounttotal footer
+    totalAssetsLabel: QLabel
+    netAccountValueLabel: QLabel
+    cashInvestableLabel: QLabel
+    nonMarginableSecuritiesPPLabel: QLabel
+    marginableSecuritiesPPLabel: QLabel
+    marginLabel: QLabel
 
 
     def __init__(self):
@@ -63,11 +73,23 @@ class DashboardView(QMainWindow):
             'actionDynamic': self.actionDynamic,
             'actionFull': self.actionFull,
             'actionCustom': self.actionCustom,
+
+            #upper accounttotal footer
             'todaysGainLossLabel': self.todaysGainLossLabel,
             'todaysGainLossPctLabel': self.todaysGainLossPctLabel,
-            'totalMarketValueLabel': self.totalMarketValueLabel,
             'totalGainLossLabel': self.totalGainLossLabel,
-            'cashBalanceLabel': self.cashBalanceLabel
+            'totalGainLossPctLabel': self.totalGainLossPctLabel,
+            'totalMarketValueLabel': self.totalMarketValueLabel,
+            'cashBalanceLabel': self.cashBalanceLabel,
+
+            #lower accounttotal footer
+            'totalAssetsLabel': self.totalAssetsLabel,
+            'netAccountValueLabel': self.netAccountValueLabel,
+            'cashInvestableLabel': self.cashInvestableLabel,
+            'nonMarginableSecuritiesPPLabel': self.nonMarginableSecuritiesPPLabel,
+            'marginableSecuritiesPPLabel': self.marginableSecuritiesPPLabel,
+            'marginLabel': self.marginLabel
+
         }
 
         self.ChartView = ChartView(chart_components)
@@ -182,11 +204,21 @@ class EtradeView(QObject):
     viewModeGroup: QActionGroup
     def __init__(self, components):
         super().__init__()
+        #upper accounttotal footer
         self.todaysGainLossLabel = components['todaysGainLossLabel']
         self.todaysGainLossPctLabel = components['todaysGainLossPctLabel']
-        self.totalMarketValueLabel = components['totalMarketValueLabel']
         self.totalGainLossLabel = components['totalGainLossLabel']
+        self.totalGainLossPctLabel = components['totalGainLossPctLabel']
+        self.totalMarketValueLabel = components['totalMarketValueLabel']
         self.cashBalanceLabel = components['cashBalanceLabel']
+
+        #lower accounttotal footer
+        self.totalAssetsLabel = components['totalAssetsLabel']
+        self.netAccountValueLabel = components['netAccountValueLabel']
+        self.cashInvestableLabel = components['cashInvestableLabel']
+        self.nonMarginableSecuritiesPPLabel = components['nonMarginableSecuritiesPPLabel']
+        self.marginableSecuritiesPPLabel = components['marginableSecuritiesPPLabel']
+        self.marginLabel = components['marginLabel']
 
         self.accountcomboBox = components['accountcomboBox']
         self.holdingsTable = components['holdingsTable']
@@ -324,14 +356,47 @@ class EtradeView(QObject):
         positions = _portfolio_view_select_adjust(positions_full)
         _plot()
 
+    def _format_gain_loss_label(self, label, value):
+        base_style = "background-color: transparent; border: none;"
+        if value > 0:
+            label.setStyleSheet(base_style + "color: green;")
+        elif value < 0:
+            label.setStyleSheet(base_style + "color: red;")
+        else:
+            label.setStyleSheet(base_style)
+
     def populate_accounttables_footer(self):
         accounttotals = self.accounts_manager.accounts_list[self.current_account_index].accounttotals.copy()
-        self.todaysGainLossLabel.setText(f"${accounttotals.loc['todaysGainLoss']:.2f}")
-        self.todaysGainLossPctLabel.setText(f"{accounttotals.loc['todaysGainLossPct']:.2f}%")
+        balances = self.accounts_manager.accounts_list[self.current_account_index].balances.copy()
+
+        # Set text and apply color formatting for gain/loss labels
+        todays_gain_loss = accounttotals.loc['todaysGainLoss']
+        todays_gain_loss_pct = accounttotals.loc['todaysGainLossPct']
+        total_gain_loss = accounttotals.loc['totalGainLoss']
+        total_gain_loss_pct = accounttotals.loc['totalGainLossPct']
+
+        self.todaysGainLossLabel.setText(f"${todays_gain_loss:.2f}")
+        self._format_gain_loss_label(self.todaysGainLossLabel, todays_gain_loss)
+        
+        self.todaysGainLossPctLabel.setText(f"{todays_gain_loss_pct:.2f}%")
+        self._format_gain_loss_label(self.todaysGainLossPctLabel, todays_gain_loss_pct)
+        
+        self.totalGainLossLabel.setText(f"${total_gain_loss:.2f}")
+        self._format_gain_loss_label(self.totalGainLossLabel, total_gain_loss)
+        
+        self.totalGainLossPctLabel.setText(f"{total_gain_loss_pct:.2f}%")
+        self._format_gain_loss_label(self.totalGainLossPctLabel, total_gain_loss_pct)
+
+        # These labels remain unformatted
         self.totalMarketValueLabel.setText(f"${accounttotals.loc['totalMarketValue']:.2f}")
-        self.totalGainLossLabel.setText(f"${accounttotals.loc['totalGainLoss']:.2f}")
         self.cashBalanceLabel.setText(f"${accounttotals.loc['cashBalance']:.2f}")
 
+        self.nonMarginableSecuritiesPPLabel.setText(f"${balances.loc['netCash']:.2f}")
+        self.netAccountValueLabel.setText(f"${accounttotals.loc['totalMarketValue']+accounttotals.loc['cashBalance']:.2f}")
+        self.marginableSecuritiesPPLabel.setText(f"${balances.loc['marginBuyingPower']:.2f}")
+        self.marginLabel.setText(f"${balances.loc['marginBalance']:.2f}") #MAY NEED TO CHANGE
+        self.cashInvestableLabel.setText(f"${balances.loc['cashAvailableForInvestment']:.2f}")
+        #need to add totalAssetsLabel.
 
 
 if __name__ == "__main__":
