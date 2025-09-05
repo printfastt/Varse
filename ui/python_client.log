@@ -63039,3 +63039,4051 @@
         "quoteMode": 0
     }
 }
+09/04/2025 10:30:40 PM Request Header (_load_accounts): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive'}
+09/04/2025 10:30:40 PM Response Body: {
+    "AccountListResponse": {
+        "Accounts": {
+            "Account": [
+                {
+                    "accountDesc": "Joint JTWROS",
+                    "accountId": "775334242",
+                    "accountIdKey": "_UvlOsn73ipw3DnvkFHodg",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "ACTIVE",
+                    "accountType": "JTWROS",
+                    "closedDate": 0,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                },
+                {
+                    "accountDesc": "Joint JTWROS",
+                    "accountId": "775792448",
+                    "accountIdKey": "q6Qd7dRMtbDKfL1ChlKLDg",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "CLOSED",
+                    "accountType": "JTWROS",
+                    "closedDate": 1630159500,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                },
+                {
+                    "accountDesc": "Roth IRA",
+                    "accountId": "889198306",
+                    "accountIdKey": "aiVpbJD0w5K5oCgyqtOyVw",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "ACTIVE",
+                    "accountType": "ROTHIRA",
+                    "closedDate": 0,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                },
+                {
+                    "accountDesc": "Individual Brokerage",
+                    "accountId": "889218528",
+                    "accountIdKey": "z1_J3n3oS1bnyFXpOM1S9w",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "ACTIVE",
+                    "accountType": "INDIVIDUAL",
+                    "closedDate": 0,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                }
+            ]
+        }
+    }
+}
+09/04/2025 10:30:41 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=90F22CD18D783B0412D53AA7A736A6B5.tomcat1'}
+09/04/2025 10:30:41 PM Response Body: {
+    "PortfolioResponse": {
+        "AccountPortfolio": [
+            {
+                "Position": [
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "RXO",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "RXO"
+                        },
+                        "Quick": {
+                            "change": 0.36,
+                            "changePct": 2.25,
+                            "lastTrade": 16.36,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 1924008
+                        },
+                        "adjPrevClose": 16.0,
+                        "commissions": 0,
+                        "costPerShare": 22.818,
+                        "dateAcquired": 1659931200000,
+                        "daysGain": 1.8,
+                        "daysGainPct": 2.25,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/portfolio/283255778900.json",
+                        "marketValue": 81.7999,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 45.6832,
+                        "positionId": 283255778900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 22.818,
+                        "quantity": 5,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/RXO.json",
+                        "symbolDescription": "RXO",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 114.09,
+                        "totalGain": -32.2899,
+                        "totalGainPct": -28.3022
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "SHOT",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "SHOT"
+                        },
+                        "Quick": {
+                            "change": -0.0128,
+                            "changePct": -3.1083,
+                            "lastTrade": 0.399,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 3389832
+                        },
+                        "adjPrevClose": 0.4118,
+                        "commissions": 0,
+                        "costPerShare": 3.02,
+                        "dateAcquired": 1700110800000,
+                        "daysGain": -0.0128,
+                        "daysGainPct": -3.1083,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/portfolio/348323685900.json",
+                        "marketValue": 0.399,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 0.2228,
+                        "positionId": 348323685900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 3.02,
+                        "quantity": 1,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/SHOT.json",
+                        "symbolDescription": "SHOT",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 3.02,
+                        "totalGain": -2.6209,
+                        "totalGainPct": -86.788
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "T",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "T"
+                        },
+                        "Quick": {
+                            "change": 0.54,
+                            "changePct": 1.8595,
+                            "lastTrade": 29.58,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 31845438
+                        },
+                        "adjPrevClose": 29.04,
+                        "commissions": 0,
+                        "costPerShare": 18.37,
+                        "dateAcquired": 1644296400000,
+                        "daysGain": 1.62,
+                        "daysGainPct": 1.8595,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/portfolio/233027101900.json",
+                        "marketValue": 88.7399,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 49.559,
+                        "positionId": 233027101900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 18.37,
+                        "quantity": 3,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/T.json",
+                        "symbolDescription": "T",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 55.1099,
+                        "totalGain": 33.63,
+                        "totalGainPct": 61.0234
+                    }
+                ],
+                "accountId": "775334242",
+                "totalPages": 1
+            }
+        ],
+        "Totals": {
+            "cashBalance": 8.1199,
+            "todaysGainLoss": 3.41,
+            "todaysGainLossPct": 1.9413,
+            "totalGainLoss": -1.28,
+            "totalGainLossPct": -0.7432,
+            "totalMarketValue": 170.9389,
+            "totalPricePaid": 172.2199
+        }
+    }
+}
+09/04/2025 10:30:41 PM Request url: https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/balance.json
+09/04/2025 10:30:41 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=C5019B5DB3E5F19E6EA32AC3BF0BC914.tomcat1'}
+09/04/2025 10:30:41 PM Response Body: {
+    "BalanceResponse": {
+        "Cash": {
+            "fundsForOpenOrdersCash": 0,
+            "moneyMktBalance": 8.12
+        },
+        "Computed": {
+            "OpenCalls": {
+                "cashCall": 0,
+                "fedCall": 0,
+                "houseCall": 0,
+                "minEquityCall": 0
+            },
+            "RealTimeValues": {
+                "netMv": 170.939,
+                "netMvLong": 170.939,
+                "netMvShort": 0,
+                "totalAccountValue": 179.059
+            },
+            "accountBalance": 0,
+            "cashAvailableForInvestment": 8.12,
+            "cashAvailableForWithdrawal": 8.12,
+            "cashBalance": 0,
+            "cashBuyingPower": 8.12,
+            "dtCashBuyingPower": 0,
+            "dtMarginBuyingPower": 0,
+            "fundsWithheldFromPurchasePower": 0,
+            "fundsWithheldFromWithdrawal": 0,
+            "marginBuyingPower": 0,
+            "netCash": 8.12,
+            "settledCashForInvestment": 8.12,
+            "shortAdjustBalance": 0,
+            "totalAvailableForWithdrawal": 8.12,
+            "unSettledCashForInvestment": 0
+        },
+        "accountDescription": "CARSON W PAUTZ & STEVEN PAUTZ",
+        "accountId": "775334242",
+        "accountMode": "CASH",
+        "accountType": "CASH",
+        "dayTraderStatus": "NO_PDT",
+        "optionLevel": "NO_OPTIONS",
+        "quoteMode": 0
+    }
+}
+09/04/2025 10:30:41 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=32D3FFC652EEE177C40C41C38AAAECD0.tomcat1'}
+09/04/2025 10:30:41 PM Response Body: {
+    "PortfolioResponse": {
+        "AccountPortfolio": [
+            {
+                "Position": [
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "NANC",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "NANC"
+                        },
+                        "Quick": {
+                            "change": 0.385,
+                            "changePct": 0.8881,
+                            "lastTrade": 43.735,
+                            "lastTradeTime": 1757016604,
+                            "quoteStatus": "CLOSING",
+                            "volume": 33594
+                        },
+                        "adjPrevClose": 43.35,
+                        "commissions": 0,
+                        "costPerShare": 33.45,
+                        "dateAcquired": 1710129600000,
+                        "daysGain": 3.08,
+                        "daysGainPct": 0.8881,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/368754985900.json",
+                        "marketValue": 349.8799,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 1.7248,
+                        "positionId": 368754985900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 33.45,
+                        "quantity": 8,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/NANC.json",
+                        "symbolDescription": "NANC",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 267.6,
+                        "totalGain": 82.28,
+                        "totalGainPct": 30.7473
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "QQQ",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "QQQ"
+                        },
+                        "Quick": {
+                            "change": 5.16,
+                            "changePct": 0.9051,
+                            "lastTrade": 575.23,
+                            "lastTradeTime": 1757016900,
+                            "quoteStatus": "CLOSING",
+                            "volume": 47526280
+                        },
+                        "adjPrevClose": 570.07,
+                        "commissions": 0,
+                        "costPerShare": 467.2878,
+                        "dateAcquired": 1663128000000,
+                        "daysGain": 72.2399,
+                        "daysGainPct": 0.9051,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/275172581900.json",
+                        "marketValue": 8053.22,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 39.7018,
+                        "positionId": 275172581900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 467.2878,
+                        "quantity": 14,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/QQQ.json",
+                        "symbolDescription": "QQQ",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 6542.0299,
+                        "totalGain": 1511.19,
+                        "totalGainPct": 23.0997
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "SPY",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "SPY"
+                        },
+                        "Quick": {
+                            "change": 5.38,
+                            "changePct": 0.8357,
+                            "lastTrade": 649.12,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 65219228
+                        },
+                        "adjPrevClose": 643.74,
+                        "commissions": 0,
+                        "costPerShare": 501.349,
+                        "dateAcquired": 1661140800000,
+                        "daysGain": 59.1799,
+                        "daysGainPct": 0.8357,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/271042033900.json",
+                        "marketValue": 7140.3199,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 35.2013,
+                        "positionId": 271042033900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 501.349,
+                        "quantity": 11,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/SPY.json",
+                        "symbolDescription": "SPY",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 5514.8399,
+                        "totalGain": 1625.48,
+                        "totalGainPct": 29.4746
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "VTI",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "VTI"
+                        },
+                        "Quick": {
+                            "change": 2.81,
+                            "changePct": 0.8855,
+                            "lastTrade": 320.14,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 3041972
+                        },
+                        "adjPrevClose": 317.33,
+                        "commissions": 0,
+                        "costPerShare": 199.5149,
+                        "dateAcquired": 1662955200000,
+                        "daysGain": 22.48,
+                        "daysGainPct": 0.8855,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/274461524900.json",
+                        "marketValue": 2561.1199,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 12.6261,
+                        "positionId": 274461524900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 199.5149,
+                        "quantity": 8,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/VTI.json",
+                        "symbolDescription": "VTI",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 1596.1199,
+                        "totalGain": 965.0,
+                        "totalGainPct": 60.4591
+                    }
+                ],
+                "accountId": "889198306",
+                "totalPages": 1
+            }
+        ],
+        "Totals": {
+            "cashBalance": 2179.71,
+            "todaysGainLoss": 156.9799,
+            "todaysGainLossPct": 0.7799,
+            "totalGainLoss": 4183.9499,
+            "totalGainLossPct": 30.0558,
+            "totalMarketValue": 18104.54,
+            "totalPricePaid": 13920.5899
+        }
+    }
+}
+09/04/2025 10:30:41 PM Request url: https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/balance.json
+09/04/2025 10:30:41 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=622F99C61236E5F9219135CD2FA01417.tomcat1'}
+09/04/2025 10:30:41 PM Response Body: {
+    "BalanceResponse": {
+        "Cash": {
+            "fundsForOpenOrdersCash": 0,
+            "moneyMktBalance": 2179.71
+        },
+        "Computed": {
+            "OpenCalls": {
+                "cashCall": 0,
+                "fedCall": 0,
+                "houseCall": 0,
+                "minEquityCall": 0
+            },
+            "RealTimeValues": {
+                "netMv": 18104.54,
+                "netMvLong": 18104.54,
+                "netMvShort": 0,
+                "totalAccountValue": 20284.25
+            },
+            "accountBalance": 0,
+            "cashAvailableForInvestment": 2179.71,
+            "cashAvailableForWithdrawal": 2179.71,
+            "cashBalance": 0,
+            "cashBuyingPower": 2179.71,
+            "dtCashBuyingPower": 0,
+            "dtMarginBuyingPower": 0,
+            "fundsWithheldFromPurchasePower": 0,
+            "fundsWithheldFromWithdrawal": 0,
+            "marginBuyingPower": 0,
+            "netCash": 2179.71,
+            "settledCashForInvestment": 2179.71,
+            "shortAdjustBalance": 0,
+            "totalAvailableForWithdrawal": 2179.71,
+            "unSettledCashForInvestment": 0
+        },
+        "accountDescription": "CARSON W PAUTZ",
+        "accountId": "889198306",
+        "accountMode": "CASH",
+        "accountType": "CASH",
+        "dayTraderStatus": "NO_PDT",
+        "optionLevel": "NO_OPTIONS",
+        "quoteMode": 0
+    }
+}
+09/04/2025 10:30:42 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=EA2F45F9B0D605BA67672DAD2E4E10E6.tomcat1'}
+09/04/2025 10:30:42 PM Response Body: {
+    "PortfolioResponse": {
+        "AccountPortfolio": [
+            {
+                "Position": [
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "CMG",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "CMG"
+                        },
+                        "Quick": {
+                            "change": -0.38,
+                            "changePct": -0.9093,
+                            "lastTrade": 41.41,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 18998867
+                        },
+                        "adjPrevClose": 41.79,
+                        "commissions": 0,
+                        "costPerShare": 45.275,
+                        "dateAcquired": 1753329600000,
+                        "daysGain": -9.5,
+                        "daysGainPct": -0.9093,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/465328686900.json",
+                        "marketValue": 1035.25,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 3.1298,
+                        "positionId": 465328686900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 45.2749,
+                        "quantity": 25,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/CMG.json",
+                        "symbolDescription": "CMG",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 1131.875,
+                        "totalGain": -96.625,
+                        "totalGainPct": -8.5367
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "QQQ",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "QQQ"
+                        },
+                        "Quick": {
+                            "change": 5.16,
+                            "changePct": 0.9051,
+                            "lastTrade": 575.23,
+                            "lastTradeTime": 1757016900,
+                            "quoteStatus": "CLOSING",
+                            "volume": 47526280
+                        },
+                        "adjPrevClose": 570.07,
+                        "commissions": 0,
+                        "costPerShare": 550.4,
+                        "dateAcquired": 1751256000000,
+                        "daysGain": 25.8,
+                        "daysGainPct": 0.9051,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/459570489900.json",
+                        "marketValue": 2876.15,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 8.6954,
+                        "positionId": 459570489900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 550.3999,
+                        "quantity": 5,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/QQQ.json",
+                        "symbolDescription": "QQQ",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 2752,
+                        "totalGain": 124.15,
+                        "totalGainPct": 4.5112
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "NVDA",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "NVDA"
+                        },
+                        "Quick": {
+                            "change": 1.04,
+                            "changePct": 0.6095,
+                            "lastTrade": 171.66,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 141670144
+                        },
+                        "adjPrevClose": 170.62,
+                        "commissions": 0,
+                        "costPerShare": 127.3001,
+                        "dateAcquired": 1731042000000,
+                        "daysGain": 52,
+                        "daysGainPct": 0.6095,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/411085607900.json",
+                        "marketValue": 8583,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 25.949,
+                        "positionId": 411085607900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 127.3001,
+                        "quantity": 50,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/NVDA.json",
+                        "symbolDescription": "NVDA",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 6365.005,
+                        "totalGain": 2217.9949,
+                        "totalGainPct": 34.8467
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "MSFT",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "MSFT"
+                        },
+                        "Quick": {
+                            "change": 2.62,
+                            "changePct": 0.5184,
+                            "lastTrade": 507.97,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 15509486
+                        },
+                        "adjPrevClose": 505.35,
+                        "commissions": 0,
+                        "costPerShare": 413.74,
+                        "dateAcquired": 1709528400000,
+                        "daysGain": 5.24,
+                        "daysGainPct": 0.5184,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/367254146900.json",
+                        "marketValue": 1015.94,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 3.0714,
+                        "positionId": 367254146900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 413.74,
+                        "quantity": 2,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/MSFT.json",
+                        "symbolDescription": "MSFT",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 827.48,
+                        "totalGain": 188.46,
+                        "totalGainPct": 22.7751
+                    },
+                    {
+                        "Product": {
+                            "callPut": "PUT",
+                            "expiryDay": 15,
+                            "expiryMonth": 1,
+                            "expiryYear": 2027,
+                            "productId": {
+                                "symbol": "IONQ",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "OPTN",
+                            "strikePrice": 15,
+                            "symbol": "IONQ"
+                        },
+                        "Quick": {
+                            "change": -0.06,
+                            "changePct": -4.0816,
+                            "lastTrade": 1.44,
+                            "lastTradeTime": 1757015999,
+                            "quoteStatus": "REALTIME",
+                            "volume": 1
+                        },
+                        "adjPrevClose": 1.47,
+                        "commissions": 0.65,
+                        "costPerShare": 2.0067,
+                        "dateAcquired": 1752724800000,
+                        "daysGain": -6,
+                        "daysGainPct": -4.0816,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/463356084900.json",
+                        "marketValue": 141,
+                        "osiKey": "IONQ--270115P00015000",
+                        "otherFees": 0.02,
+                        "pctOfPortfolio": 0.4262,
+                        "positionId": 463356084900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 2,
+                        "quantity": 1,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/IONQ:2027:1:15:PUT:15.json",
+                        "symbolDescription": "IONQ Jan 15 '27 $15 Put",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 200.6699,
+                        "totalGain": -59.67,
+                        "totalGainPct": -29.7353
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "INTC",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "INTC"
+                        },
+                        "Quick": {
+                            "change": 0.61,
+                            "changePct": 2.5416,
+                            "lastTrade": 24.61,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 59056496
+                        },
+                        "adjPrevClose": 24.0,
+                        "commissions": 0,
+                        "costPerShare": 44.3,
+                        "dateAcquired": 1709528400000,
+                        "daysGain": 6.0999,
+                        "daysGainPct": 2.5416,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/367281650900.json",
+                        "marketValue": 246.0999,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 0.744,
+                        "positionId": 367281650900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 44.2999,
+                        "quantity": 10,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/INTC.json",
+                        "symbolDescription": "INTC",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 443,
+                        "totalGain": -196.9,
+                        "totalGainPct": -44.4469
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "IBIT",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "IBIT"
+                        },
+                        "Quick": {
+                            "change": -1.42,
+                            "changePct": -2.2267,
+                            "lastTrade": 62.35,
+                            "lastTradeTime": 1757016900,
+                            "quoteStatus": "CLOSING",
+                            "volume": 32780389
+                        },
+                        "adjPrevClose": 63.77,
+                        "commissions": 0,
+                        "costPerShare": 40.8841,
+                        "dateAcquired": 1709787600000,
+                        "daysGain": -17.0399,
+                        "daysGainPct": -2.2267,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/368090159900.json",
+                        "marketValue": 748.2,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 2.262,
+                        "positionId": 368090159900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 40.8841,
+                        "quantity": 12,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/IBIT.json",
+                        "symbolDescription": "IBIT",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 490.6099,
+                        "totalGain": 257.59,
+                        "totalGainPct": 52.504
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "CRCL",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "CRCL"
+                        },
+                        "Quick": {
+                            "change": -0.97,
+                            "changePct": -0.8188,
+                            "lastTrade": 117.49,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 6393633
+                        },
+                        "adjPrevClose": 118.46,
+                        "commissions": 0,
+                        "costPerShare": 291.939,
+                        "dateAcquired": 1750651200000,
+                        "daysGain": -9.6999,
+                        "daysGainPct": -0.8188,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/457836513900.json",
+                        "marketValue": 1174.9,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 3.552,
+                        "positionId": 457836513900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 291.939,
+                        "quantity": 10,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/CRCL.json",
+                        "symbolDescription": "CRCL",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 2919.3899,
+                        "totalGain": -1744.49,
+                        "totalGainPct": -59.7552
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "TXRH",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "TXRH"
+                        },
+                        "Quick": {
+                            "change": -2.2,
+                            "changePct": -1.2822,
+                            "lastTrade": 169.37,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 1708125
+                        },
+                        "adjPrevClose": 171.57,
+                        "commissions": 0,
+                        "costPerShare": 109.56,
+                        "dateAcquired": 1681790400000,
+                        "daysGain": -2.2,
+                        "daysGainPct": -1.2822,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/312228003900.json",
+                        "marketValue": 169.37,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 0.512,
+                        "positionId": 312228003900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 109.56,
+                        "quantity": 1,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/TXRH.json",
+                        "symbolDescription": "TXRH",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 109.56,
+                        "totalGain": 59.81,
+                        "totalGainPct": 54.591
+                    }
+                ],
+                "accountId": "889218528",
+                "totalPages": 1
+            }
+        ],
+        "Totals": {
+            "cashBalance": 17086.4799,
+            "todaysGainLoss": 44.7,
+            "todaysGainLossPct": 0.1353,
+            "totalGainLoss": 750.32,
+            "totalGainLossPct": 4.9234,
+            "totalMarketValue": 15989.9099,
+            "totalPricePaid": 15239.5899
+        }
+    }
+}
+09/04/2025 10:30:42 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/04/2025 10:30:42 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=6C6A237362118C881C564FE7479D92C4.tomcat1'}
+09/04/2025 10:30:42 PM Response Body: {
+    "BalanceResponse": {
+        "Cash": {
+            "fundsForOpenOrdersCash": 0,
+            "moneyMktBalance": 15886.48
+        },
+        "Computed": {
+            "OpenCalls": {
+                "cashCall": 0,
+                "fedCall": 0,
+                "houseCall": 0,
+                "minEquityCall": 0
+            },
+            "RealTimeValues": {
+                "netMv": 15989.91,
+                "netMvLong": 15989.91,
+                "netMvShort": 0,
+                "totalAccountValue": 33076.39
+            },
+            "accountBalance": 1200,
+            "cashAvailableForInvestment": 17086.48,
+            "cashAvailableForWithdrawal": 17086.48,
+            "cashBalance": 1200,
+            "cashBuyingPower": 26825.349,
+            "dtCashBuyingPower": 0,
+            "dtMarginBuyingPower": 0,
+            "fundsWithheldFromPurchasePower": 0,
+            "fundsWithheldFromWithdrawal": 1200,
+            "marginBalance": 1200,
+            "marginBuyingPower": 60042.44,
+            "netCash": 26825.349,
+            "regtEquity": 32920.75,
+            "regtEquityPercent": 100,
+            "settledCashForInvestment": 0,
+            "shortAdjustBalance": 0,
+            "totalAvailableForWithdrawal": 25625.349,
+            "unSettledCashForInvestment": 0
+        },
+        "accountDescription": "CARSON W PAUTZ",
+        "accountId": "889218528",
+        "accountMode": "MARGIN",
+        "accountType": "MARGIN",
+        "dayTraderStatus": "NO_PDT",
+        "optionLevel": "LEVEL_2",
+        "quoteMode": 0
+    }
+}
+09/04/2025 10:32:15 PM Request Header (_load_accounts): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive'}
+09/04/2025 10:32:15 PM Response Body: {
+    "AccountListResponse": {
+        "Accounts": {
+            "Account": [
+                {
+                    "accountDesc": "Joint JTWROS",
+                    "accountId": "775334242",
+                    "accountIdKey": "_UvlOsn73ipw3DnvkFHodg",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "ACTIVE",
+                    "accountType": "JTWROS",
+                    "closedDate": 0,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                },
+                {
+                    "accountDesc": "Joint JTWROS",
+                    "accountId": "775792448",
+                    "accountIdKey": "q6Qd7dRMtbDKfL1ChlKLDg",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "CLOSED",
+                    "accountType": "JTWROS",
+                    "closedDate": 1630159500,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                },
+                {
+                    "accountDesc": "Roth IRA",
+                    "accountId": "889198306",
+                    "accountIdKey": "aiVpbJD0w5K5oCgyqtOyVw",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "ACTIVE",
+                    "accountType": "ROTHIRA",
+                    "closedDate": 0,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                },
+                {
+                    "accountDesc": "Individual Brokerage",
+                    "accountId": "889218528",
+                    "accountIdKey": "z1_J3n3oS1bnyFXpOM1S9w",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "ACTIVE",
+                    "accountType": "INDIVIDUAL",
+                    "closedDate": 0,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                }
+            ]
+        }
+    }
+}
+09/04/2025 10:32:15 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=CBC717E7F95268A083C224EAE1C995EE.tomcat1'}
+09/04/2025 10:32:15 PM Response Body: {
+    "PortfolioResponse": {
+        "AccountPortfolio": [
+            {
+                "Position": [
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "RXO",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "RXO"
+                        },
+                        "Quick": {
+                            "change": 0.36,
+                            "changePct": 2.25,
+                            "lastTrade": 16.36,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 1924008
+                        },
+                        "adjPrevClose": 16.0,
+                        "commissions": 0,
+                        "costPerShare": 22.818,
+                        "dateAcquired": 1659931200000,
+                        "daysGain": 1.8,
+                        "daysGainPct": 2.25,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/portfolio/283255778900.json",
+                        "marketValue": 81.7999,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 45.6832,
+                        "positionId": 283255778900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 22.818,
+                        "quantity": 5,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/RXO.json",
+                        "symbolDescription": "RXO",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 114.09,
+                        "totalGain": -32.2899,
+                        "totalGainPct": -28.3022
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "SHOT",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "SHOT"
+                        },
+                        "Quick": {
+                            "change": -0.0128,
+                            "changePct": -3.1083,
+                            "lastTrade": 0.399,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 3389832
+                        },
+                        "adjPrevClose": 0.4118,
+                        "commissions": 0,
+                        "costPerShare": 3.02,
+                        "dateAcquired": 1700110800000,
+                        "daysGain": -0.0128,
+                        "daysGainPct": -3.1083,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/portfolio/348323685900.json",
+                        "marketValue": 0.399,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 0.2228,
+                        "positionId": 348323685900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 3.02,
+                        "quantity": 1,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/SHOT.json",
+                        "symbolDescription": "SHOT",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 3.02,
+                        "totalGain": -2.6209,
+                        "totalGainPct": -86.788
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "T",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "T"
+                        },
+                        "Quick": {
+                            "change": 0.54,
+                            "changePct": 1.8595,
+                            "lastTrade": 29.58,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 31845438
+                        },
+                        "adjPrevClose": 29.04,
+                        "commissions": 0,
+                        "costPerShare": 18.37,
+                        "dateAcquired": 1644296400000,
+                        "daysGain": 1.62,
+                        "daysGainPct": 1.8595,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/portfolio/233027101900.json",
+                        "marketValue": 88.7399,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 49.559,
+                        "positionId": 233027101900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 18.37,
+                        "quantity": 3,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/T.json",
+                        "symbolDescription": "T",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 55.1099,
+                        "totalGain": 33.63,
+                        "totalGainPct": 61.0234
+                    }
+                ],
+                "accountId": "775334242",
+                "totalPages": 1
+            }
+        ],
+        "Totals": {
+            "cashBalance": 8.1199,
+            "todaysGainLoss": 3.41,
+            "todaysGainLossPct": 1.9413,
+            "totalGainLoss": -1.28,
+            "totalGainLossPct": -0.7432,
+            "totalMarketValue": 170.9389,
+            "totalPricePaid": 172.2199
+        }
+    }
+}
+09/04/2025 10:32:16 PM Request url: https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/balance.json
+09/04/2025 10:32:16 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=D11A6A3AFC103A2B015E30DBB81470A3.tomcat1'}
+09/04/2025 10:32:16 PM Response Body: {
+    "BalanceResponse": {
+        "Cash": {
+            "fundsForOpenOrdersCash": 0,
+            "moneyMktBalance": 8.12
+        },
+        "Computed": {
+            "OpenCalls": {
+                "cashCall": 0,
+                "fedCall": 0,
+                "houseCall": 0,
+                "minEquityCall": 0
+            },
+            "RealTimeValues": {
+                "netMv": 170.939,
+                "netMvLong": 170.939,
+                "netMvShort": 0,
+                "totalAccountValue": 179.059
+            },
+            "accountBalance": 0,
+            "cashAvailableForInvestment": 8.12,
+            "cashAvailableForWithdrawal": 8.12,
+            "cashBalance": 0,
+            "cashBuyingPower": 8.12,
+            "dtCashBuyingPower": 0,
+            "dtMarginBuyingPower": 0,
+            "fundsWithheldFromPurchasePower": 0,
+            "fundsWithheldFromWithdrawal": 0,
+            "marginBuyingPower": 0,
+            "netCash": 8.12,
+            "settledCashForInvestment": 8.12,
+            "shortAdjustBalance": 0,
+            "totalAvailableForWithdrawal": 8.12,
+            "unSettledCashForInvestment": 0
+        },
+        "accountDescription": "CARSON W PAUTZ & STEVEN PAUTZ",
+        "accountId": "775334242",
+        "accountMode": "CASH",
+        "accountType": "CASH",
+        "dayTraderStatus": "NO_PDT",
+        "optionLevel": "NO_OPTIONS",
+        "quoteMode": 0
+    }
+}
+09/04/2025 10:32:16 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=685729737B89D0F1FA41C112F336022F.tomcat1'}
+09/04/2025 10:32:16 PM Response Body: {
+    "PortfolioResponse": {
+        "AccountPortfolio": [
+            {
+                "Position": [
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "NANC",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "NANC"
+                        },
+                        "Quick": {
+                            "change": 0.385,
+                            "changePct": 0.8881,
+                            "lastTrade": 43.735,
+                            "lastTradeTime": 1757016604,
+                            "quoteStatus": "CLOSING",
+                            "volume": 33594
+                        },
+                        "adjPrevClose": 43.35,
+                        "commissions": 0,
+                        "costPerShare": 33.45,
+                        "dateAcquired": 1710129600000,
+                        "daysGain": 3.08,
+                        "daysGainPct": 0.8881,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/368754985900.json",
+                        "marketValue": 349.8799,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 1.7248,
+                        "positionId": 368754985900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 33.45,
+                        "quantity": 8,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/NANC.json",
+                        "symbolDescription": "NANC",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 267.6,
+                        "totalGain": 82.28,
+                        "totalGainPct": 30.7473
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "QQQ",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "QQQ"
+                        },
+                        "Quick": {
+                            "change": 5.16,
+                            "changePct": 0.9051,
+                            "lastTrade": 575.23,
+                            "lastTradeTime": 1757016900,
+                            "quoteStatus": "CLOSING",
+                            "volume": 47526280
+                        },
+                        "adjPrevClose": 570.07,
+                        "commissions": 0,
+                        "costPerShare": 467.2878,
+                        "dateAcquired": 1663128000000,
+                        "daysGain": 72.2399,
+                        "daysGainPct": 0.9051,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/275172581900.json",
+                        "marketValue": 8053.22,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 39.7018,
+                        "positionId": 275172581900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 467.2878,
+                        "quantity": 14,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/QQQ.json",
+                        "symbolDescription": "QQQ",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 6542.0299,
+                        "totalGain": 1511.19,
+                        "totalGainPct": 23.0997
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "SPY",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "SPY"
+                        },
+                        "Quick": {
+                            "change": 5.38,
+                            "changePct": 0.8357,
+                            "lastTrade": 649.12,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 65219228
+                        },
+                        "adjPrevClose": 643.74,
+                        "commissions": 0,
+                        "costPerShare": 501.349,
+                        "dateAcquired": 1661140800000,
+                        "daysGain": 59.1799,
+                        "daysGainPct": 0.8357,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/271042033900.json",
+                        "marketValue": 7140.3199,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 35.2013,
+                        "positionId": 271042033900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 501.349,
+                        "quantity": 11,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/SPY.json",
+                        "symbolDescription": "SPY",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 5514.8399,
+                        "totalGain": 1625.48,
+                        "totalGainPct": 29.4746
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "VTI",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "VTI"
+                        },
+                        "Quick": {
+                            "change": 2.81,
+                            "changePct": 0.8855,
+                            "lastTrade": 320.14,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 3041972
+                        },
+                        "adjPrevClose": 317.33,
+                        "commissions": 0,
+                        "costPerShare": 199.5149,
+                        "dateAcquired": 1662955200000,
+                        "daysGain": 22.48,
+                        "daysGainPct": 0.8855,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/274461524900.json",
+                        "marketValue": 2561.1199,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 12.6261,
+                        "positionId": 274461524900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 199.5149,
+                        "quantity": 8,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/VTI.json",
+                        "symbolDescription": "VTI",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 1596.1199,
+                        "totalGain": 965.0,
+                        "totalGainPct": 60.4591
+                    }
+                ],
+                "accountId": "889198306",
+                "totalPages": 1
+            }
+        ],
+        "Totals": {
+            "cashBalance": 2179.71,
+            "todaysGainLoss": 156.9799,
+            "todaysGainLossPct": 0.7799,
+            "totalGainLoss": 4183.9499,
+            "totalGainLossPct": 30.0558,
+            "totalMarketValue": 18104.54,
+            "totalPricePaid": 13920.5899
+        }
+    }
+}
+09/04/2025 10:32:16 PM Request url: https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/balance.json
+09/04/2025 10:32:16 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=D8F16EDE1D4B8966A793E142A4793F71.tomcat1'}
+09/04/2025 10:32:16 PM Response Body: {
+    "BalanceResponse": {
+        "Cash": {
+            "fundsForOpenOrdersCash": 0,
+            "moneyMktBalance": 2179.71
+        },
+        "Computed": {
+            "OpenCalls": {
+                "cashCall": 0,
+                "fedCall": 0,
+                "houseCall": 0,
+                "minEquityCall": 0
+            },
+            "RealTimeValues": {
+                "netMv": 18104.54,
+                "netMvLong": 18104.54,
+                "netMvShort": 0,
+                "totalAccountValue": 20284.25
+            },
+            "accountBalance": 0,
+            "cashAvailableForInvestment": 2179.71,
+            "cashAvailableForWithdrawal": 2179.71,
+            "cashBalance": 0,
+            "cashBuyingPower": 2179.71,
+            "dtCashBuyingPower": 0,
+            "dtMarginBuyingPower": 0,
+            "fundsWithheldFromPurchasePower": 0,
+            "fundsWithheldFromWithdrawal": 0,
+            "marginBuyingPower": 0,
+            "netCash": 2179.71,
+            "settledCashForInvestment": 2179.71,
+            "shortAdjustBalance": 0,
+            "totalAvailableForWithdrawal": 2179.71,
+            "unSettledCashForInvestment": 0
+        },
+        "accountDescription": "CARSON W PAUTZ",
+        "accountId": "889198306",
+        "accountMode": "CASH",
+        "accountType": "CASH",
+        "dayTraderStatus": "NO_PDT",
+        "optionLevel": "NO_OPTIONS",
+        "quoteMode": 0
+    }
+}
+09/04/2025 10:32:16 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=F63C56563C1A01324F90471F529E9AC7.tomcat1'}
+09/04/2025 10:32:16 PM Response Body: {
+    "PortfolioResponse": {
+        "AccountPortfolio": [
+            {
+                "Position": [
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "CMG",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "CMG"
+                        },
+                        "Quick": {
+                            "change": -0.38,
+                            "changePct": -0.9093,
+                            "lastTrade": 41.41,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 18998867
+                        },
+                        "adjPrevClose": 41.79,
+                        "commissions": 0,
+                        "costPerShare": 45.275,
+                        "dateAcquired": 1753329600000,
+                        "daysGain": -9.5,
+                        "daysGainPct": -0.9093,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/465328686900.json",
+                        "marketValue": 1035.25,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 3.1298,
+                        "positionId": 465328686900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 45.2749,
+                        "quantity": 25,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/CMG.json",
+                        "symbolDescription": "CMG",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 1131.875,
+                        "totalGain": -96.625,
+                        "totalGainPct": -8.5367
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "QQQ",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "QQQ"
+                        },
+                        "Quick": {
+                            "change": 5.16,
+                            "changePct": 0.9051,
+                            "lastTrade": 575.23,
+                            "lastTradeTime": 1757016900,
+                            "quoteStatus": "CLOSING",
+                            "volume": 47526280
+                        },
+                        "adjPrevClose": 570.07,
+                        "commissions": 0,
+                        "costPerShare": 550.4,
+                        "dateAcquired": 1751256000000,
+                        "daysGain": 25.8,
+                        "daysGainPct": 0.9051,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/459570489900.json",
+                        "marketValue": 2876.15,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 8.6954,
+                        "positionId": 459570489900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 550.3999,
+                        "quantity": 5,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/QQQ.json",
+                        "symbolDescription": "QQQ",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 2752,
+                        "totalGain": 124.15,
+                        "totalGainPct": 4.5112
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "NVDA",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "NVDA"
+                        },
+                        "Quick": {
+                            "change": 1.04,
+                            "changePct": 0.6095,
+                            "lastTrade": 171.66,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 141670144
+                        },
+                        "adjPrevClose": 170.62,
+                        "commissions": 0,
+                        "costPerShare": 127.3001,
+                        "dateAcquired": 1731042000000,
+                        "daysGain": 52,
+                        "daysGainPct": 0.6095,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/411085607900.json",
+                        "marketValue": 8583,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 25.949,
+                        "positionId": 411085607900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 127.3001,
+                        "quantity": 50,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/NVDA.json",
+                        "symbolDescription": "NVDA",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 6365.005,
+                        "totalGain": 2217.9949,
+                        "totalGainPct": 34.8467
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "MSFT",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "MSFT"
+                        },
+                        "Quick": {
+                            "change": 2.62,
+                            "changePct": 0.5184,
+                            "lastTrade": 507.97,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 15509486
+                        },
+                        "adjPrevClose": 505.35,
+                        "commissions": 0,
+                        "costPerShare": 413.74,
+                        "dateAcquired": 1709528400000,
+                        "daysGain": 5.24,
+                        "daysGainPct": 0.5184,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/367254146900.json",
+                        "marketValue": 1015.94,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 3.0714,
+                        "positionId": 367254146900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 413.74,
+                        "quantity": 2,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/MSFT.json",
+                        "symbolDescription": "MSFT",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 827.48,
+                        "totalGain": 188.46,
+                        "totalGainPct": 22.7751
+                    },
+                    {
+                        "Product": {
+                            "callPut": "PUT",
+                            "expiryDay": 15,
+                            "expiryMonth": 1,
+                            "expiryYear": 2027,
+                            "productId": {
+                                "symbol": "IONQ",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "OPTN",
+                            "strikePrice": 15,
+                            "symbol": "IONQ"
+                        },
+                        "Quick": {
+                            "change": -0.06,
+                            "changePct": -4.0816,
+                            "lastTrade": 1.44,
+                            "lastTradeTime": 1757015999,
+                            "quoteStatus": "REALTIME",
+                            "volume": 1
+                        },
+                        "adjPrevClose": 1.47,
+                        "commissions": 0.65,
+                        "costPerShare": 2.0067,
+                        "dateAcquired": 1752724800000,
+                        "daysGain": -6,
+                        "daysGainPct": -4.0816,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/463356084900.json",
+                        "marketValue": 141,
+                        "osiKey": "IONQ--270115P00015000",
+                        "otherFees": 0.02,
+                        "pctOfPortfolio": 0.4262,
+                        "positionId": 463356084900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 2,
+                        "quantity": 1,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/IONQ:2027:1:15:PUT:15.json",
+                        "symbolDescription": "IONQ Jan 15 '27 $15 Put",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 200.6699,
+                        "totalGain": -59.67,
+                        "totalGainPct": -29.7353
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "INTC",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "INTC"
+                        },
+                        "Quick": {
+                            "change": 0.61,
+                            "changePct": 2.5416,
+                            "lastTrade": 24.61,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 59056496
+                        },
+                        "adjPrevClose": 24.0,
+                        "commissions": 0,
+                        "costPerShare": 44.3,
+                        "dateAcquired": 1709528400000,
+                        "daysGain": 6.0999,
+                        "daysGainPct": 2.5416,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/367281650900.json",
+                        "marketValue": 246.0999,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 0.744,
+                        "positionId": 367281650900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 44.2999,
+                        "quantity": 10,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/INTC.json",
+                        "symbolDescription": "INTC",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 443,
+                        "totalGain": -196.9,
+                        "totalGainPct": -44.4469
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "IBIT",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "IBIT"
+                        },
+                        "Quick": {
+                            "change": -1.42,
+                            "changePct": -2.2267,
+                            "lastTrade": 62.35,
+                            "lastTradeTime": 1757016900,
+                            "quoteStatus": "CLOSING",
+                            "volume": 32780389
+                        },
+                        "adjPrevClose": 63.77,
+                        "commissions": 0,
+                        "costPerShare": 40.8841,
+                        "dateAcquired": 1709787600000,
+                        "daysGain": -17.0399,
+                        "daysGainPct": -2.2267,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/368090159900.json",
+                        "marketValue": 748.2,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 2.262,
+                        "positionId": 368090159900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 40.8841,
+                        "quantity": 12,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/IBIT.json",
+                        "symbolDescription": "IBIT",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 490.6099,
+                        "totalGain": 257.59,
+                        "totalGainPct": 52.504
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "CRCL",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "CRCL"
+                        },
+                        "Quick": {
+                            "change": -0.97,
+                            "changePct": -0.8188,
+                            "lastTrade": 117.49,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 6393633
+                        },
+                        "adjPrevClose": 118.46,
+                        "commissions": 0,
+                        "costPerShare": 291.939,
+                        "dateAcquired": 1750651200000,
+                        "daysGain": -9.6999,
+                        "daysGainPct": -0.8188,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/457836513900.json",
+                        "marketValue": 1174.9,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 3.552,
+                        "positionId": 457836513900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 291.939,
+                        "quantity": 10,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/CRCL.json",
+                        "symbolDescription": "CRCL",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 2919.3899,
+                        "totalGain": -1744.49,
+                        "totalGainPct": -59.7552
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "TXRH",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "TXRH"
+                        },
+                        "Quick": {
+                            "change": -2.2,
+                            "changePct": -1.2822,
+                            "lastTrade": 169.37,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 1708125
+                        },
+                        "adjPrevClose": 171.57,
+                        "commissions": 0,
+                        "costPerShare": 109.56,
+                        "dateAcquired": 1681790400000,
+                        "daysGain": -2.2,
+                        "daysGainPct": -1.2822,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/312228003900.json",
+                        "marketValue": 169.37,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 0.512,
+                        "positionId": 312228003900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 109.56,
+                        "quantity": 1,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/TXRH.json",
+                        "symbolDescription": "TXRH",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 109.56,
+                        "totalGain": 59.81,
+                        "totalGainPct": 54.591
+                    }
+                ],
+                "accountId": "889218528",
+                "totalPages": 1
+            }
+        ],
+        "Totals": {
+            "cashBalance": 17086.4799,
+            "todaysGainLoss": 44.7,
+            "todaysGainLossPct": 0.1353,
+            "totalGainLoss": 750.32,
+            "totalGainLossPct": 4.9234,
+            "totalMarketValue": 15989.9099,
+            "totalPricePaid": 15239.5899
+        }
+    }
+}
+09/04/2025 10:32:17 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/04/2025 10:32:17 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=7AB4327A7D1A54BCA663C2E5C5FB83AC.tomcat1'}
+09/04/2025 10:32:17 PM Response Body: {
+    "BalanceResponse": {
+        "Cash": {
+            "fundsForOpenOrdersCash": 0,
+            "moneyMktBalance": 15886.48
+        },
+        "Computed": {
+            "OpenCalls": {
+                "cashCall": 0,
+                "fedCall": 0,
+                "houseCall": 0,
+                "minEquityCall": 0
+            },
+            "RealTimeValues": {
+                "netMv": 15989.91,
+                "netMvLong": 15989.91,
+                "netMvShort": 0,
+                "totalAccountValue": 33076.39
+            },
+            "accountBalance": 1200,
+            "cashAvailableForInvestment": 17086.48,
+            "cashAvailableForWithdrawal": 17086.48,
+            "cashBalance": 1200,
+            "cashBuyingPower": 26825.349,
+            "dtCashBuyingPower": 0,
+            "dtMarginBuyingPower": 0,
+            "fundsWithheldFromPurchasePower": 0,
+            "fundsWithheldFromWithdrawal": 1200,
+            "marginBalance": 1200,
+            "marginBuyingPower": 60042.44,
+            "netCash": 26825.349,
+            "regtEquity": 32920.75,
+            "regtEquityPercent": 100,
+            "settledCashForInvestment": 0,
+            "shortAdjustBalance": 0,
+            "totalAvailableForWithdrawal": 25625.349,
+            "unSettledCashForInvestment": 0
+        },
+        "accountDescription": "CARSON W PAUTZ",
+        "accountId": "889218528",
+        "accountMode": "MARGIN",
+        "accountType": "MARGIN",
+        "dayTraderStatus": "NO_PDT",
+        "optionLevel": "LEVEL_2",
+        "quoteMode": 0
+    }
+}
+09/04/2025 10:40:51 PM Request Header (_load_accounts): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive'}
+09/04/2025 10:40:51 PM Response Body: {
+    "AccountListResponse": {
+        "Accounts": {
+            "Account": [
+                {
+                    "accountDesc": "Joint JTWROS",
+                    "accountId": "775334242",
+                    "accountIdKey": "_UvlOsn73ipw3DnvkFHodg",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "ACTIVE",
+                    "accountType": "JTWROS",
+                    "closedDate": 0,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                },
+                {
+                    "accountDesc": "Joint JTWROS",
+                    "accountId": "775792448",
+                    "accountIdKey": "q6Qd7dRMtbDKfL1ChlKLDg",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "CLOSED",
+                    "accountType": "JTWROS",
+                    "closedDate": 1630159500,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                },
+                {
+                    "accountDesc": "Roth IRA",
+                    "accountId": "889198306",
+                    "accountIdKey": "aiVpbJD0w5K5oCgyqtOyVw",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "ACTIVE",
+                    "accountType": "ROTHIRA",
+                    "closedDate": 0,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                },
+                {
+                    "accountDesc": "Individual Brokerage",
+                    "accountId": "889218528",
+                    "accountIdKey": "z1_J3n3oS1bnyFXpOM1S9w",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "ACTIVE",
+                    "accountType": "INDIVIDUAL",
+                    "closedDate": 0,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                }
+            ]
+        }
+    }
+}
+09/04/2025 10:40:52 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=AB21A68B87D00145D01EDB8A115F4FAE.tomcat2'}
+09/04/2025 10:40:52 PM Response Body: {
+    "PortfolioResponse": {
+        "AccountPortfolio": [
+            {
+                "Position": [
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "RXO",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "RXO"
+                        },
+                        "Quick": {
+                            "change": 0.36,
+                            "changePct": 2.25,
+                            "lastTrade": 16.36,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 1924008
+                        },
+                        "adjPrevClose": 16.0,
+                        "commissions": 0,
+                        "costPerShare": 22.818,
+                        "dateAcquired": 1659931200000,
+                        "daysGain": 1.8,
+                        "daysGainPct": 2.25,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/portfolio/283255778900.json",
+                        "marketValue": 81.7999,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 45.6832,
+                        "positionId": 283255778900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 22.818,
+                        "quantity": 5,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/RXO.json",
+                        "symbolDescription": "RXO",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 114.09,
+                        "totalGain": -32.2899,
+                        "totalGainPct": -28.3022
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "SHOT",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "SHOT"
+                        },
+                        "Quick": {
+                            "change": -0.0128,
+                            "changePct": -3.1083,
+                            "lastTrade": 0.399,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 3389832
+                        },
+                        "adjPrevClose": 0.4118,
+                        "commissions": 0,
+                        "costPerShare": 3.02,
+                        "dateAcquired": 1700110800000,
+                        "daysGain": -0.0128,
+                        "daysGainPct": -3.1083,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/portfolio/348323685900.json",
+                        "marketValue": 0.399,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 0.2228,
+                        "positionId": 348323685900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 3.02,
+                        "quantity": 1,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/SHOT.json",
+                        "symbolDescription": "SHOT",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 3.02,
+                        "totalGain": -2.6209,
+                        "totalGainPct": -86.788
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "T",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "T"
+                        },
+                        "Quick": {
+                            "change": 0.54,
+                            "changePct": 1.8595,
+                            "lastTrade": 29.58,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 31845438
+                        },
+                        "adjPrevClose": 29.04,
+                        "commissions": 0,
+                        "costPerShare": 18.37,
+                        "dateAcquired": 1644296400000,
+                        "daysGain": 1.62,
+                        "daysGainPct": 1.8595,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/portfolio/233027101900.json",
+                        "marketValue": 88.7399,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 49.559,
+                        "positionId": 233027101900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 18.37,
+                        "quantity": 3,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/T.json",
+                        "symbolDescription": "T",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 55.1099,
+                        "totalGain": 33.63,
+                        "totalGainPct": 61.0234
+                    }
+                ],
+                "accountId": "775334242",
+                "totalPages": 1
+            }
+        ],
+        "Totals": {
+            "cashBalance": 8.1199,
+            "todaysGainLoss": 3.41,
+            "todaysGainLossPct": 1.9413,
+            "totalGainLoss": -1.28,
+            "totalGainLossPct": -0.7432,
+            "totalMarketValue": 170.9389,
+            "totalPricePaid": 172.2199
+        }
+    }
+}
+09/04/2025 10:40:52 PM Request url: https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/balance.json
+09/04/2025 10:40:52 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=37B0AC6E30988B3946E8E5E9C3E4B861.tomcat2'}
+09/04/2025 10:40:52 PM Response Body: {
+    "BalanceResponse": {
+        "Cash": {
+            "fundsForOpenOrdersCash": 0,
+            "moneyMktBalance": 8.12
+        },
+        "Computed": {
+            "OpenCalls": {
+                "cashCall": 0,
+                "fedCall": 0,
+                "houseCall": 0,
+                "minEquityCall": 0
+            },
+            "RealTimeValues": {
+                "netMv": 170.939,
+                "netMvLong": 170.939,
+                "netMvShort": 0,
+                "totalAccountValue": 179.059
+            },
+            "accountBalance": 0,
+            "cashAvailableForInvestment": 8.12,
+            "cashAvailableForWithdrawal": 8.12,
+            "cashBalance": 0,
+            "cashBuyingPower": 8.12,
+            "dtCashBuyingPower": 0,
+            "dtMarginBuyingPower": 0,
+            "fundsWithheldFromPurchasePower": 0,
+            "fundsWithheldFromWithdrawal": 0,
+            "marginBuyingPower": 0,
+            "netCash": 8.12,
+            "settledCashForInvestment": 8.12,
+            "shortAdjustBalance": 0,
+            "totalAvailableForWithdrawal": 8.12,
+            "unSettledCashForInvestment": 0
+        },
+        "accountDescription": "CARSON W PAUTZ & STEVEN PAUTZ",
+        "accountId": "775334242",
+        "accountMode": "CASH",
+        "accountType": "CASH",
+        "dayTraderStatus": "NO_PDT",
+        "optionLevel": "NO_OPTIONS",
+        "quoteMode": 0
+    }
+}
+09/04/2025 10:40:52 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=F584274BB58F18DFBE4C83D16DDDF9D0.tomcat2'}
+09/04/2025 10:40:52 PM Response Body: {
+    "PortfolioResponse": {
+        "AccountPortfolio": [
+            {
+                "Position": [
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "NANC",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "NANC"
+                        },
+                        "Quick": {
+                            "change": 0.385,
+                            "changePct": 0.8881,
+                            "lastTrade": 43.735,
+                            "lastTradeTime": 1757016604,
+                            "quoteStatus": "CLOSING",
+                            "volume": 33594
+                        },
+                        "adjPrevClose": 43.35,
+                        "commissions": 0,
+                        "costPerShare": 33.45,
+                        "dateAcquired": 1710129600000,
+                        "daysGain": 3.08,
+                        "daysGainPct": 0.8881,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/368754985900.json",
+                        "marketValue": 349.8799,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 1.7248,
+                        "positionId": 368754985900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 33.45,
+                        "quantity": 8,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/NANC.json",
+                        "symbolDescription": "NANC",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 267.6,
+                        "totalGain": 82.28,
+                        "totalGainPct": 30.7473
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "QQQ",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "QQQ"
+                        },
+                        "Quick": {
+                            "change": 5.16,
+                            "changePct": 0.9051,
+                            "lastTrade": 575.23,
+                            "lastTradeTime": 1757016900,
+                            "quoteStatus": "CLOSING",
+                            "volume": 47526280
+                        },
+                        "adjPrevClose": 570.07,
+                        "commissions": 0,
+                        "costPerShare": 467.2878,
+                        "dateAcquired": 1663128000000,
+                        "daysGain": 72.2399,
+                        "daysGainPct": 0.9051,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/275172581900.json",
+                        "marketValue": 8053.22,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 39.7018,
+                        "positionId": 275172581900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 467.2878,
+                        "quantity": 14,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/QQQ.json",
+                        "symbolDescription": "QQQ",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 6542.0299,
+                        "totalGain": 1511.19,
+                        "totalGainPct": 23.0997
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "SPY",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "SPY"
+                        },
+                        "Quick": {
+                            "change": 5.38,
+                            "changePct": 0.8357,
+                            "lastTrade": 649.12,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 65219228
+                        },
+                        "adjPrevClose": 643.74,
+                        "commissions": 0,
+                        "costPerShare": 501.349,
+                        "dateAcquired": 1661140800000,
+                        "daysGain": 59.1799,
+                        "daysGainPct": 0.8357,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/271042033900.json",
+                        "marketValue": 7140.3199,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 35.2013,
+                        "positionId": 271042033900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 501.349,
+                        "quantity": 11,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/SPY.json",
+                        "symbolDescription": "SPY",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 5514.8399,
+                        "totalGain": 1625.48,
+                        "totalGainPct": 29.4746
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "VTI",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "VTI"
+                        },
+                        "Quick": {
+                            "change": 2.81,
+                            "changePct": 0.8855,
+                            "lastTrade": 320.14,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 3041972
+                        },
+                        "adjPrevClose": 317.33,
+                        "commissions": 0,
+                        "costPerShare": 199.5149,
+                        "dateAcquired": 1662955200000,
+                        "daysGain": 22.48,
+                        "daysGainPct": 0.8855,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/274461524900.json",
+                        "marketValue": 2561.1199,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 12.6261,
+                        "positionId": 274461524900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 199.5149,
+                        "quantity": 8,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/VTI.json",
+                        "symbolDescription": "VTI",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 1596.1199,
+                        "totalGain": 965.0,
+                        "totalGainPct": 60.4591
+                    }
+                ],
+                "accountId": "889198306",
+                "totalPages": 1
+            }
+        ],
+        "Totals": {
+            "cashBalance": 2179.71,
+            "todaysGainLoss": 156.9799,
+            "todaysGainLossPct": 0.7799,
+            "totalGainLoss": 4183.9499,
+            "totalGainLossPct": 30.0558,
+            "totalMarketValue": 18104.54,
+            "totalPricePaid": 13920.5899
+        }
+    }
+}
+09/04/2025 10:40:52 PM Request url: https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/balance.json
+09/04/2025 10:40:52 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=A919FCF7082FC8811C74856BF129A3C7.tomcat2'}
+09/04/2025 10:40:52 PM Response Body: {
+    "BalanceResponse": {
+        "Cash": {
+            "fundsForOpenOrdersCash": 0,
+            "moneyMktBalance": 2179.71
+        },
+        "Computed": {
+            "OpenCalls": {
+                "cashCall": 0,
+                "fedCall": 0,
+                "houseCall": 0,
+                "minEquityCall": 0
+            },
+            "RealTimeValues": {
+                "netMv": 18104.54,
+                "netMvLong": 18104.54,
+                "netMvShort": 0,
+                "totalAccountValue": 20284.25
+            },
+            "accountBalance": 0,
+            "cashAvailableForInvestment": 2179.71,
+            "cashAvailableForWithdrawal": 2179.71,
+            "cashBalance": 0,
+            "cashBuyingPower": 2179.71,
+            "dtCashBuyingPower": 0,
+            "dtMarginBuyingPower": 0,
+            "fundsWithheldFromPurchasePower": 0,
+            "fundsWithheldFromWithdrawal": 0,
+            "marginBuyingPower": 0,
+            "netCash": 2179.71,
+            "settledCashForInvestment": 2179.71,
+            "shortAdjustBalance": 0,
+            "totalAvailableForWithdrawal": 2179.71,
+            "unSettledCashForInvestment": 0
+        },
+        "accountDescription": "CARSON W PAUTZ",
+        "accountId": "889198306",
+        "accountMode": "CASH",
+        "accountType": "CASH",
+        "dayTraderStatus": "NO_PDT",
+        "optionLevel": "NO_OPTIONS",
+        "quoteMode": 0
+    }
+}
+09/04/2025 10:40:53 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=8AB4433208B50783162D856C31FCCD00.tomcat2'}
+09/04/2025 10:40:53 PM Response Body: {
+    "PortfolioResponse": {
+        "AccountPortfolio": [
+            {
+                "Position": [
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "CMG",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "CMG"
+                        },
+                        "Quick": {
+                            "change": -0.38,
+                            "changePct": -0.9093,
+                            "lastTrade": 41.41,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 18998867
+                        },
+                        "adjPrevClose": 41.79,
+                        "commissions": 0,
+                        "costPerShare": 45.275,
+                        "dateAcquired": 1753329600000,
+                        "daysGain": -9.5,
+                        "daysGainPct": -0.9093,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/465328686900.json",
+                        "marketValue": 1035.25,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 3.1298,
+                        "positionId": 465328686900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 45.2749,
+                        "quantity": 25,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/CMG.json",
+                        "symbolDescription": "CMG",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 1131.875,
+                        "totalGain": -96.625,
+                        "totalGainPct": -8.5367
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "QQQ",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "QQQ"
+                        },
+                        "Quick": {
+                            "change": 5.16,
+                            "changePct": 0.9051,
+                            "lastTrade": 575.23,
+                            "lastTradeTime": 1757016900,
+                            "quoteStatus": "CLOSING",
+                            "volume": 47526280
+                        },
+                        "adjPrevClose": 570.07,
+                        "commissions": 0,
+                        "costPerShare": 550.4,
+                        "dateAcquired": 1751256000000,
+                        "daysGain": 25.8,
+                        "daysGainPct": 0.9051,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/459570489900.json",
+                        "marketValue": 2876.15,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 8.6954,
+                        "positionId": 459570489900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 550.3999,
+                        "quantity": 5,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/QQQ.json",
+                        "symbolDescription": "QQQ",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 2752,
+                        "totalGain": 124.15,
+                        "totalGainPct": 4.5112
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "NVDA",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "NVDA"
+                        },
+                        "Quick": {
+                            "change": 1.04,
+                            "changePct": 0.6095,
+                            "lastTrade": 171.66,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 141670144
+                        },
+                        "adjPrevClose": 170.62,
+                        "commissions": 0,
+                        "costPerShare": 127.3001,
+                        "dateAcquired": 1731042000000,
+                        "daysGain": 52,
+                        "daysGainPct": 0.6095,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/411085607900.json",
+                        "marketValue": 8583,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 25.949,
+                        "positionId": 411085607900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 127.3001,
+                        "quantity": 50,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/NVDA.json",
+                        "symbolDescription": "NVDA",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 6365.005,
+                        "totalGain": 2217.9949,
+                        "totalGainPct": 34.8467
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "MSFT",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "MSFT"
+                        },
+                        "Quick": {
+                            "change": 2.62,
+                            "changePct": 0.5184,
+                            "lastTrade": 507.97,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 15509486
+                        },
+                        "adjPrevClose": 505.35,
+                        "commissions": 0,
+                        "costPerShare": 413.74,
+                        "dateAcquired": 1709528400000,
+                        "daysGain": 5.24,
+                        "daysGainPct": 0.5184,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/367254146900.json",
+                        "marketValue": 1015.94,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 3.0714,
+                        "positionId": 367254146900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 413.74,
+                        "quantity": 2,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/MSFT.json",
+                        "symbolDescription": "MSFT",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 827.48,
+                        "totalGain": 188.46,
+                        "totalGainPct": 22.7751
+                    },
+                    {
+                        "Product": {
+                            "callPut": "PUT",
+                            "expiryDay": 15,
+                            "expiryMonth": 1,
+                            "expiryYear": 2027,
+                            "productId": {
+                                "symbol": "IONQ",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "OPTN",
+                            "strikePrice": 15,
+                            "symbol": "IONQ"
+                        },
+                        "Quick": {
+                            "change": -0.06,
+                            "changePct": -4.0816,
+                            "lastTrade": 1.44,
+                            "lastTradeTime": 1757015999,
+                            "quoteStatus": "REALTIME",
+                            "volume": 1
+                        },
+                        "adjPrevClose": 1.47,
+                        "commissions": 0.65,
+                        "costPerShare": 2.0067,
+                        "dateAcquired": 1752724800000,
+                        "daysGain": -6,
+                        "daysGainPct": -4.0816,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/463356084900.json",
+                        "marketValue": 141,
+                        "osiKey": "IONQ--270115P00015000",
+                        "otherFees": 0.02,
+                        "pctOfPortfolio": 0.4262,
+                        "positionId": 463356084900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 2,
+                        "quantity": 1,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/IONQ:2027:1:15:PUT:15.json",
+                        "symbolDescription": "IONQ Jan 15 '27 $15 Put",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 200.6699,
+                        "totalGain": -59.67,
+                        "totalGainPct": -29.7353
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "INTC",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "INTC"
+                        },
+                        "Quick": {
+                            "change": 0.61,
+                            "changePct": 2.5416,
+                            "lastTrade": 24.61,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 59056496
+                        },
+                        "adjPrevClose": 24.0,
+                        "commissions": 0,
+                        "costPerShare": 44.3,
+                        "dateAcquired": 1709528400000,
+                        "daysGain": 6.0999,
+                        "daysGainPct": 2.5416,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/367281650900.json",
+                        "marketValue": 246.0999,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 0.744,
+                        "positionId": 367281650900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 44.2999,
+                        "quantity": 10,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/INTC.json",
+                        "symbolDescription": "INTC",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 443,
+                        "totalGain": -196.9,
+                        "totalGainPct": -44.4469
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "IBIT",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "IBIT"
+                        },
+                        "Quick": {
+                            "change": -1.42,
+                            "changePct": -2.2267,
+                            "lastTrade": 62.35,
+                            "lastTradeTime": 1757016900,
+                            "quoteStatus": "CLOSING",
+                            "volume": 32780389
+                        },
+                        "adjPrevClose": 63.77,
+                        "commissions": 0,
+                        "costPerShare": 40.8841,
+                        "dateAcquired": 1709787600000,
+                        "daysGain": -17.0399,
+                        "daysGainPct": -2.2267,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/368090159900.json",
+                        "marketValue": 748.2,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 2.262,
+                        "positionId": 368090159900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 40.8841,
+                        "quantity": 12,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/IBIT.json",
+                        "symbolDescription": "IBIT",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 490.6099,
+                        "totalGain": 257.59,
+                        "totalGainPct": 52.504
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "CRCL",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "CRCL"
+                        },
+                        "Quick": {
+                            "change": -0.97,
+                            "changePct": -0.8188,
+                            "lastTrade": 117.49,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 6393633
+                        },
+                        "adjPrevClose": 118.46,
+                        "commissions": 0,
+                        "costPerShare": 291.939,
+                        "dateAcquired": 1750651200000,
+                        "daysGain": -9.6999,
+                        "daysGainPct": -0.8188,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/457836513900.json",
+                        "marketValue": 1174.9,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 3.552,
+                        "positionId": 457836513900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 291.939,
+                        "quantity": 10,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/CRCL.json",
+                        "symbolDescription": "CRCL",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 2919.3899,
+                        "totalGain": -1744.49,
+                        "totalGainPct": -59.7552
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "TXRH",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "TXRH"
+                        },
+                        "Quick": {
+                            "change": -2.2,
+                            "changePct": -1.2822,
+                            "lastTrade": 169.37,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 1708125
+                        },
+                        "adjPrevClose": 171.57,
+                        "commissions": 0,
+                        "costPerShare": 109.56,
+                        "dateAcquired": 1681790400000,
+                        "daysGain": -2.2,
+                        "daysGainPct": -1.2822,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/312228003900.json",
+                        "marketValue": 169.37,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 0.512,
+                        "positionId": 312228003900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 109.56,
+                        "quantity": 1,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/TXRH.json",
+                        "symbolDescription": "TXRH",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 109.56,
+                        "totalGain": 59.81,
+                        "totalGainPct": 54.591
+                    }
+                ],
+                "accountId": "889218528",
+                "totalPages": 1
+            }
+        ],
+        "Totals": {
+            "cashBalance": 17086.4799,
+            "todaysGainLoss": 44.7,
+            "todaysGainLossPct": 0.1353,
+            "totalGainLoss": 750.32,
+            "totalGainLossPct": 4.9234,
+            "totalMarketValue": 15989.9099,
+            "totalPricePaid": 15239.5899
+        }
+    }
+}
+09/04/2025 10:40:53 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/04/2025 10:40:53 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=233B28524832F32AEDFC538A767EB64E.tomcat2'}
+09/04/2025 10:40:53 PM Response Body: {
+    "BalanceResponse": {
+        "Cash": {
+            "fundsForOpenOrdersCash": 0,
+            "moneyMktBalance": 15886.48
+        },
+        "Computed": {
+            "OpenCalls": {
+                "cashCall": 0,
+                "fedCall": 0,
+                "houseCall": 0,
+                "minEquityCall": 0
+            },
+            "RealTimeValues": {
+                "netMv": 15989.91,
+                "netMvLong": 15989.91,
+                "netMvShort": 0,
+                "totalAccountValue": 33076.39
+            },
+            "accountBalance": 1200,
+            "cashAvailableForInvestment": 17086.48,
+            "cashAvailableForWithdrawal": 17086.48,
+            "cashBalance": 1200,
+            "cashBuyingPower": 26825.349,
+            "dtCashBuyingPower": 0,
+            "dtMarginBuyingPower": 0,
+            "fundsWithheldFromPurchasePower": 0,
+            "fundsWithheldFromWithdrawal": 1200,
+            "marginBalance": 1200,
+            "marginBuyingPower": 60042.44,
+            "netCash": 26825.349,
+            "regtEquity": 32920.75,
+            "regtEquityPercent": 100,
+            "settledCashForInvestment": 0,
+            "shortAdjustBalance": 0,
+            "totalAvailableForWithdrawal": 25625.349,
+            "unSettledCashForInvestment": 0
+        },
+        "accountDescription": "CARSON W PAUTZ",
+        "accountId": "889218528",
+        "accountMode": "MARGIN",
+        "accountType": "MARGIN",
+        "dayTraderStatus": "NO_PDT",
+        "optionLevel": "LEVEL_2",
+        "quoteMode": 0
+    }
+}
+09/04/2025 11:57:21 PM Request Header (_load_accounts): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive'}
+09/04/2025 11:57:21 PM Response Body: {
+    "AccountListResponse": {
+        "Accounts": {
+            "Account": [
+                {
+                    "accountDesc": "Joint JTWROS",
+                    "accountId": "775334242",
+                    "accountIdKey": "_UvlOsn73ipw3DnvkFHodg",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "ACTIVE",
+                    "accountType": "JTWROS",
+                    "closedDate": 0,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                },
+                {
+                    "accountDesc": "Joint JTWROS",
+                    "accountId": "775792448",
+                    "accountIdKey": "q6Qd7dRMtbDKfL1ChlKLDg",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "CLOSED",
+                    "accountType": "JTWROS",
+                    "closedDate": 1630159500,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                },
+                {
+                    "accountDesc": "Roth IRA",
+                    "accountId": "889198306",
+                    "accountIdKey": "aiVpbJD0w5K5oCgyqtOyVw",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "ACTIVE",
+                    "accountType": "ROTHIRA",
+                    "closedDate": 0,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                },
+                {
+                    "accountDesc": "Individual Brokerage",
+                    "accountId": "889218528",
+                    "accountIdKey": "z1_J3n3oS1bnyFXpOM1S9w",
+                    "accountMode": "CASH",
+                    "accountName": "",
+                    "accountStatus": "ACTIVE",
+                    "accountType": "INDIVIDUAL",
+                    "closedDate": 0,
+                    "fcManagedMssbClosedAccount": false,
+                    "institutionType": "BROKERAGE",
+                    "shareWorksAccount": false
+                }
+            ]
+        }
+    }
+}
+09/04/2025 11:57:21 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=5D05650770AAF0E9FBEDBEA91E870F0F.tomcat3'}
+09/04/2025 11:57:21 PM Response Body: {
+    "PortfolioResponse": {
+        "AccountPortfolio": [
+            {
+                "Position": [
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "RXO",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "RXO"
+                        },
+                        "Quick": {
+                            "change": 0.36,
+                            "changePct": 2.25,
+                            "lastTrade": 16.36,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 1924008
+                        },
+                        "adjPrevClose": 16.0,
+                        "commissions": 0,
+                        "costPerShare": 22.818,
+                        "dateAcquired": 1659931200000,
+                        "daysGain": 1.8,
+                        "daysGainPct": 2.25,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/portfolio/283255778900.json",
+                        "marketValue": 81.7999,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 45.6832,
+                        "positionId": 283255778900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 22.818,
+                        "quantity": 5,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/RXO.json",
+                        "symbolDescription": "RXO",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 114.09,
+                        "totalGain": -32.2899,
+                        "totalGainPct": -28.3022
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "SHOT",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "SHOT"
+                        },
+                        "Quick": {
+                            "change": -0.0128,
+                            "changePct": -3.1083,
+                            "lastTrade": 0.399,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 3389832
+                        },
+                        "adjPrevClose": 0.4118,
+                        "commissions": 0,
+                        "costPerShare": 3.02,
+                        "dateAcquired": 1700110800000,
+                        "daysGain": -0.0128,
+                        "daysGainPct": -3.1083,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/portfolio/348323685900.json",
+                        "marketValue": 0.399,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 0.2228,
+                        "positionId": 348323685900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 3.02,
+                        "quantity": 1,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/SHOT.json",
+                        "symbolDescription": "SHOT",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 3.02,
+                        "totalGain": -2.6209,
+                        "totalGainPct": -86.788
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "T",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "T"
+                        },
+                        "Quick": {
+                            "change": 0.54,
+                            "changePct": 1.8595,
+                            "lastTrade": 29.58,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 31845438
+                        },
+                        "adjPrevClose": 29.04,
+                        "commissions": 0,
+                        "costPerShare": 18.37,
+                        "dateAcquired": 1644296400000,
+                        "daysGain": 1.62,
+                        "daysGainPct": 1.8595,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/portfolio/233027101900.json",
+                        "marketValue": 88.7399,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 49.559,
+                        "positionId": 233027101900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 18.37,
+                        "quantity": 3,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/T.json",
+                        "symbolDescription": "T",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 55.1099,
+                        "totalGain": 33.63,
+                        "totalGainPct": 61.0234
+                    }
+                ],
+                "accountId": "775334242",
+                "totalPages": 1
+            }
+        ],
+        "Totals": {
+            "cashBalance": 8.1199,
+            "todaysGainLoss": 3.41,
+            "todaysGainLossPct": 1.9413,
+            "totalGainLoss": -1.28,
+            "totalGainLossPct": -0.7432,
+            "totalMarketValue": 170.9389,
+            "totalPricePaid": 172.2199
+        }
+    }
+}
+09/04/2025 11:57:22 PM Request url: https://api.etrade.com/v1/accounts/_UvlOsn73ipw3DnvkFHodg/balance.json
+09/04/2025 11:57:22 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=BB249D5D704F08362F57718F85E349E1.tomcat3'}
+09/04/2025 11:57:22 PM Response Body: {
+    "BalanceResponse": {
+        "Cash": {
+            "fundsForOpenOrdersCash": 0,
+            "moneyMktBalance": 8.12
+        },
+        "Computed": {
+            "OpenCalls": {
+                "cashCall": 0,
+                "fedCall": 0,
+                "houseCall": 0,
+                "minEquityCall": 0
+            },
+            "RealTimeValues": {
+                "netMv": 170.939,
+                "netMvLong": 170.939,
+                "netMvShort": 0,
+                "totalAccountValue": 179.059
+            },
+            "accountBalance": 0,
+            "cashAvailableForInvestment": 8.12,
+            "cashAvailableForWithdrawal": 8.12,
+            "cashBalance": 0,
+            "cashBuyingPower": 8.12,
+            "dtCashBuyingPower": 0,
+            "dtMarginBuyingPower": 0,
+            "fundsWithheldFromPurchasePower": 0,
+            "fundsWithheldFromWithdrawal": 0,
+            "marginBuyingPower": 0,
+            "netCash": 8.12,
+            "settledCashForInvestment": 8.12,
+            "shortAdjustBalance": 0,
+            "totalAvailableForWithdrawal": 8.12,
+            "unSettledCashForInvestment": 0
+        },
+        "accountDescription": "CARSON W PAUTZ & STEVEN PAUTZ",
+        "accountId": "775334242",
+        "accountMode": "CASH",
+        "accountType": "CASH",
+        "dayTraderStatus": "NO_PDT",
+        "optionLevel": "NO_OPTIONS",
+        "quoteMode": 0
+    }
+}
+09/04/2025 11:57:22 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=A854BD0552EAA123E56BD052A4E85475.tomcat3'}
+09/04/2025 11:57:22 PM Response Body: {
+    "PortfolioResponse": {
+        "AccountPortfolio": [
+            {
+                "Position": [
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "NANC",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "NANC"
+                        },
+                        "Quick": {
+                            "change": 0.385,
+                            "changePct": 0.8881,
+                            "lastTrade": 43.735,
+                            "lastTradeTime": 1757016604,
+                            "quoteStatus": "CLOSING",
+                            "volume": 33594
+                        },
+                        "adjPrevClose": 43.35,
+                        "commissions": 0,
+                        "costPerShare": 33.45,
+                        "dateAcquired": 1710129600000,
+                        "daysGain": 3.08,
+                        "daysGainPct": 0.8881,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/368754985900.json",
+                        "marketValue": 349.8799,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 1.7248,
+                        "positionId": 368754985900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 33.45,
+                        "quantity": 8,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/NANC.json",
+                        "symbolDescription": "NANC",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 267.6,
+                        "totalGain": 82.28,
+                        "totalGainPct": 30.7473
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "QQQ",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "QQQ"
+                        },
+                        "Quick": {
+                            "change": 5.16,
+                            "changePct": 0.9051,
+                            "lastTrade": 575.23,
+                            "lastTradeTime": 1757016900,
+                            "quoteStatus": "CLOSING",
+                            "volume": 47526280
+                        },
+                        "adjPrevClose": 570.07,
+                        "commissions": 0,
+                        "costPerShare": 467.2878,
+                        "dateAcquired": 1663128000000,
+                        "daysGain": 72.2399,
+                        "daysGainPct": 0.9051,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/275172581900.json",
+                        "marketValue": 8053.22,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 39.7018,
+                        "positionId": 275172581900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 467.2878,
+                        "quantity": 14,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/QQQ.json",
+                        "symbolDescription": "QQQ",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 6542.0299,
+                        "totalGain": 1511.19,
+                        "totalGainPct": 23.0997
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "SPY",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "SPY"
+                        },
+                        "Quick": {
+                            "change": 5.38,
+                            "changePct": 0.8357,
+                            "lastTrade": 649.12,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 65219228
+                        },
+                        "adjPrevClose": 643.74,
+                        "commissions": 0,
+                        "costPerShare": 501.349,
+                        "dateAcquired": 1661140800000,
+                        "daysGain": 59.1799,
+                        "daysGainPct": 0.8357,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/271042033900.json",
+                        "marketValue": 7140.3199,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 35.2013,
+                        "positionId": 271042033900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 501.349,
+                        "quantity": 11,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/SPY.json",
+                        "symbolDescription": "SPY",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 5514.8399,
+                        "totalGain": 1625.48,
+                        "totalGainPct": 29.4746
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "VTI",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "VTI"
+                        },
+                        "Quick": {
+                            "change": 2.81,
+                            "changePct": 0.8855,
+                            "lastTrade": 320.14,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 3041972
+                        },
+                        "adjPrevClose": 317.33,
+                        "commissions": 0,
+                        "costPerShare": 199.5149,
+                        "dateAcquired": 1662955200000,
+                        "daysGain": 22.48,
+                        "daysGainPct": 0.8855,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/portfolio/274461524900.json",
+                        "marketValue": 2561.1199,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 12.6261,
+                        "positionId": 274461524900,
+                        "positionIndicator": "TYPE1",
+                        "positionType": "LONG",
+                        "pricePaid": 199.5149,
+                        "quantity": 8,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/VTI.json",
+                        "symbolDescription": "VTI",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 1596.1199,
+                        "totalGain": 965.0,
+                        "totalGainPct": 60.4591
+                    }
+                ],
+                "accountId": "889198306",
+                "totalPages": 1
+            }
+        ],
+        "Totals": {
+            "cashBalance": 2179.71,
+            "todaysGainLoss": 156.9799,
+            "todaysGainLossPct": 0.7799,
+            "totalGainLoss": 4183.9499,
+            "totalGainLossPct": 30.0558,
+            "totalMarketValue": 18104.54,
+            "totalPricePaid": 13920.5899
+        }
+    }
+}
+09/04/2025 11:57:22 PM Request url: https://api.etrade.com/v1/accounts/aiVpbJD0w5K5oCgyqtOyVw/balance.json
+09/04/2025 11:57:22 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=BCFDC0F3EC7621A1C9C7C7C41373A25A.tomcat3'}
+09/04/2025 11:57:22 PM Response Body: {
+    "BalanceResponse": {
+        "Cash": {
+            "fundsForOpenOrdersCash": 0,
+            "moneyMktBalance": 2179.71
+        },
+        "Computed": {
+            "OpenCalls": {
+                "cashCall": 0,
+                "fedCall": 0,
+                "houseCall": 0,
+                "minEquityCall": 0
+            },
+            "RealTimeValues": {
+                "netMv": 18104.54,
+                "netMvLong": 18104.54,
+                "netMvShort": 0,
+                "totalAccountValue": 20284.25
+            },
+            "accountBalance": 0,
+            "cashAvailableForInvestment": 2179.71,
+            "cashAvailableForWithdrawal": 2179.71,
+            "cashBalance": 0,
+            "cashBuyingPower": 2179.71,
+            "dtCashBuyingPower": 0,
+            "dtMarginBuyingPower": 0,
+            "fundsWithheldFromPurchasePower": 0,
+            "fundsWithheldFromWithdrawal": 0,
+            "marginBuyingPower": 0,
+            "netCash": 2179.71,
+            "settledCashForInvestment": 2179.71,
+            "shortAdjustBalance": 0,
+            "totalAvailableForWithdrawal": 2179.71,
+            "unSettledCashForInvestment": 0
+        },
+        "accountDescription": "CARSON W PAUTZ",
+        "accountId": "889198306",
+        "accountMode": "CASH",
+        "accountType": "CASH",
+        "dayTraderStatus": "NO_PDT",
+        "optionLevel": "NO_OPTIONS",
+        "quoteMode": 0
+    }
+}
+09/04/2025 11:57:23 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=2592AB4C0F8036DD05E398DFBA3DBFE0.tomcat3'}
+09/04/2025 11:57:23 PM Response Body: {
+    "PortfolioResponse": {
+        "AccountPortfolio": [
+            {
+                "Position": [
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "CMG",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "CMG"
+                        },
+                        "Quick": {
+                            "change": -0.38,
+                            "changePct": -0.9093,
+                            "lastTrade": 41.41,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 18998867
+                        },
+                        "adjPrevClose": 41.79,
+                        "commissions": 0,
+                        "costPerShare": 45.275,
+                        "dateAcquired": 1753329600000,
+                        "daysGain": -9.5,
+                        "daysGainPct": -0.9093,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/465328686900.json",
+                        "marketValue": 1035.25,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 3.1298,
+                        "positionId": 465328686900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 45.2749,
+                        "quantity": 25,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/CMG.json",
+                        "symbolDescription": "CMG",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 1131.875,
+                        "totalGain": -96.625,
+                        "totalGainPct": -8.5367
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "QQQ",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "QQQ"
+                        },
+                        "Quick": {
+                            "change": 5.16,
+                            "changePct": 0.9051,
+                            "lastTrade": 575.23,
+                            "lastTradeTime": 1757016900,
+                            "quoteStatus": "CLOSING",
+                            "volume": 47526280
+                        },
+                        "adjPrevClose": 570.07,
+                        "commissions": 0,
+                        "costPerShare": 550.4,
+                        "dateAcquired": 1751256000000,
+                        "daysGain": 25.8,
+                        "daysGainPct": 0.9051,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/459570489900.json",
+                        "marketValue": 2876.15,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 8.6954,
+                        "positionId": 459570489900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 550.3999,
+                        "quantity": 5,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/QQQ.json",
+                        "symbolDescription": "QQQ",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 2752,
+                        "totalGain": 124.15,
+                        "totalGainPct": 4.5112
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "NVDA",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "NVDA"
+                        },
+                        "Quick": {
+                            "change": 1.04,
+                            "changePct": 0.6095,
+                            "lastTrade": 171.66,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 141670144
+                        },
+                        "adjPrevClose": 170.62,
+                        "commissions": 0,
+                        "costPerShare": 127.3001,
+                        "dateAcquired": 1731042000000,
+                        "daysGain": 52,
+                        "daysGainPct": 0.6095,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/411085607900.json",
+                        "marketValue": 8583,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 25.949,
+                        "positionId": 411085607900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 127.3001,
+                        "quantity": 50,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/NVDA.json",
+                        "symbolDescription": "NVDA",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 6365.005,
+                        "totalGain": 2217.9949,
+                        "totalGainPct": 34.8467
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "MSFT",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "MSFT"
+                        },
+                        "Quick": {
+                            "change": 2.62,
+                            "changePct": 0.5184,
+                            "lastTrade": 507.97,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 15509486
+                        },
+                        "adjPrevClose": 505.35,
+                        "commissions": 0,
+                        "costPerShare": 413.74,
+                        "dateAcquired": 1709528400000,
+                        "daysGain": 5.24,
+                        "daysGainPct": 0.5184,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/367254146900.json",
+                        "marketValue": 1015.94,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 3.0714,
+                        "positionId": 367254146900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 413.74,
+                        "quantity": 2,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/MSFT.json",
+                        "symbolDescription": "MSFT",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 827.48,
+                        "totalGain": 188.46,
+                        "totalGainPct": 22.7751
+                    },
+                    {
+                        "Product": {
+                            "callPut": "PUT",
+                            "expiryDay": 15,
+                            "expiryMonth": 1,
+                            "expiryYear": 2027,
+                            "productId": {
+                                "symbol": "IONQ",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "OPTN",
+                            "strikePrice": 15,
+                            "symbol": "IONQ"
+                        },
+                        "Quick": {
+                            "change": -0.06,
+                            "changePct": -4.0816,
+                            "lastTrade": 1.44,
+                            "lastTradeTime": 1757015999,
+                            "quoteStatus": "REALTIME",
+                            "volume": 1
+                        },
+                        "adjPrevClose": 1.47,
+                        "commissions": 0.65,
+                        "costPerShare": 2.0067,
+                        "dateAcquired": 1752724800000,
+                        "daysGain": -6,
+                        "daysGainPct": -4.0816,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/463356084900.json",
+                        "marketValue": 141,
+                        "osiKey": "IONQ--270115P00015000",
+                        "otherFees": 0.02,
+                        "pctOfPortfolio": 0.4262,
+                        "positionId": 463356084900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 2,
+                        "quantity": 1,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/IONQ:2027:1:15:PUT:15.json",
+                        "symbolDescription": "IONQ Jan 15 '27 $15 Put",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 200.6699,
+                        "totalGain": -59.67,
+                        "totalGainPct": -29.7353
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "INTC",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "INTC"
+                        },
+                        "Quick": {
+                            "change": 0.61,
+                            "changePct": 2.5416,
+                            "lastTrade": 24.61,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 59056496
+                        },
+                        "adjPrevClose": 24.0,
+                        "commissions": 0,
+                        "costPerShare": 44.3,
+                        "dateAcquired": 1709528400000,
+                        "daysGain": 6.0999,
+                        "daysGainPct": 2.5416,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/367281650900.json",
+                        "marketValue": 246.0999,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 0.744,
+                        "positionId": 367281650900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 44.2999,
+                        "quantity": 10,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/INTC.json",
+                        "symbolDescription": "INTC",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 443,
+                        "totalGain": -196.9,
+                        "totalGainPct": -44.4469
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "IBIT",
+                                "typeCode": "EQUITY"
+                            },
+                            "securitySubType": "ETF",
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "IBIT"
+                        },
+                        "Quick": {
+                            "change": -1.42,
+                            "changePct": -2.2267,
+                            "lastTrade": 62.35,
+                            "lastTradeTime": 1757016900,
+                            "quoteStatus": "CLOSING",
+                            "volume": 32780389
+                        },
+                        "adjPrevClose": 63.77,
+                        "commissions": 0,
+                        "costPerShare": 40.8841,
+                        "dateAcquired": 1709787600000,
+                        "daysGain": -17.0399,
+                        "daysGainPct": -2.2267,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/368090159900.json",
+                        "marketValue": 748.2,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 2.262,
+                        "positionId": 368090159900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 40.8841,
+                        "quantity": 12,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/IBIT.json",
+                        "symbolDescription": "IBIT",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 490.6099,
+                        "totalGain": 257.59,
+                        "totalGainPct": 52.504
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "CRCL",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "CRCL"
+                        },
+                        "Quick": {
+                            "change": -0.97,
+                            "changePct": -0.8188,
+                            "lastTrade": 117.49,
+                            "lastTradeTime": 1757016600,
+                            "quoteStatus": "CLOSING",
+                            "volume": 6393633
+                        },
+                        "adjPrevClose": 118.46,
+                        "commissions": 0,
+                        "costPerShare": 291.939,
+                        "dateAcquired": 1750651200000,
+                        "daysGain": -9.6999,
+                        "daysGainPct": -0.8188,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/457836513900.json",
+                        "marketValue": 1174.9,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 3.552,
+                        "positionId": 457836513900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 291.939,
+                        "quantity": 10,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/CRCL.json",
+                        "symbolDescription": "CRCL",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 2919.3899,
+                        "totalGain": -1744.49,
+                        "totalGainPct": -59.7552
+                    },
+                    {
+                        "Product": {
+                            "expiryDay": 0,
+                            "expiryMonth": 0,
+                            "expiryYear": 0,
+                            "productId": {
+                                "symbol": "TXRH",
+                                "typeCode": "EQUITY"
+                            },
+                            "securityType": "EQ",
+                            "strikePrice": 0,
+                            "symbol": "TXRH"
+                        },
+                        "Quick": {
+                            "change": -2.2,
+                            "changePct": -1.2822,
+                            "lastTrade": 169.37,
+                            "lastTradeTime": 1757016000,
+                            "quoteStatus": "CLOSING",
+                            "volume": 1708125
+                        },
+                        "adjPrevClose": 171.57,
+                        "commissions": 0,
+                        "costPerShare": 109.56,
+                        "dateAcquired": 1681790400000,
+                        "daysGain": -2.2,
+                        "daysGainPct": -1.2822,
+                        "lotsDetails": "https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/portfolio/312228003900.json",
+                        "marketValue": 169.37,
+                        "otherFees": 0,
+                        "pctOfPortfolio": 0.512,
+                        "positionId": 312228003900,
+                        "positionIndicator": "TYPE2",
+                        "positionType": "LONG",
+                        "pricePaid": 109.56,
+                        "quantity": 1,
+                        "quoteDetails": "https://api.etrade.com/v1/market/quote/TXRH.json",
+                        "symbolDescription": "TXRH",
+                        "todayCommissions": 0,
+                        "todayFees": 0,
+                        "todayPricePaid": 0,
+                        "todayQuantity": 0,
+                        "totalCost": 109.56,
+                        "totalGain": 59.81,
+                        "totalGainPct": 54.591
+                    }
+                ],
+                "accountId": "889218528",
+                "totalPages": 1
+            }
+        ],
+        "Totals": {
+            "cashBalance": 17086.4799,
+            "todaysGainLoss": 44.7,
+            "todaysGainLossPct": 0.1353,
+            "totalGainLoss": 750.32,
+            "totalGainLossPct": 4.9234,
+            "totalMarketValue": 15989.9099,
+            "totalPricePaid": 15239.5899
+        }
+    }
+}
+09/04/2025 11:57:23 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/04/2025 11:57:23 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=0C617FB44C677941E8C172E96632C878.tomcat3'}
+09/04/2025 11:57:23 PM Response Body: {
+    "BalanceResponse": {
+        "Cash": {
+            "fundsForOpenOrdersCash": 0,
+            "moneyMktBalance": 15886.48
+        },
+        "Computed": {
+            "OpenCalls": {
+                "cashCall": 0,
+                "fedCall": 0,
+                "houseCall": 0,
+                "minEquityCall": 0
+            },
+            "RealTimeValues": {
+                "netMv": 15989.91,
+                "netMvLong": 15989.91,
+                "netMvShort": 0,
+                "totalAccountValue": 33076.39
+            },
+            "accountBalance": 1200,
+            "cashAvailableForInvestment": 17086.48,
+            "cashAvailableForWithdrawal": 17086.48,
+            "cashBalance": 1200,
+            "cashBuyingPower": 26825.349,
+            "dtCashBuyingPower": 0,
+            "dtMarginBuyingPower": 0,
+            "fundsWithheldFromPurchasePower": 0,
+            "fundsWithheldFromWithdrawal": 1200,
+            "marginBalance": 1200,
+            "marginBuyingPower": 60042.44,
+            "netCash": 26825.349,
+            "regtEquity": 32920.75,
+            "regtEquityPercent": 100,
+            "settledCashForInvestment": 0,
+            "shortAdjustBalance": 0,
+            "totalAvailableForWithdrawal": 25625.349,
+            "unSettledCashForInvestment": 0
+        },
+        "accountDescription": "CARSON W PAUTZ",
+        "accountId": "889218528",
+        "accountMode": "MARGIN",
+        "accountType": "MARGIN",
+        "dayTraderStatus": "NO_PDT",
+        "optionLevel": "LEVEL_2",
+        "quoteMode": 0
+    }
+}

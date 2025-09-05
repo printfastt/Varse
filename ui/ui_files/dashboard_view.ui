@@ -1074,7 +1074,7 @@ QTabBar::tab:hover {
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="symbol5Input">
+             <widget class="QLineEdit" name="symbol3Input">
               <property name="maximumSize">
                <size>
                 <width>60</width>
@@ -1087,7 +1087,7 @@ QTabBar::tab:hover {
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="symbol6Input">
+             <widget class="QLineEdit" name="symbol4Input">
               <property name="maximumSize">
                <size>
                 <width>60</width>
@@ -1442,7 +1442,7 @@ QTabBar::tab:hover {
              <number>2</number>
             </property>
             <item>
-             <widget class="QLineEdit" name="symbol3Input">
+             <widget class="QLineEdit" name="symbol5Input">
               <property name="maximumSize">
                <size>
                 <width>60</width>
@@ -1455,7 +1455,7 @@ QTabBar::tab:hover {
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="symbol4Input">
+             <widget class="QLineEdit" name="symbol6Input">
               <property name="maximumSize">
                <size>
                 <width>60</width>

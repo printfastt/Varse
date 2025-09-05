@@ -24,7 +24,7 @@ class DashboardView(QMainWindow):
     symbol1Input: QLineEdit
     symbol2Input: QLineEdit
     symbol3Input: QLineEdit
-    symbol4Input: QLineEdit
+    symbol4Input: QLineEdit  
     symbol5Input: QLineEdit
     symbol6Input: QLineEdit
     symbol7Input: QLineEdit
@@ -109,14 +109,14 @@ class DashboardView(QMainWindow):
             'refreshButton': self.refreshButton,
             'symbol1Input': self.symbol1Input,
             'symbol2Input': self.symbol2Input,
-            'symbol5Input': self.symbol5Input,
-            'symbol6Input': self.symbol6Input,
+            'symbol3Input': self.symbol3Input,
+            'symbol4Input': self.symbol4Input,
             'timeframeCombo': self.timeframeCombo,
             
             # Controls for bottom-right quad  
             'refreshButton2': self.refreshButton2,
-            'symbol3Input': self.symbol3Input,
-            'symbol4Input': self.symbol4Input,
+            'symbol5Input': self.symbol5Input,
+            'symbol6Input': self.symbol6Input,
             'symbol7Input': self.symbol7Input,
             'symbol8Input': self.symbol8Input,
             'timeframeCombo2': self.timeframeCombo2,
@@ -173,14 +173,14 @@ class ChartView:
         self.refreshButton = components['refreshButton']
         self.symbol1Input = components['symbol1Input']
         self.symbol2Input = components['symbol2Input']
-        self.symbol5Input = components['symbol5Input']
-        self.symbol6Input = components['symbol6Input']
+        self.symbol3Input = components['symbol3Input']
+        self.symbol4Input = components['symbol4Input']
         self.timeframeCombo = components['timeframeCombo']
         
         # Bottom-right quad controls
         self.refreshButton2 = components['refreshButton2']
-        self.symbol3Input = components['symbol3Input']
-        self.symbol4Input = components['symbol4Input']
+        self.symbol5Input = components['symbol5Input']
+        self.symbol6Input = components['symbol6Input']
         self.symbol7Input = components['symbol7Input']
         self.symbol8Input = components['symbol8Input']
         self.timeframeCombo2 = components['timeframeCombo2']
@@ -216,11 +216,11 @@ class ChartView:
         # Top-right quad symbols
         self.symbol1 = None  # TR_TL
         self.symbol2 = None  # TR_TR
-        self.symbol5 = None  # TR_BL
-        self.symbol6 = None  # TR_BR
+        self.symbol3 = None  # TR_BL
+        self.symbol4 = None  # TR_BR
         # Bottom-right quad symbols
-        self.symbol3 = None  # BR_TL
-        self.symbol4 = None  # BR_TR
+        self.symbol5 = None  # BR_TL
+        self.symbol6 = None  # BR_TR
         self.symbol7 = None  # BR_BL
         self.symbol8 = None  # BR_BR
 
@@ -289,8 +289,8 @@ class ChartView:
         # Get symbol inputs
         symbol1_input = self.symbol1Input.text().strip().upper()
         symbol2_input = self.symbol2Input.text().strip().upper()
-        symbol5_input = self.symbol5Input.text().strip().upper()
-        symbol6_input = self.symbol6Input.text().strip().upper()
+        symbol3_input = self.symbol3Input.text().strip().upper()
+        symbol4_input = self.symbol4Input.text().strip().upper()
         self.timeframe_input = self.timeframeCombo.currentText().strip()
 
         # Update symbols if provided
@@ -298,45 +298,45 @@ class ChartView:
             self.symbol1 = symbol1_input
         if symbol2_input:
             self.symbol2 = symbol2_input
-        if symbol5_input:
-            self.symbol5 = symbol5_input
-        if symbol6_input:
-            self.symbol6 = symbol6_input
+        if symbol3_input:
+            self.symbol3 = symbol3_input
+        if symbol4_input:
+            self.symbol4 = symbol4_input
 
         # Chart all top-right quad symbols
         if self.symbol1:
             self.chart_symbol(self.symbol1, self.TR_TL_ChartWidget, self.timeframe_input)
         if self.symbol2:
             self.chart_symbol(self.symbol2, self.TR_TR_ChartWidget, self.timeframe_input)
-        if self.symbol5:
-            self.chart_symbol(self.symbol5, self.TR_BL_ChartWidget, self.timeframe_input)
-        if self.symbol6:
-            self.chart_symbol(self.symbol6, self.TR_BR_ChartWidget, self.timeframe_input)
+        if self.symbol3:
+            self.chart_symbol(self.symbol3, self.TR_BL_ChartWidget, self.timeframe_input)
+        if self.symbol4:
+            self.chart_symbol(self.symbol4, self.TR_BR_ChartWidget, self.timeframe_input)
 
     def press_refresh_button_bottom(self):
         """Handle refresh for bottom-right quad charts"""
         # Get symbol inputs
-        symbol3_input = self.symbol3Input.text().strip().upper()
-        symbol4_input = self.symbol4Input.text().strip().upper()
+        symbol5_input = self.symbol5Input.text().strip().upper()
+        symbol6_input = self.symbol6Input.text().strip().upper()
         symbol7_input = self.symbol7Input.text().strip().upper()
         symbol8_input = self.symbol8Input.text().strip().upper()
         self.timeframe_input2 = self.timeframeCombo2.currentText().strip()
 
         # Update symbols if provided
-        if symbol3_input:
-            self.symbol3 = symbol3_input
-        if symbol4_input:
-            self.symbol4 = symbol4_input
+        if symbol5_input:
+            self.symbol5 = symbol5_input
+        if symbol6_input:
+            self.symbol6 = symbol6_input
         if symbol7_input:
             self.symbol7 = symbol7_input
         if symbol8_input:
             self.symbol8 = symbol8_input
 
         # Chart all bottom-right quad symbols
-        if self.symbol3:
-            self.chart_symbol(self.symbol3, self.BR_TL_ChartWidget, self.timeframe_input2)
-        if self.symbol4:
-            self.chart_symbol(self.symbol4, self.BR_TR_ChartWidget, self.timeframe_input2)
+        if self.symbol5:
+            self.chart_symbol(self.symbol5, self.BR_TL_ChartWidget, self.timeframe_input2)
+        if self.symbol6:
+            self.chart_symbol(self.symbol6, self.BR_TR_ChartWidget, self.timeframe_input2)
         if self.symbol7:
             self.chart_symbol(self.symbol7, self.BR_BL_ChartWidget, self.timeframe_input2)
         if self.symbol8:
