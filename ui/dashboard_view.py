@@ -4,7 +4,7 @@ from PIL.SpiderImagePlugin import isInt
 from PyQt6.QtCore import QDate, QObject, Qt, QThread
 from PyQt6.QtGui import QBrush, QColor, QAction, QActionGroup
 from PyQt6.QtWidgets import QWidget, QLineEdit, QPushButton, QApplication, QMainWindow, QLabel, QComboBox, QSplitter, \
-    QTableWidgetItem, QTableWidget, QFrame, QMenu
+    QTableWidgetItem, QTableWidget, QFrame, QMenu, QWidgetAction
 from PyQt6 import uic
 import pandas as pd
 import plotly.express as px
@@ -20,15 +20,6 @@ class DashboardView(QMainWindow):
     #declaring type for ide
     dateLabel: QLabel
     
-    # Symbol inputs
-    symbol1Input: QLineEdit
-    symbol2Input: QLineEdit
-    symbol3Input: QLineEdit
-    symbol4Input: QLineEdit  
-    symbol5Input: QLineEdit
-    symbol6Input: QLineEdit
-    symbol7Input: QLineEdit
-    symbol8Input: QLineEdit
     
     # Chart controls
     refreshButton: QPushButton
@@ -106,18 +97,10 @@ class DashboardView(QMainWindow):
         chart_components = {
             # Controls for top-right quad
             'refreshButton': self.refreshButton,
-            'symbol1Input': self.symbol1Input,
-            'symbol2Input': self.symbol2Input,
-            'symbol3Input': self.symbol3Input,
-            'symbol4Input': self.symbol4Input,
             'timeframeCombo': self.timeframeCombo,
             
             # Controls for bottom-right quad  
             'refreshButton2': self.refreshButton2,
-            'symbol5Input': self.symbol5Input,
-            'symbol6Input': self.symbol6Input,
-            'symbol7Input': self.symbol7Input,
-            'symbol8Input': self.symbol8Input,
             'timeframeCombo2': self.timeframeCombo2,
             
             # Top-right quad chart widgets
@@ -157,7 +140,7 @@ class DashboardView(QMainWindow):
 
         }
 
-        self.ChartView = ChartView(chart_components)
+        self.ChartView = ChartView(chart_components, self)
         self.EtradeView = EtradeView(etrade_components, self)
         self.date = str(QDate.currentDate().toPyDate())
 
@@ -165,22 +148,15 @@ class DashboardView(QMainWindow):
         # self.dateLabel.setText(QDate.currentDate().toString())
 
 class ChartView:
-    def __init__(self, components):
+    def __init__(self, components, dashboard):
         super().__init__()
+        self.dashboard = dashboard
         # Top-right quad controls
         self.refreshButton = components['refreshButton']
-        self.symbol1Input = components['symbol1Input']
-        self.symbol2Input = components['symbol2Input']
-        self.symbol3Input = components['symbol3Input']
-        self.symbol4Input = components['symbol4Input']
         self.timeframeCombo = components['timeframeCombo']
         
         # Bottom-right quad controls
         self.refreshButton2 = components['refreshButton2']
-        self.symbol5Input = components['symbol5Input']
-        self.symbol6Input = components['symbol6Input']
-        self.symbol7Input = components['symbol7Input']
-        self.symbol8Input = components['symbol8Input']
         self.timeframeCombo2 = components['timeframeCombo2']
         
         # Top-right quad chart widgets
@@ -211,16 +187,18 @@ class ChartView:
         #user inputs
         self.timeframe_input = ""
         self.timeframe_input2 = ""
-        # Top-right quad symbols
+
         self.symbol1 = None  # TR_TL
         self.symbol2 = None  # TR_TR
         self.symbol3 = None  # TR_BL
         self.symbol4 = None  # TR_BR
-        # Bottom-right quad symbols
+
         self.symbol5 = None  # BR_TL
         self.symbol6 = None  # BR_TR
         self.symbol7 = None  # BR_BL
         self.symbol8 = None  # BR_BR
+
+        self._init_graph_menu()
 
         #wiring
         self.refreshButton.clicked.connect(self.press_refresh_button_top)
@@ -230,23 +208,80 @@ class ChartView:
         self.press_refresh_button_top()
         self.press_refresh_button_bottom()
 
+    def _init_graph_menu(self):
+        inputs_config = [
+            (self.dashboard.menuTopTL, "QQQ", "topTL_input"),
+            (self.dashboard.menuTopTR, "SPY", "topTR_input"),
+            (self.dashboard.menuTopBL, "NVDA", "topBL_input"), 
+            (self.dashboard.menuTopBR, "AMZN", "topBR_input"),
+            (self.dashboard.menuBottomTL, "HYG", "bottomTL_input"),
+            (self.dashboard.menuBottomTR, "TLT", "bottomTR_input"),
+            (self.dashboard.menuBottomBL, "IBIT", "bottomBL_input"),
+            (self.dashboard.menuBottomBR, "GLD", "bottomBR_input")
+        ]
+        
+        for menu, default_text, attr_name in inputs_config:
+            line_edit = QLineEdit()
+            line_edit.setText(default_text)
+            line_edit.setPlaceholderText("Enter ticker...")
+            line_edit.setMaximumWidth(100)
+            
+            widget_action = QWidgetAction(self.dashboard)
+            widget_action.setDefaultWidget(line_edit)
+            menu.addAction(widget_action)
+            
+            setattr(self, attr_name, line_edit)
+
     def chart_symbol(self, symbol, widget, timeframe_input):
         try:
             symbol_data = yf.download(symbol, period=timeframe_input, interval=self.timeframe_intervals[timeframe_input])
             symbol_closes = symbol_data[['Close']].dropna()
             symbol_closes.columns = symbol_closes.columns.droplevel('Ticker')
-            overall_change = symbol_closes.iloc[-1]-symbol_closes.iloc[0]
-            overall_change_pct = ((symbol_closes.iloc[-1] - symbol_closes.iloc[0]) / symbol_closes.iloc[0]) * 100
-            modified_title = str(symbol) + " " + str(overall_change.iloc[0])
+            
+            def format_large_number(num):
+                if num is None or num == 0:
+                    return "N/A"
+                if abs(num) >= 1e12:
+                    return f"{num/1e12:.1f}T"
+                elif abs(num) >= 1e9:
+                    return f"{num/1e9:.1f}B"
+                elif abs(num) >= 1e6:
+                    return f"{num/1e6:.0f}M"
+                else:
+                    return f"{num:.2f}"
+            
+            def safe_get_info(ticker_info, key, default="N/A"):
+                try:
+                    value = ticker_info.get(key, default)
+                    return value if value is not None else default
+                except:
+                    return default
+            
+            ticker = yf.Ticker(symbol)
+            info = ticker.info
+            
+            open_price = safe_get_info(info, 'open', 0)
+            day_high = safe_get_info(info, 'dayHigh', 0)
+            day_low = safe_get_info(info, 'dayLow', 0)
+            market_cap = safe_get_info(info, 'marketCap', 0)
+            week52_low = safe_get_info(info, 'fiftyTwoWeekLow', 0)
+            week52_high = safe_get_info(info, 'fiftyTwoWeekHigh', 0)
+            
+            modified_title = (f"{symbol} |  Open:{open_price:.2f}  High:{day_high:.2f}  Low:{day_low:.2f} "
+                            f" CAP:{format_large_number(market_cap)}  52L:{week52_low:.2f}  52H:{week52_high:.2f}")
+            
             fig = px.line(symbol_closes, y='Close', x=symbol_closes.index, title=modified_title)
 
             fig.update_layout(
                 xaxis_title=None,
                 yaxis_title=None,
-                margin=dict(l=0, r=0, b=0, t=30, pad=0),
+                margin=dict(l=0, r=0, b=0, t=35, pad=0),
                 showlegend=False,
                 plot_bgcolor="black",
                 paper_bgcolor="black",
+                title=dict(
+                    font=dict(size=14)
+                ),
                 yaxis=dict(
                     showgrid=True,
                     gridcolor=self.gridcolor,
@@ -264,7 +299,7 @@ class ChartView:
             <head>
                 <style>
                     body {{
-                        margin: 10px;
+                        margin: 2px;
                         padding: 0;
                         background-color: black;
                     }}
@@ -284,11 +319,11 @@ class ChartView:
 
     def press_refresh_button_top(self):
         """Handle refresh for top-right quad charts"""
-        # Get symbol inputs
-        symbol1_input = self.symbol1Input.text().strip().upper()
-        symbol2_input = self.symbol2Input.text().strip().upper()
-        symbol3_input = self.symbol3Input.text().strip().upper()
-        symbol4_input = self.symbol4Input.text().strip().upper()
+        # Get symbol inputs from menu QLineEdits
+        symbol1_input = self.topTL_input.text().strip().upper()
+        symbol2_input = self.topTR_input.text().strip().upper()
+        symbol3_input = self.topBL_input.text().strip().upper()
+        symbol4_input = self.topBR_input.text().strip().upper()
         self.timeframe_input = self.timeframeCombo.currentText().strip()
 
         # Update symbols if provided
@@ -313,11 +348,11 @@ class ChartView:
 
     def press_refresh_button_bottom(self):
         """Handle refresh for bottom-right quad charts"""
-        # Get symbol inputs
-        symbol5_input = self.symbol5Input.text().strip().upper()
-        symbol6_input = self.symbol6Input.text().strip().upper()
-        symbol7_input = self.symbol7Input.text().strip().upper()
-        symbol8_input = self.symbol8Input.text().strip().upper()
+        # Get symbol inputs from menu QLineEdits
+        symbol5_input = self.bottomTL_input.text().strip().upper()
+        symbol6_input = self.bottomTR_input.text().strip().upper()
+        symbol7_input = self.bottomBL_input.text().strip().upper()
+        symbol8_input = self.bottomBR_input.text().strip().upper()
         self.timeframe_input2 = self.timeframeCombo2.currentText().strip()
 
         # Update symbols if provided

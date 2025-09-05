@@ -1045,58 +1045,6 @@ QTabBar::tab:hover {
              <number>2</number>
             </property>
             <item>
-             <widget class="QLineEdit" name="symbol1Input">
-              <property name="maximumSize">
-               <size>
-                <width>60</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>QQQ</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="symbol2Input">
-              <property name="maximumSize">
-               <size>
-                <width>60</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>SPY</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="symbol3Input">
-              <property name="maximumSize">
-               <size>
-                <width>60</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>NVDA</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="symbol4Input">
-              <property name="maximumSize">
-               <size>
-                <width>60</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>AMZN</string>
-              </property>
-             </widget>
-            </item>
-            <item>
              <widget class="QComboBox" name="timeframeCombo">
               <property name="maximumSize">
                <size>
@@ -1439,58 +1387,6 @@ QTabBar::tab:hover {
              <number>2</number>
             </property>
             <item>
-             <widget class="QLineEdit" name="symbol5Input">
-              <property name="maximumSize">
-               <size>
-                <width>60</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>HYG</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="symbol6Input">
-              <property name="maximumSize">
-               <size>
-                <width>60</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>TLT</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="symbol7Input">
-              <property name="maximumSize">
-               <size>
-                <width>60</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>IBIT</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="symbol8Input">
-              <property name="maximumSize">
-               <size>
-                <width>60</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>GLD</string>
-              </property>
-             </widget>
-            </item>
-            <item>
              <widget class="QComboBox" name="timeframeCombo2">
               <property name="maximumSize">
                <size>
@@ -1815,6 +1711,71 @@ QTabBar::tab:hover {
     <addaction name="actionRefresh"/>
     <addaction name="menuAccount_Table"/>
    </widget>
+   <widget class="QMenu" name="menuGraph">
+    <property name="title">
+     <string>Graph</string>
+    </property>
+    <widget class="QMenu" name="menuGraphTop">
+     <property name="title">
+      <string>Top</string>
+     </property>
+     <widget class="QMenu" name="menuTopTL">
+      <property name="title">
+       <string>Top Left</string>
+      </property>
+     </widget>
+     <widget class="QMenu" name="menuTopTR">
+      <property name="title">
+       <string>Top Right</string>
+      </property>
+     </widget>
+     <widget class="QMenu" name="menuTopBL">
+      <property name="title">
+       <string>Bottom Left</string>
+      </property>
+     </widget>
+     <widget class="QMenu" name="menuTopBR">
+      <property name="title">
+       <string>Bottom Right</string>
+      </property>
+     </widget>
+     <addaction name="menuTopTL"/>
+     <addaction name="menuTopTR"/>
+     <addaction name="menuTopBL"/>
+     <addaction name="menuTopBR"/>
+    </widget>
+    <widget class="QMenu" name="menuGraphBottom">
+     <property name="title">
+      <string>Bottom</string>
+     </property>
+     <widget class="QMenu" name="menuBottomTL">
+      <property name="title">
+       <string>Top Left</string>
+      </property>
+     </widget>
+     <widget class="QMenu" name="menuBottomTR">
+      <property name="title">
+       <string>Top Right</string>
+      </property>
+     </widget>
+     <widget class="QMenu" name="menuBottomBL">
+      <property name="title">
+       <string>Bottom Left</string>
+      </property>
+     </widget>
+     <widget class="QMenu" name="menuBottomBR">
+      <property name="title">
+       <string>Bottom Right</string>
+      </property>
+     </widget>
+     <addaction name="menuBottomTL"/>
+     <addaction name="menuBottomTR"/>
+     <addaction name="menuBottomBL"/>
+     <addaction name="menuBottomBR"/>
+    </widget>
+    <addaction name="menuGraphTop"/>
+    <addaction name="menuGraphBottom"/>
+   </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
@@ -1823,6 +1784,7 @@ QTabBar::tab:hover {
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
+   <addaction name="menuGraph"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar">
@@ -1900,8 +1862,6 @@ QTabBar::tab:hover {
  <tabstops>
   <tabstop>newsText</tabstop>
   <tabstop>holdingsTable</tabstop>
-  <tabstop>symbol1Input</tabstop>
-  <tabstop>symbol2Input</tabstop>
   <tabstop>sentimentText</tabstop>
   <tabstop>economicDataText</tabstop>
   <tabstop>newsTabs</tabstop>
