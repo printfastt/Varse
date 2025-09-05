@@ -1,7 +1,7 @@
 import sys
 import yfinance as yf
 from PIL.SpiderImagePlugin import isInt
-from PyQt6.QtCore import QDate, QObject
+from PyQt6.QtCore import QDate, QObject, Qt, QThread
 from PyQt6.QtGui import QBrush, QColor, QAction, QActionGroup
 from PyQt6.QtWidgets import QWidget, QLineEdit, QPushButton, QApplication, QMainWindow, QLabel, QComboBox, QSplitter, \
     QTableWidgetItem, QTableWidget
@@ -14,7 +14,7 @@ import re
 # from matplotlib.pyplot import xlabel
 from etrade_client.auth.etrade_auth import oauth
 from etrade_client.accountsmanager import AccountsManager
-
+from etrade_client.pollworker import PollWorker
 
 class DashboardView(QMainWindow):
     #declaring type for ide
@@ -53,7 +53,8 @@ class DashboardView(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi("ui_files/dashboard_view.ui", self)
-
+        self.frame.hide()
+        # self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
         total_height = self.chartsSplitter.height()
         half_height = total_height // 2
         self.chartsSplitter.setSizes([half_height, half_height])
@@ -98,8 +99,6 @@ class DashboardView(QMainWindow):
 
         #Configure
         self.dateLabel.setText(QDate.currentDate().toString())
-
-
 
 class ChartView:
     def __init__(self, components):
@@ -231,15 +230,45 @@ class EtradeView(QObject):
         #holdingsTable settings
         self.holdingsTable.horizontalHeader().setStretchLastSection(True)
 
+        self.pollingrate = 60.0
         self.session, self.base_url = oauth()
         self.accounts_manager = AccountsManager(self.session, self.base_url)
         self.current_account_index = None
+        self._threads, self._workers = [], []
         self._init_accountscomboBox()
         self._init_action_group()
         self.populate_portfolio_table()
         self.populate_accounttables_footer()
+        # self.startPolling()
+
+    def startPolling(self):
+        self._start_one(
+            lambda: self.accounts_manager.fetch_balances(
+            self.accounts_manager.accounts_list[self.current_account_index].accountIdKey, 
+            self.accounts_manager.accounts_list[self.current_account_index].institutionType
+            ), self.populate_accounttables_footer, self.pollingrate)
+        
+        self._start_one(
+            lambda: self.accounts_manager.fetch_portfolio(
+            self.accounts_manager.accounts_list[self.current_account_index].accountIdKey
+            ), self.populate_portfolio_table, self.pollingrate)
 
 
+    def _start_one(self,fetch_fn,slot,interval):
+        worker = PollWorker(fetch_fn, interval)
+        thread = QThread(self)
+        worker.moveToThread(thread)
+        thread.started.connect(worker.start)
+        worker.dataReady.connect(slot)
+        worker.finished.connect(thread.quit)
+        self._threads.append(thread); self._workers.append(worker)
+        thread.start()
+
+    def stopPolling(self):
+        for thread, worker in zip(self._threads, self._workers):
+            worker.stop()
+            thread.quit()
+        self._threads.clear(); self._workers.clear()
 
     def _init_accountscomboBox(self):
         for account_index, account in enumerate(self.accounts_manager.accounts_list):
@@ -260,9 +289,11 @@ class EtradeView(QObject):
 
     def _on_account_select_changed(self, index):
         # self.accountcomboBox.setCurrentIndex(index)
+        self.stopPolling()
         self.current_account_index = index
         self.populate_portfolio_table()
         self.populate_accounttables_footer()
+        # self.startPolling()
 
     def _on_action_group_viewmode_change(self):
         self.populate_portfolio_table()
@@ -356,16 +387,17 @@ class EtradeView(QObject):
         positions = _portfolio_view_select_adjust(positions_full)
         _plot()
 
-    def _format_gain_loss_label(self, label, value):
-        base_style = "background-color: transparent; border: none;"
-        if value > 0:
-            label.setStyleSheet(base_style + "color: green;")
-        elif value < 0:
-            label.setStyleSheet(base_style + "color: red;")
-        else:
-            label.setStyleSheet(base_style)
-
     def populate_accounttables_footer(self):
+
+        def _format_gain_loss_label(label, value):
+            base_style = "background-color: transparent; border: none;"
+            if value > 0:
+                label.setStyleSheet(base_style + "color: green;")
+            elif value < 0:
+                label.setStyleSheet(base_style + "color: red;")
+            else:
+                label.setStyleSheet(base_style)
+
         accounttotals = self.accounts_manager.accounts_list[self.current_account_index].accounttotals.copy()
         balances = self.accounts_manager.accounts_list[self.current_account_index].balances.copy()
 
@@ -376,16 +408,16 @@ class EtradeView(QObject):
         total_gain_loss_pct = accounttotals.loc['totalGainLossPct']
 
         self.todaysGainLossLabel.setText(f"${todays_gain_loss:.2f}")
-        self._format_gain_loss_label(self.todaysGainLossLabel, todays_gain_loss)
+        _format_gain_loss_label(self.todaysGainLossLabel, todays_gain_loss)
         
         self.todaysGainLossPctLabel.setText(f"{todays_gain_loss_pct:.2f}%")
-        self._format_gain_loss_label(self.todaysGainLossPctLabel, todays_gain_loss_pct)
+        _format_gain_loss_label(self.todaysGainLossPctLabel, todays_gain_loss_pct)
         
         self.totalGainLossLabel.setText(f"${total_gain_loss:.2f}")
-        self._format_gain_loss_label(self.totalGainLossLabel, total_gain_loss)
+        _format_gain_loss_label(self.totalGainLossLabel, total_gain_loss)
         
         self.totalGainLossPctLabel.setText(f"{total_gain_loss_pct:.2f}%")
-        self._format_gain_loss_label(self.totalGainLossPctLabel, total_gain_loss_pct)
+        _format_gain_loss_label(self.totalGainLossPctLabel, total_gain_loss_pct)
 
         # These labels remain unformatted
         self.totalMarketValueLabel.setText(f"${accounttotals.loc['totalMarketValue']:.2f}")
@@ -404,4 +436,5 @@ if __name__ == "__main__":
     window = DashboardView()
     window.show()
     sys.exit(app.exec())
+
 

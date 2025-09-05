@@ -117,8 +117,6 @@ class AccountsManager:
                              response.text if response else None)
         return positions, accountTotals
 
-
-
     def fetch_balances(self, accountIdKey:str, institutionType:str):
         url = self.base_url + "/v1/accounts/" + accountIdKey + "/balance.json"
         params = {'instType': institutionType, 'realTimeNAV': 'true'}
@@ -167,6 +165,7 @@ class Account:
         self.parent = parent
         self.account_info = account
         self.accountIdKey = account.get('accountIdKey')
+
 
         self.positionsRaw, self.accounttotalsRaw = parent.fetch_portfolio(self.accountIdKey)
         self.positions = None
