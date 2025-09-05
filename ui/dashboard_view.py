@@ -4,7 +4,7 @@ from PIL.SpiderImagePlugin import isInt
 from PyQt6.QtCore import QDate, QObject, Qt, QThread
 from PyQt6.QtGui import QBrush, QColor, QAction, QActionGroup
 from PyQt6.QtWidgets import QWidget, QLineEdit, QPushButton, QApplication, QMainWindow, QLabel, QComboBox, QSplitter, \
-    QTableWidgetItem, QTableWidget
+    QTableWidgetItem, QTableWidget, QFrame
 from PyQt6 import uic
 import pandas as pd
 import plotly.express as px
@@ -49,7 +49,12 @@ class DashboardView(QMainWindow):
     BR_BR_ChartWidget: QWebEngineView  # Bottom Right, Bottom Right
     
     # Layout components
+    holdingsFrame: QFrame
+    newsFrame: QFrame
+    mainSplitter: QSplitter
+    leftSplitter: QSplitter
     rightSplitter: QSplitter
+
     holdingsTable: QTableWidget
     accountcomboBox: QComboBox
     actionSimple : QAction
@@ -79,9 +84,25 @@ class DashboardView(QMainWindow):
         uic.loadUi("ui_files/dashboard_view.ui", self)
         # self.frame.hide()
         # self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
-        total_height = self.rightSplitter.height()
-        half_height = total_height // 2
+
+
+        #DYNAMIC LAYOUT ADJUSTMENTS
+        right_total_height = self.rightSplitter.height()
+        half_height = right_total_height // 2
         self.rightSplitter.setSizes([half_height, half_height])
+
+        left_total_height = self.leftSplitter.height()
+        half_height = left_total_height // 2
+        self.leftSplitter.setSizes([half_height, half_height])
+
+        main_total_height = self.mainSplitter.height()
+        half_height = main_total_height // 2
+        self.mainSplitter.setSizes([half_height, half_height])
+        #DYNAMIC LAYOUT ADJUSTMENTS
+
+
+
+
 
         chart_components = {
             # Controls for top-right quad

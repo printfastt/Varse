@@ -383,7 +383,7 @@ QScrollBar::sub-line:horizontal {
         <property name="minimumSize">
          <size>
           <width>300</width>
-          <height>200</height>
+          <height>150</height>
          </size>
         </property>
         <property name="frameShape">
@@ -394,19 +394,19 @@ QScrollBar::sub-line:horizontal {
         </property>
         <layout class="QVBoxLayout" name="holdingsLayout">
          <property name="spacing">
-          <number>5</number>
+          <number>3</number>
          </property>
          <property name="leftMargin">
-          <number>8</number>
+          <number>5</number>
          </property>
          <property name="topMargin">
-          <number>8</number>
+          <number>5</number>
          </property>
          <property name="rightMargin">
-          <number>8</number>
+          <number>5</number>
          </property>
          <property name="bottomMargin">
-          <number>8</number>
+          <number>5</number>
          </property>
          <item>
           <widget class="QComboBox" name="accountcomboBox"/>
