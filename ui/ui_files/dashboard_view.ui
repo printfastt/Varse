@@ -1001,202 +1001,48 @@ QTabBar::tab:hover {
         </layout>
        </widget>
       </widget>
-      <widget class="QFrame" name="chartsFrame">
-       <property name="minimumSize">
-        <size>
-         <width>400</width>
-         <height>300</height>
-        </size>
+      <widget class="QSplitter" name="rightSplitter">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
        </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
+       <property name="childrenCollapsible">
+        <bool>true</bool>
        </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QVBoxLayout" name="chartsLayout">
-        <property name="spacing">
-         <number>5</number>
+       <widget class="QFrame" name="chartsFrame">
+        <property name="minimumSize">
+         <size>
+          <width>400</width>
+          <height>300</height>
+         </size>
         </property>
-        <property name="leftMargin">
-         <number>8</number>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
         </property>
-        <property name="topMargin">
-         <number>8</number>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
         </property>
-        <property name="rightMargin">
-         <number>8</number>
-        </property>
-        <property name="bottomMargin">
-         <number>8</number>
-        </property>
-        <item>
-         <widget class="QFrame" name="chartControlsFrame">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>60</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Sunken</enum>
-          </property>
-          <layout class="QHBoxLayout" name="chartControlsLayout">
-           <property name="spacing">
-            <number>10</number>
-           </property>
-           <property name="leftMargin">
-            <number>5</number>
-           </property>
-           <property name="topMargin">
-            <number>5</number>
-           </property>
-           <property name="rightMargin">
-            <number>5</number>
-           </property>
-           <property name="bottomMargin">
-            <number>5</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="symbolLabel">
-             <property name="font">
-              <font>
-               <pointsize>9</pointsize>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Symbols:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="symbol1Input">
-             <property name="maximumSize">
-              <size>
-               <width>80</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>SPY</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="symbol2Input">
-             <property name="maximumSize">
-              <size>
-               <width>80</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>QQQ</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="timeframeCombo">
-             <property name="maximumSize">
-              <size>
-               <width>80</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>timeframe</string>
-             </property>
-             <item>
-              <property name="text">
-               <string>1d</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>5d</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>1mo</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>3mo</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>1y</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>2y</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>5y</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>max</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_3">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QPushButton" name="refreshButton">
-             <property name="maximumSize">
-              <size>
-               <width>80</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>Refresh</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <widget class="QSplitter" name="chartsSplitter">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="childrenCollapsible">
-           <bool>false</bool>
-          </property>
-          <widget class="QFrame" name="spyChartFrame">
-           <property name="minimumSize">
+        <layout class="QVBoxLayout" name="chartsLayout">
+         <property name="spacing">
+          <number>5</number>
+         </property>
+         <property name="leftMargin">
+          <number>8</number>
+         </property>
+         <property name="topMargin">
+          <number>8</number>
+         </property>
+         <property name="rightMargin">
+          <number>8</number>
+         </property>
+         <property name="bottomMargin">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QFrame" name="chartControlsFrame">
+           <property name="maximumSize">
             <size>
-             <width>0</width>
-             <height>200</height>
+             <width>16777215</width>
+             <height>35</height>
             </size>
            </property>
            <property name="styleSheet">
@@ -1208,43 +1054,393 @@ QTabBar::tab:hover {
            <property name="frameShadow">
             <enum>QFrame::Sunken</enum>
            </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <layout class="QHBoxLayout" name="chartControlsLayout">
             <property name="spacing">
-             <number>0</number>
+             <number>5</number>
             </property>
             <property name="leftMargin">
-             <number>0</number>
+             <number>3</number>
             </property>
             <property name="topMargin">
-             <number>0</number>
+             <number>2</number>
             </property>
             <property name="rightMargin">
-             <number>0</number>
+             <number>3</number>
             </property>
             <property name="bottomMargin">
-             <number>0</number>
+             <number>2</number>
             </property>
             <item>
-             <widget class="QWebEngineView" name="spyChartWidget" native="true">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                <horstretch>1</horstretch>
-                <verstretch>1</verstretch>
-               </sizepolicy>
+             <widget class="QLineEdit" name="symbol1Input">
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>25</height>
+               </size>
               </property>
-              <property name="styleSheet">
-               <string notr="true">background-color: #1e1e1e;</string>
+              <property name="text">
+               <string>QQQ</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="symbol2Input">
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>SPY</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="symbol5Input">
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>NVDA</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="symbol6Input">
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>AMZN</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="timeframeCombo">
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>timeframe</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>1d</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>5d</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>1mo</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>3mo</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>1y</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>2y</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>5y</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>max</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="refreshButton">
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Refresh</string>
               </property>
              </widget>
             </item>
            </layout>
           </widget>
-          <widget class="QFrame" name="qqqChartFrame">
-           <property name="minimumSize">
+         </item>
+         <item>
+          <widget class="QSplitter" name="verticalChartsSplitter">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="childrenCollapsible">
+            <bool>false</bool>
+           </property>
+           <widget class="QSplitter" name="horizontalChartsSplitter_Top">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="childrenCollapsible">
+             <bool>false</bool>
+            </property>
+            <widget class="QFrame" name="TR_TL_ChartFrame">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>150</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Sunken</enum>
+             </property>
+             <layout class="QHBoxLayout" name="TR_TL_Layout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QWebEngineView" name="TR_TL_ChartWidget" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>1</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #1e1e1e;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QFrame" name="TR_TR_ChartFrame">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>150</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Sunken</enum>
+             </property>
+             <layout class="QHBoxLayout" name="TR_TR_Layout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QWebEngineView" name="TR_TR_ChartWidget" native="true">
+                <property name="styleSheet">
+                 <string notr="true">background-color: #1e1e1e;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+           <widget class="QSplitter" name="horizontalChartsSplitter_Bottom">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="childrenCollapsible">
+             <bool>false</bool>
+            </property>
+            <widget class="QFrame" name="TR_BL_ChartFrame">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>150</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Sunken</enum>
+             </property>
+             <layout class="QHBoxLayout" name="TR_BL_Layout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QWebEngineView" name="TR_BL_ChartWidget" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>1</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #1e1e1e;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QFrame" name="TR_BR_ChartFrame">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>150</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Sunken</enum>
+             </property>
+             <layout class="QHBoxLayout" name="TR_BR_Layout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QWebEngineView" name="TR_BR_ChartWidget" native="true">
+                <property name="styleSheet">
+                 <string notr="true">background-color: #1e1e1e;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QFrame" name="chartsFrame2">
+        <property name="minimumSize">
+         <size>
+          <width>400</width>
+          <height>300</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="chartsLayout2">
+         <property name="spacing">
+          <number>5</number>
+         </property>
+         <property name="leftMargin">
+          <number>8</number>
+         </property>
+         <property name="topMargin">
+          <number>8</number>
+         </property>
+         <property name="rightMargin">
+          <number>8</number>
+         </property>
+         <property name="bottomMargin">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QFrame" name="chartControlsFrame2">
+           <property name="maximumSize">
             <size>
-             <width>0</width>
-             <height>200</height>
+             <width>16777215</width>
+             <height>35</height>
             </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
            </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
@@ -1252,34 +1448,354 @@ QTabBar::tab:hover {
            <property name="frameShadow">
             <enum>QFrame::Sunken</enum>
            </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <layout class="QHBoxLayout" name="chartControlsLayout2">
             <property name="spacing">
-             <number>0</number>
+             <number>5</number>
             </property>
             <property name="leftMargin">
-             <number>0</number>
+             <number>3</number>
             </property>
             <property name="topMargin">
-             <number>0</number>
+             <number>2</number>
             </property>
             <property name="rightMargin">
-             <number>0</number>
+             <number>3</number>
             </property>
             <property name="bottomMargin">
-             <number>0</number>
+             <number>2</number>
             </property>
             <item>
-             <widget class="QWebEngineView" name="qqqChartWidget" native="true">
-              <property name="styleSheet">
-               <string notr="true">background-color: #1e1e1e;</string>
+             <widget class="QLineEdit" name="symbol3Input">
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>HYG</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="symbol4Input">
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>TLT</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="symbol7Input">
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>IBIT</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="symbol8Input">
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>GLD</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="timeframeCombo2">
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>timeframe</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>1d</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>5d</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>1mo</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>3mo</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>1y</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>2y</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>5y</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>max</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="refreshButton2">
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Refresh</string>
               </property>
              </widget>
             </item>
            </layout>
           </widget>
-         </widget>
-        </item>
-       </layout>
+         </item>
+         <item>
+          <widget class="QSplitter" name="verticalChartsSplitter2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="childrenCollapsible">
+            <bool>false</bool>
+           </property>
+           <widget class="QSplitter" name="horizontalChartsSplitter2_Top">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="childrenCollapsible">
+             <bool>false</bool>
+            </property>
+            <widget class="QFrame" name="BR_TL_ChartFrame">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>150</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Sunken</enum>
+             </property>
+             <layout class="QHBoxLayout" name="BR_TL_Layout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QWebEngineView" name="BR_TL_ChartWidget" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>1</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #1e1e1e;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QFrame" name="BR_TR_ChartFrame">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>150</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Sunken</enum>
+             </property>
+             <layout class="QHBoxLayout" name="BR_TR_Layout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QWebEngineView" name="BR_TR_ChartWidget" native="true">
+                <property name="styleSheet">
+                 <string notr="true">background-color: #1e1e1e;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+           <widget class="QSplitter" name="horizontalChartsSplitter2_Bottom">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="childrenCollapsible">
+             <bool>false</bool>
+            </property>
+            <widget class="QFrame" name="BR_BL_ChartFrame">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>150</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Sunken</enum>
+             </property>
+             <layout class="QHBoxLayout" name="BR_BL_Layout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QWebEngineView" name="BR_BL_ChartWidget" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>1</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #1e1e1e;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QFrame" name="BR_BR_ChartFrame">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>150</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Sunken</enum>
+             </property>
+             <layout class="QHBoxLayout" name="BR_BR_Layout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QWebEngineView" name="BR_BR_ChartWidget" native="true">
+                <property name="styleSheet">
+                 <string notr="true">background-color: #1e1e1e;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
      </widget>
     </item>
