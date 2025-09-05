@@ -453,63 +453,75 @@ class EtradeView(QObject):
 
 #NOTE NEED TO FINISH FORMATTING
     def populate_portfolio_table(self):
+        try:
+            if (self.current_account_index is None or 
+                self.current_account_index >= len(self.accounts_manager.accounts_list)):
+                return
 
-        def _portfolio_view_select_adjust(df):
-            selected_action = self.viewModeGroup.checkedAction()
-            if selected_action:
-                if selected_action.objectName() == 'actionSimple' or selected_action.objectName() == 'actionDynamic':
-                    df = df[['symbolDescription', 'lastTrade', 'change', 'quantity', 'daysGain', 'daysGainPct', 'totalGain', 'totalGainPct', 'pctOfPortfolio']]
-                elif selected_action.objectName() == 'actionFull':
-                    pass
-                elif selected_action.objectName() == 'actionCustom':
-                    pass
+            account = self.accounts_manager.accounts_list[self.current_account_index]
+            if not hasattr(account, 'positions') or account.positions.empty:
+                self.holdingsTable.clear()
+                self.holdingsTable.setRowCount(0)
+                self.holdingsTable.setColumnCount(0)
+                return
+
+            self.holdingsTable.clear()
+            self.holdingsTable.setRowCount(0)
+            self.holdingsTable.setColumnCount(0)
+
+            positions_original = account.positions.copy()
+            
+            def _portfolio_view_select_adjust(df):
+                selected_action = self.viewModeGroup.checkedAction()
+                if selected_action:
+                    if selected_action.objectName() == 'actionSimple' or selected_action.objectName() == 'actionDynamic':
+                        required_cols = ['symbolDescription', 'lastTrade', 'change', 'quantity', 'daysGain', 'daysGainPct', 'totalGain', 'totalGainPct', 'pctOfPortfolio']
+                        available_cols = [col for col in required_cols if col in df.columns]
+                        df = df[available_cols]
+                    elif selected_action.objectName() == 'actionFull':
+                        pass
+                    elif selected_action.objectName() == 'actionCustom':
+                        pass
                 return df
-            else:
-                return df
 
-        def _format_columns_with_suffix(data, suffix="%"):
-            if isinstance(data, pd.Series):
-                return data.apply(lambda x: f"{x:.2f}{suffix}" if pd.notnull(x) else "")
-            elif isinstance(data, pd.DataFrame):
-                return data.applymap(lambda x: f"{x:.2f}{suffix}" if pd.notnull(x) else "")
-            else:
-                raise TypeError("Input must be a pandas Series or DataFrame.")
+            positions_filtered = _portfolio_view_select_adjust(positions_original)
+            
+            def _format_data(df):
+                df_copy = df.copy()
+                selected_action = self.viewModeGroup.checkedAction()
+                
+                if selected_action and selected_action.objectName() == 'actionDynamic':
+                    if 'lastTrade' in df_copy.columns and 'change' in df_copy.columns:
+                        df_copy['lastTrade(d)'] = df_copy.apply(
+                            lambda row: f"{row['lastTrade']:.2f} ({row['change']:+.2f})", axis=1
+                        )
+                        df_copy = df_copy.drop(columns=['lastTrade', 'change'], errors='ignore')
 
-        def _formatter():
-            positions_copy = positions.copy()
-            if self.viewModeGroup.checkedAction().objectName() == 'actionDynamic':
-                positions_copy['lastTrade(d)'] = positions_copy.apply(
-                    lambda row: f"{row['lastTrade']:.2f} ({row['change']:+.2f})", axis=1
-                )
-                positions_copy = positions_copy.drop(columns=['lastTrade', 'change'])
+                    if 'daysGainPct' in df_copy.columns and 'daysGain' in df_copy.columns:
+                        df_copy['dayChange'] = df_copy.apply(
+                            lambda row: f"{row['daysGainPct']:.2f}% ({row['daysGain']:+.2f})", axis=1
+                        )
+                        df_copy = df_copy.drop(columns=['daysGainPct', 'daysGain'], errors='ignore')
 
-                positions_copy['dayChange'] = positions_copy.apply(
-                    lambda row: f"{row['daysGainPct']:.2f}% ({row['daysGain']:+.2f})", axis=1
-                )
-                positions_copy = positions_copy.drop(columns=['daysGainPct', 'daysGain'])
+                    cols = df_copy.columns.tolist()
+                    if 'lastTrade(d)' in cols:
+                        cols.insert(1, cols.pop(cols.index('lastTrade(d)')))
+                    if 'dayChange' in cols:
+                        cols.insert(2, cols.pop(cols.index('dayChange')))
+                    df_copy = df_copy[cols]
 
-                cols = positions_copy.columns.tolist()
-                cols.insert(1, cols.pop(cols.index('lastTrade(d)')))
-                cols.insert(2, cols.pop(cols.index('dayChange')))
-                positions_copy = positions_copy[cols]
+                return df_copy
 
-                # positions_copy['totalGainPct'] = _format_columns_with_suffix(positions_copy['totalGainPct'], '%')
-                # positions_copy['pctOfPortfolio'] = _format_columns_with_suffix(positions_copy['totalGainPct'], '%')
+            final_data = _format_data(positions_filtered).reset_index(drop=True)
 
-            return positions_copy
-
-        def _plot():
-            positions_copy = _formatter()
-            def _check_if_colored(item, j, value):
-                col_name = positions_copy.columns[j]
+            def _check_if_colored(item, col_name, value):
                 if 'Pct' in col_name or 'Gain' in col_name or 'change' in col_name:
                     if isinstance(value, (int, float, complex)):
                         if value > 0:
                             item.setForeground(QBrush(QColor('green')))
                         elif value < 0:
                             item.setForeground(QBrush(QColor('red')))
-
-                elif col_name == 'lastTrade(d)' or col_name == 'dayChange':
+                elif col_name in ['lastTrade(d)', 'dayChange']:
                     match = re.search(r'\(([-+]?[\d.]+)\)', str(value))
                     if match:
                         try:
@@ -521,25 +533,25 @@ class EtradeView(QObject):
                         except ValueError:
                             pass
 
-
-            positions_copy = positions_copy.reset_index(drop=True)
-            self.holdingsTable.setRowCount(len(positions_copy))
-            self.holdingsTable.setColumnCount(len(positions_copy.columns))
-            self.holdingsTable.setHorizontalHeaderLabels(positions_copy.columns)
-            for i in range(len(positions_copy)):
-                for j in range(len(positions_copy.columns)):
-                    value = positions_copy.iloc[i,j]
+            self.holdingsTable.setRowCount(len(final_data))
+            self.holdingsTable.setColumnCount(len(final_data.columns))
+            self.holdingsTable.setHorizontalHeaderLabels(final_data.columns.tolist())
+            
+            for i in range(len(final_data)):
+                for j in range(len(final_data.columns)):
+                    value = final_data.iloc[i, j]
                     item = QTableWidgetItem(str(value))
-
-                    _check_if_colored(item, j, value)
-
+                    col_name = final_data.columns[j]
+                    _check_if_colored(item, col_name, value)
                     self.holdingsTable.setItem(i, j, item)
 
             self.holdingsTable.resizeColumnsToContents()
 
-        positions_full = self.accounts_manager.accounts_list[self.current_account_index].positions.copy()
-        positions = _portfolio_view_select_adjust(positions_full)
-        _plot()
+        except Exception as e:
+            print(f"Error populating portfolio table: {e}")
+            self.holdingsTable.clear()
+            self.holdingsTable.setRowCount(0)
+            self.holdingsTable.setColumnCount(0)
 
     def populate_accounttables_footer(self):
 
