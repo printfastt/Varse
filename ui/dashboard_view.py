@@ -77,7 +77,7 @@ class DashboardView(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi("ui_files/dashboard_view.ui", self)
-        self.frame.hide()
+        # self.frame.hide()
         # self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
         total_height = self.rightSplitter.height()
         half_height = total_height // 2
@@ -143,7 +143,7 @@ class DashboardView(QMainWindow):
         self.date = str(QDate.currentDate().toPyDate())
 
         #Configure
-        self.dateLabel.setText(QDate.currentDate().toString())
+        # self.dateLabel.setText(QDate.currentDate().toString())
 
 class ChartView:
     def __init__(self, components):
@@ -512,7 +512,7 @@ class EtradeView(QObject):
     def populate_accounttables_footer(self):
 
         def _format_gain_loss_label(label, value):
-            base_style = "background-color: transparent; border: none;"
+            base_style = "background-color: transparent; border: none; font-size: 14px;"
             if value > 0:
                 label.setStyleSheet(base_style + "color: green;")
             elif value < 0:
