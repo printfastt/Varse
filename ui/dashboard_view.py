@@ -4,7 +4,7 @@ from PIL.SpiderImagePlugin import isInt
 from PyQt6.QtCore import QDate, QObject, Qt, QThread
 from PyQt6.QtGui import QBrush, QColor, QAction, QActionGroup
 from PyQt6.QtWidgets import QWidget, QLineEdit, QPushButton, QApplication, QMainWindow, QLabel, QComboBox, QSplitter, \
-    QTableWidgetItem, QTableWidget, QFrame
+    QTableWidgetItem, QTableWidget, QFrame, QMenu
 from PyQt6 import uic
 import pandas as pd
 import plotly.express as px
@@ -56,7 +56,6 @@ class DashboardView(QMainWindow):
     rightSplitter: QSplitter
 
     holdingsTable: QTableWidget
-    accountcomboBox: QComboBox
     actionSimple : QAction
     actionDynamic: QAction
     actionFull: QAction
@@ -134,7 +133,6 @@ class DashboardView(QMainWindow):
             'BR_BR_ChartWidget': self.BR_BR_ChartWidget
         }
         etrade_components = {
-            'accountcomboBox': self.accountcomboBox,
             'holdingsTable': self.holdingsTable,
             'actionSimple': self.actionSimple,
             'actionDynamic': self.actionDynamic,
@@ -160,7 +158,7 @@ class DashboardView(QMainWindow):
         }
 
         self.ChartView = ChartView(chart_components)
-        self.EtradeView = EtradeView(etrade_components)
+        self.EtradeView = EtradeView(etrade_components, self)
         self.date = str(QDate.currentDate().toPyDate())
 
         #Configure
@@ -344,7 +342,9 @@ class ChartView:
 
 class EtradeView(QObject):
     viewModeGroup: QActionGroup
-    def __init__(self, components):
+    accountSelectMenu: QMenu
+    accountActionGroup: QActionGroup
+    def __init__(self, components, dashboard):
         super().__init__()
         #upper accounttotal footer
         self.todaysGainLossLabel = components['todaysGainLossLabel']
@@ -362,7 +362,7 @@ class EtradeView(QObject):
         self.marginableSecuritiesPPLabel = components['marginableSecuritiesPPLabel']
         self.marginLabel = components['marginLabel']
 
-        self.accountcomboBox = components['accountcomboBox']
+        self.dashboard = dashboard
         self.holdingsTable = components['holdingsTable']
         self.actionSimple = components['actionSimple']
         self.actionDynamic = components['actionDynamic']
@@ -372,13 +372,14 @@ class EtradeView(QObject):
 
         #holdingsTable settings
         self.holdingsTable.horizontalHeader().setStretchLastSection(True)
+        self.holdingsTable.verticalHeader().setVisible(False)
 
         self.pollingrate = 60.0
         self.session, self.base_url = oauth()
         self.accounts_manager = AccountsManager(self.session, self.base_url)
         self.current_account_index = None
         self._threads, self._workers = [], []
-        self._init_accountscomboBox()
+        self._init_accounts_menu()
         self._init_action_group()
         self.populate_portfolio_table()
         self.populate_accounttables_footer()
@@ -413,13 +414,23 @@ class EtradeView(QObject):
             thread.quit()
         self._threads.clear(); self._workers.clear()
 
-    def _init_accountscomboBox(self):
+    def _init_accounts_menu(self):
+        self.accountSelectMenu = self.dashboard.menuSelectAccount
+        self.accountActionGroup = QActionGroup(self)
+        self.accountActionGroup.setExclusive(True)
+        
         for account_index, account in enumerate(self.accounts_manager.accounts_list):
-            self.accountcomboBox.addItem(account.account_info.get('accountDesc') + " - " + str(account.account_info.get('accountId')), account_index)
+            action_text = account.account_info.get('accountDesc') + " - " + str(account.account_info.get('accountId'))
+            action = QAction(action_text, self)
+            action.setCheckable(True)
+            action.setData(account_index)
+            self.accountActionGroup.addAction(action)
+            self.accountSelectMenu.addAction(action)
+        
         start_index = self.accounts_manager.num_of_accounts - 1
-        self.accountcomboBox.setCurrentIndex(start_index)
         self.current_account_index = start_index
-        self.accountcomboBox.currentIndexChanged.connect(self._on_account_select_changed)
+        self.accountActionGroup.actions()[start_index].setChecked(True)
+        self.accountActionGroup.triggered.connect(self._on_account_select_changed)
 
     def _init_action_group(self):
         self.viewModeGroup.setExclusive(True)
@@ -430,10 +441,9 @@ class EtradeView(QObject):
         self.viewModeGroup.triggered.connect(self._on_action_group_viewmode_change)
         self.actionDynamic.setChecked(True)
 
-    def _on_account_select_changed(self, index):
-        # self.accountcomboBox.setCurrentIndex(index)
+    def _on_account_select_changed(self, action):
         self.stopPolling()
-        self.current_account_index = index
+        self.current_account_index = action.data()
         self.populate_portfolio_table()
         self.populate_accounttables_footer()
         # self.startPolling()
@@ -512,6 +522,7 @@ class EtradeView(QObject):
                             pass
 
 
+            positions_copy = positions_copy.reset_index(drop=True)
             self.holdingsTable.setRowCount(len(positions_copy))
             self.holdingsTable.setColumnCount(len(positions_copy.columns))
             self.holdingsTable.setHorizontalHeaderLabels(positions_copy.columns)
@@ -541,14 +552,20 @@ class EtradeView(QObject):
             else:
                 label.setStyleSheet(base_style)
 
+        def _safe_get_value(df, key, default=0.0):
+            try:
+                return df.loc[key]
+            except (KeyError, IndexError):
+                return default
+
         accounttotals = self.accounts_manager.accounts_list[self.current_account_index].accounttotals.copy()
         balances = self.accounts_manager.accounts_list[self.current_account_index].balances.copy()
 
         # Set text and apply color formatting for gain/loss labels
-        todays_gain_loss = accounttotals.loc['todaysGainLoss']
-        todays_gain_loss_pct = accounttotals.loc['todaysGainLossPct']
-        total_gain_loss = accounttotals.loc['totalGainLoss']
-        total_gain_loss_pct = accounttotals.loc['totalGainLossPct']
+        todays_gain_loss = _safe_get_value(accounttotals, 'todaysGainLoss')
+        todays_gain_loss_pct = _safe_get_value(accounttotals, 'todaysGainLossPct')
+        total_gain_loss = _safe_get_value(accounttotals, 'totalGainLoss')
+        total_gain_loss_pct = _safe_get_value(accounttotals, 'totalGainLossPct')
 
         self.todaysGainLossLabel.setText(f"${todays_gain_loss:.2f}")
         _format_gain_loss_label(self.todaysGainLossLabel, todays_gain_loss)
@@ -563,14 +580,17 @@ class EtradeView(QObject):
         _format_gain_loss_label(self.totalGainLossPctLabel, total_gain_loss_pct)
 
         # These labels remain unformatted
-        self.totalMarketValueLabel.setText(f"${accounttotals.loc['totalMarketValue']:.2f}")
-        self.cashBalanceLabel.setText(f"${accounttotals.loc['cashBalance']:.2f}")
+        total_market_value = _safe_get_value(accounttotals, 'totalMarketValue')
+        cash_balance = _safe_get_value(accounttotals, 'cashBalance')
+        
+        self.totalMarketValueLabel.setText(f"${total_market_value:.2f}")
+        self.cashBalanceLabel.setText(f"${cash_balance:.2f}")
 
-        self.nonMarginableSecuritiesPPLabel.setText(f"${balances.loc['netCash']:.2f}")
-        self.netAccountValueLabel.setText(f"${accounttotals.loc['totalMarketValue']+accounttotals.loc['cashBalance']:.2f}")
-        self.marginableSecuritiesPPLabel.setText(f"${balances.loc['marginBuyingPower']:.2f}")
-        self.marginLabel.setText(f"${balances.loc['marginBalance']:.2f}") #MAY NEED TO CHANGE
-        self.cashInvestableLabel.setText(f"${balances.loc['cashAvailableForInvestment']:.2f}")
+        self.nonMarginableSecuritiesPPLabel.setText(f"${_safe_get_value(balances, 'netCash'):.2f}")
+        self.netAccountValueLabel.setText(f"${total_market_value + cash_balance:.2f}")
+        self.marginableSecuritiesPPLabel.setText(f"${_safe_get_value(balances, 'marginBuyingPower'):.2f}")
+        self.marginLabel.setText(f"${_safe_get_value(balances, 'marginBalance'):.2f}")
+        self.cashInvestableLabel.setText(f"${_safe_get_value(balances, 'cashAvailableForInvestment'):.2f}")
         #need to add totalAssetsLabel.
 
 
@@ -579,5 +599,6 @@ if __name__ == "__main__":
     window = DashboardView()
     window.show()
     sys.exit(app.exec())
+
 
 

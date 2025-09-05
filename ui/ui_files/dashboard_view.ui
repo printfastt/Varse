@@ -409,9 +409,6 @@ QScrollBar::sub-line:horizontal {
           <number>5</number>
          </property>
          <item>
-          <widget class="QComboBox" name="accountcomboBox"/>
-         </item>
-         <item>
           <widget class="QTableWidget" name="holdingsTable">
            <property name="font">
             <font>
@@ -1801,6 +1798,13 @@ QTabBar::tab:hover {
      <property name="title">
       <string>Account Table</string>
      </property>
+     <widget class="QMenu" name="menuSelectAccount">
+      <property name="title">
+       <string>Select Account</string>
+      </property>
+     </widget>
+     <addaction name="menuSelectAccount"/>
+     <addaction name="separator"/>
      <addaction name="actionRefresh_2"/>
      <addaction name="separator"/>
      <addaction name="actionSimple"/>
