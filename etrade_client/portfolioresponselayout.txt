@@ -1,0 +1,103 @@
+🔵 Root:
+    PortfolioResponse (object)
+
+🔵 PortfolioResponse:
+    AccountPortfolio (list of account objects)
+
+🔵 Each item in AccountPortfolio:
+    accountId: string
+
+    totalPages: integer
+
+    Position: list of position objects
+
+🔵 Each item in Position:
+    Product: object
+
+    expiryDay: integer
+
+    expiryMonth: integer
+
+    expiryYear: integer
+
+    callPut: string (optional; appears for options)
+
+    strikePrice: float
+
+    symbol: string
+
+    securityType: string
+
+    securitySubType: string (optional; e.g., ETF)
+
+    productId: object
+
+    symbol: string
+
+    typeCode: string
+
+    Quick: object
+
+    change: float
+
+    changePct: float
+
+    lastTrade: float
+
+    lastTradeTime: integer (Unix timestamp)
+
+    quoteStatus: string
+
+    volume: integer
+
+    Position-level fields:
+
+    adjPrevClose: float
+
+    commissions: float
+
+    costPerShare: float
+
+    dateAcquired: integer (timestamp in ms)
+
+    daysGain: float
+
+    daysGainPct: float
+
+    lotsDetails: string (URL)
+
+    marketValue: float
+
+    osiKey: string (options only; optional)
+
+    otherFees: float
+
+    pctOfPortfolio: float
+
+    positionId: integer
+
+    positionIndicator: string
+
+    positionType: string
+
+    pricePaid: float
+
+    quantity: float
+
+    quoteDetails: string (URL)
+
+    symbolDescription: string
+
+    todayCommissions: float
+
+    todayFees: float
+
+    todayPricePaid: float
+
+    todayQuantity: float
+
+    totalCost: float
+
+    totalGain: float
+
+    totalGainPct: float

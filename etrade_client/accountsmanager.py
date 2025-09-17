@@ -165,6 +165,7 @@ class Account:
         self.parent = parent
         self.account_info = account
         self.accountIdKey = account.get('accountIdKey')
+        self.institutionType = account.get('institutionType')
 
 
         self.positionsRaw, self.accounttotalsRaw = parent.fetch_portfolio(self.accountIdKey)

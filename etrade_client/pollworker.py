@@ -35,3 +35,4 @@ class PollWorker(QObject):
             base = self.interval
             time.sleep(max(0.05, base + random.uniform(-base*0.3, base*0.3)))
         self.finished.emit()
+

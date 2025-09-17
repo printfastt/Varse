@@ -306,7 +306,7 @@ class ChartView:
                 </style>
             </head>
             <body>
-                {fig.to_html(include_plotlyjs='cdn', full_html=False)}
+                {fig.to_html(include_plotlyjs='cdn', full_html=True)}
             </body>
             </html>
             """
@@ -409,7 +409,7 @@ class EtradeView(QObject):
         self.holdingsTable.horizontalHeader().setStretchLastSection(True)
         self.holdingsTable.verticalHeader().setVisible(False)
 
-        self.pollingrate = 60.0
+        self.pollingrate = 10
         self.session, self.base_url = oauth()
         self.accounts_manager = AccountsManager(self.session, self.base_url)
         self.current_account_index = None
@@ -418,7 +418,7 @@ class EtradeView(QObject):
         self._init_action_group()
         self.populate_portfolio_table()
         self.populate_accounttables_footer()
-        # self.startPolling()
+        self.startPolling()
 
     def startPolling(self):
         self._start_one(
@@ -481,7 +481,7 @@ class EtradeView(QObject):
         self.current_account_index = action.data()
         self.populate_portfolio_table()
         self.populate_accounttables_footer()
-        # self.startPolling()
+        self.startPolling()
 
     def _on_action_group_viewmode_change(self):
         self.populate_portfolio_table()
