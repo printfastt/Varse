@@ -82,7 +82,7 @@ class EconomicRow(QFrame):
         # Name
         name_label = QLabel(self.name)
         name_label.setFont(QFont("Consolas", 9))
-        name_label.setFixedWidth(70)
+        name_label.setFixedWidth(100)
         name_label.setAlignment(Qt.AlignmentFlag.AlignLeft)
         
         # Current value
@@ -151,35 +151,25 @@ class EconomicDataView(QObject):
         self.dashboard = dashboard
         self.economicDataContainer = components['economicDataContainer']
         self.economicDataFooter = components['economicDataFooter']
-        
-        # set container background to match dashboard
-        self.economicDataContainer.setStyleSheet("""
-            QWidget {
-                background-color: #1e1e1e;
-            }
-        """)
-        
-        self.fred = None
-        self.indicators = {
-            'Federal Funds Rate': 'FEDFUNDS',
-            '10Y Treasury Bonds': 'GS10',
-            'VIX': 'VIXCLS',
-            'Unemployment': 'UNRATE',
-            'CPI': 'CPIAUCSL',
-            'Sentiment': 'UMCSENT',
-            '2Y Treasury Bonds': 'GS2',
-            'Oil WTI': 'DCOILWTICO',
-            'DXY': 'DTWEXBGS'
-        }
-        
-        # Initialize FRED API
+        # # set container background to match dashboard
+        # self.economicDataContainer.setStyleSheet("""
+        #     QWidget {
+        #         background-color: #1e1e1e;
+        #     }
+        # """)
+
         try:
-            from fredapi import Fred
-            from FRED.config import FRED_API_KEY
-            self.fred = Fred(api_key=FRED_API_KEY)
+            from FRED.FREDDataManager import FREDDataManager
+            self.FREDManager = FREDDataManager()
         except ImportError:
-            print("FRED API not available - using mock data")
-        
+            print("FRED Data Manager not available")
+            self.FREDManager = None
+            FREDDataManager = None
+        except Exception as e:
+            print(f"Error: {e}")
+            self.FREDManager = None
+            FREDDataManager = None
+
         self.rows = []
         self.populate_economic_data()
         
@@ -190,20 +180,10 @@ class EconomicDataView(QObject):
             item = layout.itemAt(i)
             if item.widget() and isinstance(item.widget(), EconomicRow):
                 item.widget().setParent(None)
-        
-        # Mock data for now (replace with FRED data when available)
-        mock_data = {
-            'Fed Funds': {'current': 5.25, 'change': 0.25, 'date': '12/15/2024', 'values': [4.50, 4.75, 5.00, 5.25, 5.25, 5.50], 'last_3': [4.75, 5.00, 5.25]},
-            '10Y Treas': {'current': 4.15, 'change': -0.08, 'date': '12/16/2024', 'values': [4.31, 4.23, 4.28, 4.15, 4.12, 4.18], 'last_3': [4.23, 4.28, 4.15]},
-            'VIX': {'current': 18.5, 'change': 2.3, 'date': '12/16/2024', 'values': [15.2, 16.8, 16.2, 18.5, 19.1, 17.8], 'last_3': [16.8, 16.2, 18.5]},
-            'Unemploy': {'current': 3.7, 'change': 0.1, 'date': '11/30/2024', 'values': [3.5, 3.6, 3.6, 3.7, 3.7, 3.8], 'last_3': [3.6, 3.6, 3.7]},
-            'CPI': {'current': 3.2, 'change': -0.1, 'date': '12/10/2024', 'values': [3.7, 3.5, 3.3, 3.2, 3.1, 3.0], 'last_3': [3.5, 3.3, 3.2]},
-            'Sentiment': {'current': 71.8, 'change': 4.2, 'date': '12/13/2024', 'values': [63.9, 68.5, 67.6, 71.8, 73.2, 69.5], 'last_3': [68.5, 67.6, 71.8]}
-        }
-        
+
         # Create rows
         self.rows = []
-        for name, data in mock_data.items():
+        for name, data in self.FREDManager.EconomicViewRowData.items():
             row = EconomicRow(name, data)
             self.rows.append(row)
             # Insert before the spacer
@@ -631,12 +611,12 @@ class EtradeView(QObject):
             lambda: self.accounts_manager.fetch_balances(
             self.accounts_manager.accounts_list[self.current_account_index].accountIdKey, 
             self.accounts_manager.accounts_list[self.current_account_index].institutionType
-            ), self.populate_accounttables_footer, self.pollingrate)
+            ), lambda data: self.populate_accounttables_footer(data), self.pollingrate)
         
         self._start_one(
             lambda: self.accounts_manager.fetch_portfolio(
             self.accounts_manager.accounts_list[self.current_account_index].accountIdKey
-            ), self.populate_portfolio_table, self.pollingrate)
+            ), lambda data: self.populate_portfolio_table(data), self.pollingrate)
 
 
     def _start_one(self,fetch_fn,slot,interval):
@@ -693,14 +673,24 @@ class EtradeView(QObject):
         self.populate_portfolio_table()
 
 #NOTE NEED TO FINISH FORMATTING
-    def populate_portfolio_table(self):
+    def populate_portfolio_table(self, fresh_data=None):
         try:
             if (self.current_account_index is None or 
                 self.current_account_index >= len(self.accounts_manager.accounts_list)):
                 return
 
             account = self.accounts_manager.accounts_list[self.current_account_index]
-            if not hasattr(account, 'positions') or account.positions.empty:
+            
+            # Use fresh data from polling worker if available, otherwise fall back to account data
+            if fresh_data is not None:
+                positions_raw, accounttotals_raw = fresh_data
+                # Update the account object with fresh data
+                account.positionsRaw = positions_raw
+                account.accounttotalsRaw = accounttotals_raw
+                account._build_positions_df()
+                account._build_accounttotals_df()
+            
+            if not hasattr(account, 'positions') or account.positions is None or account.positions.empty:
                 self.holdingsTable.clear()
                 self.holdingsTable.setRowCount(0)
                 self.holdingsTable.setColumnCount(0)
@@ -794,7 +784,7 @@ class EtradeView(QObject):
             self.holdingsTable.setRowCount(0)
             self.holdingsTable.setColumnCount(0)
 
-    def populate_accounttables_footer(self):
+    def populate_accounttables_footer(self, fresh_data=None):
 
         def _format_gain_loss_label(label, value):
             base_style = "background-color: transparent; border: none; font-size: 14px;"
@@ -811,8 +801,16 @@ class EtradeView(QObject):
             except (KeyError, IndexError):
                 return default
 
-        accounttotals = self.accounts_manager.accounts_list[self.current_account_index].accounttotals.copy()
-        balances = self.accounts_manager.accounts_list[self.current_account_index].balances.copy()
+        account = self.accounts_manager.accounts_list[self.current_account_index]
+        
+        # Use fresh data from polling worker if available, otherwise fall back to account data
+        if fresh_data is not None:
+            # Update the account object with fresh balance data
+            account.balancesRaw = fresh_data
+            account._build_balances_df()
+
+        accounttotals = account.accounttotals.copy() if account.accounttotals is not None else pd.Series()
+        balances = account.balances.copy() if account.balances is not None else pd.Series()
 
         # Set text and apply color formatting for gain/loss labels
         todays_gain_loss = _safe_get_value(accounttotals, 'todaysGainLoss')
