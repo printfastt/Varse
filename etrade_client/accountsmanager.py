@@ -279,11 +279,9 @@ class Account:
         if self.accounttotalsRaw:
             if isinstance(self.accounttotalsRaw, dict):
                 df = pd.Series(self.accounttotalsRaw)
-                print("hello")
             else:
                 raise TypeError(f"Unexpected type for accounttotalsRaw: {type(self.accounttotalsRaw)}")
             self.accounttotals = df
-            print("hello")
         else:
             self.accounttotals = None
             print(f"Account {self.accountIdKey} has no positions")
@@ -311,7 +309,6 @@ class Account:
                 logger.error(f"Unexpected type for balancesRaw: {type(self.balancesRaw)}")
                 df = None
             self.balances = df
-            print("hello")
         else:
             self.balances = None
             print(f"Account {self.accountIdKey} has no balance data")

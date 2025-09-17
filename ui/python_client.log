@@ -88641,3 +88641,64 @@
 09/16/2025 11:05:16 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
 09/16/2025 11:05:16 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
 09/16/2025 11:05:16 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
+09/16/2025 11:05:22 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:05:25 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/16/2025 11:05:25 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:05:25 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
+09/16/2025 11:05:34 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:05:36 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/16/2025 11:05:36 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:05:36 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
+09/16/2025 11:05:46 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:05:48 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/16/2025 11:05:48 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:05:48 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
+09/16/2025 11:05:56 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/16/2025 11:05:56 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:05:56 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
+09/16/2025 11:05:59 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:06:07 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/16/2025 11:06:07 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:06:07 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
+09/16/2025 11:06:07 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:06:16 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:06:19 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/16/2025 11:06:19 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:06:19 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
+09/16/2025 11:06:24 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:06:27 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/16/2025 11:06:27 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:06:27 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
+09/16/2025 11:06:35 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:06:38 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/16/2025 11:06:38 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:06:38 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
+09/16/2025 11:06:43 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:06:51 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/16/2025 11:06:51 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:06:51 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
+09/16/2025 11:06:53 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:07:02 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/16/2025 11:07:02 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:07:02 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
+09/16/2025 11:07:03 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:07:11 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/16/2025 11:07:11 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:07:11 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
+09/16/2025 11:07:13 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:07:20 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:07:22 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/16/2025 11:07:22 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:07:22 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
+09/16/2025 11:07:29 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:07:29 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/16/2025 11:07:29 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:07:29 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
+09/16/2025 11:07:41 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:07:41 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/16/2025 11:07:41 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:07:41 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
+09/16/2025 11:07:50 PM Request Header (_fetch_portfolio): {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:07:52 PM Request url: https://api.etrade.com/v1/accounts/z1_J3n3oS1bnyFXpOM1S9w/balance.json
+09/16/2025 11:07:52 PM Request headers: {'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'consumerkey': 'dea9340b9d7a836d85ac83d70bae77f2', 'Cookie': 'JSESSIONID=76B042F51BF0E5C180A086101CF42238.tomcat2'}
+09/16/2025 11:07:52 PM Response Body: {"Error":{"message":"oauth_problem=token_expired"}}
