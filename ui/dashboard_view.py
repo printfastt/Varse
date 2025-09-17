@@ -766,8 +766,10 @@ class EtradeView(QObject):
 
             self.holdingsTable.setRowCount(len(final_data))
             self.holdingsTable.setColumnCount(len(final_data.columns))
-            self.holdingsTable.setHorizontalHeaderLabels(final_data.columns.tolist())
-            
+            self.holdingsTable.setHorizontalHeaderLabels(final_data.columns.tolist())            
+            #set font for table
+            self.holdingsTable.setFont(QFont("Consolas", 14))
+
             for i in range(len(final_data)):
                 for j in range(len(final_data.columns)):
                     value = final_data.iloc[i, j]
@@ -817,16 +819,20 @@ class EtradeView(QObject):
         todays_gain_loss_pct = _safe_get_value(accounttotals, 'todaysGainLossPct')
         total_gain_loss = _safe_get_value(accounttotals, 'totalGainLoss')
         total_gain_loss_pct = _safe_get_value(accounttotals, 'totalGainLossPct')
-
+        
+        self.todaysGainLossLabel.setFont(QFont("Consolas", 10, QFont.Weight.Bold))
         self.todaysGainLossLabel.setText(f"${todays_gain_loss:.2f}")
         _format_gain_loss_label(self.todaysGainLossLabel, todays_gain_loss)
         
+        self.todaysGainLossPctLabel.setFont(QFont("Consolas", 10, QFont.Weight.Bold))
         self.todaysGainLossPctLabel.setText(f"{todays_gain_loss_pct:.2f}%")
         _format_gain_loss_label(self.todaysGainLossPctLabel, todays_gain_loss_pct)
         
+        self.totalGainLossLabel.setFont(QFont("Consolas", 10, QFont.Weight.Bold))
         self.totalGainLossLabel.setText(f"${total_gain_loss:.2f}")
         _format_gain_loss_label(self.totalGainLossLabel, total_gain_loss)
-        
+
+        self.totalGainLossPctLabel.setFont(QFont("Consolas", 10, QFont.Weight.Bold))
         self.totalGainLossPctLabel.setText(f"{total_gain_loss_pct:.2f}%")
         _format_gain_loss_label(self.totalGainLossPctLabel, total_gain_loss_pct)
 
