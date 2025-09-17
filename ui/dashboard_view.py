@@ -17,9 +17,13 @@ from etrade_client.auth.etrade_auth import oauth
 from etrade_client.accountsmanager import AccountsManager
 from etrade_client.pollworker import PollWorker
 from datetime import datetime, timedelta
+from ui.ui_constants import (
+    StandardFonts, Colors, ColorStrings, StyleSheets, Layout, ChartStyle,
+    apply_gain_loss_color, get_gain_loss_brush
+)
 
 class MiniChart(QWidget):
-    def __init__(self, values, width=60, height=20):
+    def __init__(self, values, width=Layout.MINI_CHART_WIDTH, height=Layout.MINI_CHART_HEIGHT):
         super().__init__()
         self.values = values
         self.setFixedSize(width, height)
@@ -31,7 +35,7 @@ class MiniChart(QWidget):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
         
-        margin = 2
+        margin = ChartStyle.MINI_CHART_MARGIN
         chart_width = self.width() - 2 * margin
         chart_height = self.height() - 2 * margin
         
@@ -45,7 +49,7 @@ class MiniChart(QWidget):
             y = margin + chart_height - ((value - min_val) / val_range) * chart_height
             points.append((x, y))
         
-        pen = QPen(QColor('#4a90e2'), 1)
+        pen = QPen(QColor(Colors.CHART_LINE_PRIMARY), 1)
         painter.setPen(pen)
         
         for i in range(len(points) - 1):
@@ -61,28 +65,16 @@ class EconomicRow(QFrame):
         
     def setup_ui(self):
         self.setFrameStyle(QFrame.Shape.NoFrame)
-        self.setStyleSheet("""
-            QFrame {
-                background-color: #1e1e1e;
-                border: none;
-                margin: 0px;
-                padding: 0px;
-            }
-            QLabel {
-                color: #e0e0e0;
-                background-color: transparent;
-                border: none;
-            }
-        """)
+        self.setStyleSheet(StyleSheets.ECONOMIC_FRAME)
         
         layout = QHBoxLayout()
-        layout.setContentsMargins(5, 2, 5, 2)
-        layout.setSpacing(10)
+        layout.setContentsMargins(Layout.STANDARD_MARGIN, Layout.TIGHT_MARGIN, Layout.STANDARD_MARGIN, Layout.TIGHT_MARGIN)
+        layout.setSpacing(Layout.WIDE_MARGIN)
         
         # Name
         name_label = QLabel(self.name)
-        name_label.setFont(QFont("Consolas", 9))
-        name_label.setFixedWidth(100)
+        name_label.setFont(StandardFonts.SMALL)
+        name_label.setFixedWidth(Layout.NAME_LABEL_WIDTH)
         name_label.setAlignment(Qt.AlignmentFlag.AlignLeft)
         
         # Current value
@@ -90,23 +82,23 @@ class EconomicRow(QFrame):
         if 'Treas' in self.name or 'CPI' in self.name or 'Fed' in self.name:
             current_text += "%"
         current_label = QLabel(current_text)
-        current_label.setFont(QFont("Consolas", 10, QFont.Weight.Bold))
-        current_label.setFixedWidth(60)
+        current_label.setFont(StandardFonts.MEDIUM_BOLD)
+        current_label.setFixedWidth(Layout.VALUE_LABEL_WIDTH)
         current_label.setAlignment(Qt.AlignmentFlag.AlignRight)
         
         # Change
         change_text = f"{self.data['change']:+.2f}"
         change_label = QLabel(change_text)
-        change_label.setFont(QFont("Consolas", 10, QFont.Weight.Bold))
-        change_label.setFixedWidth(50)
+        change_label.setFont(StandardFonts.MEDIUM_BOLD)
+        change_label.setFixedWidth(Layout.CHANGE_LABEL_WIDTH)
         change_label.setAlignment(Qt.AlignmentFlag.AlignRight)
         
         if self.data['change'] > 0:
-            change_label.setStyleSheet("color: green;")
+            change_label.setStyleSheet(f"color: {ColorStrings.GAIN};")
         elif self.data['change'] < 0:
-            change_label.setStyleSheet("color: red;")
+            change_label.setStyleSheet(f"color: {ColorStrings.LOSS};")
         else:
-            change_label.setStyleSheet("color: #888888;")
+            change_label.setStyleSheet(f"color: {ColorStrings.NEUTRAL};")
         
         # Last 3 values
         last_3_values = self.data.get('last_3', [])
@@ -119,9 +111,9 @@ class EconomicRow(QFrame):
             last_3_text = "-- -- --"
             
         last_3_label = QLabel(last_3_text)
-        last_3_label.setFont(QFont("Consolas", 8))
-        last_3_label.setStyleSheet("color: #aaaaaa;")
-        last_3_label.setFixedWidth(120)
+        last_3_label.setFont(StandardFonts.TINY)
+        last_3_label.setStyleSheet(f"color: {Colors.SECONDARY_TEXT};")
+        last_3_label.setFixedWidth(Layout.LAST_VALUES_WIDTH)
         last_3_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
         # mini chart
@@ -129,9 +121,9 @@ class EconomicRow(QFrame):
         
         # date
         date_label = QLabel(self.data['date'])
-        date_label.setFont(QFont("Consolas", 8))
-        date_label.setStyleSheet("color: #888888;")
-        date_label.setFixedWidth(70)
+        date_label.setFont(StandardFonts.TINY)
+        date_label.setStyleSheet(f"color: {Colors.TERTIARY_TEXT};")
+        date_label.setFixedWidth(Layout.DATE_LABEL_WIDTH)
         date_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
         # add widgets
@@ -164,24 +156,22 @@ class EconomicDataView(QObject):
         except ImportError:
             print("FRED Data Manager not available")
             self.FREDManager = None
-            FREDDataManager = None
         except Exception as e:
             print(f"Error: {e}")
             self.FREDManager = None
-            FREDDataManager = None
 
         self.rows = []
         self.populate_economic_data()
         
     def populate_economic_data(self):
-        # Clear existing rows
+        # clear existing rows
         layout = self.economicDataContainer.layout()
         for i in reversed(range(layout.count())):
             item = layout.itemAt(i)
             if item.widget() and isinstance(item.widget(), EconomicRow):
                 item.widget().setParent(None)
 
-        # Create rows
+        # create rows
         self.rows = []
         for name, data in self.FREDManager.EconomicViewRowData.items():
             row = EconomicRow(name, data)
@@ -189,14 +179,13 @@ class EconomicDataView(QObject):
             # Insert before the spacer
             layout.insertWidget(layout.count() - 1, row)
         
-        # Update footer
+        # update footer
         self.economicDataFooter.setText(f"Updated: {datetime.now().strftime('%H:%M:%S')}")
 
 class DashboardView(QMainWindow):
     #declaring type for ide
     dateLabel: QLabel
-    
-    
+
     # Chart controls
     refreshButton: QPushButton
     refreshButton2: QPushButton
@@ -254,7 +243,6 @@ class DashboardView(QMainWindow):
         uic.loadUi("ui_files/dashboard_view.ui", self)
         # self.frame.hide()
         # self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
-
 
         #DYNAMIC LAYOUT ADJUSTMENTS
         right_total_height = self.rightSplitter.height()
@@ -367,7 +355,7 @@ class ChartView:
             "max": "1wk",
         }
 
-        self.gridcolor = 'rgba(255, 255, 255, 0.1)'
+        self.gridcolor = ChartStyle.GRID_COLOR
 
 
         #user inputs
@@ -410,7 +398,7 @@ class ChartView:
             line_edit = QLineEdit()
             line_edit.setText(default_text)
             line_edit.setPlaceholderText("Enter ticker...")
-            line_edit.setMaximumWidth(100)
+            line_edit.setMaximumWidth(Layout.TICKER_INPUT_WIDTH)
             
             widget_action = QWidgetAction(self.dashboard)
             widget_action.setDefaultWidget(line_edit)
@@ -461,12 +449,12 @@ class ChartView:
             fig.update_layout(
                 xaxis_title=None,
                 yaxis_title=None,
-                margin=dict(l=0, r=0, b=0, t=35, pad=0),
+                margin=ChartStyle.BODY_MARGIN,
                 showlegend=False,
-                plot_bgcolor="black",
-                paper_bgcolor="black",
+                plot_bgcolor=ChartStyle.PLOT_BACKGROUND,
+                paper_bgcolor=ChartStyle.PAPER_BACKGROUND,
                 title=dict(
-                    font=dict(size=14)
+                    font=dict(size=ChartStyle.TITLE_FONT_SIZE)
                 ),
                 yaxis=dict(
                     showgrid=True,
@@ -479,7 +467,7 @@ class ChartView:
                 )
             )
 
-            fig.update_traces(line=dict(color='blue', width=3))
+            fig.update_traces(line=dict(color=ChartStyle.LINE_COLOR, width=ChartStyle.LINE_WIDTH))
             html = f"""
             <html>
             <head>
@@ -487,7 +475,7 @@ class ChartView:
                     body {{
                         margin: 2px;
                         padding: 0;
-                        background-color: black;
+                        background-color: {ChartStyle.PLOT_BACKGROUND};
                     }}
                 </style>
             </head>
@@ -748,19 +736,16 @@ class EtradeView(QObject):
             def _check_if_colored(item, col_name, value):
                 if 'Pct' in col_name or 'Gain' in col_name or 'change' in col_name:
                     if isinstance(value, (int, float, complex)):
-                        if value > 0:
-                            item.setForeground(QBrush(QColor('green')))
-                        elif value < 0:
-                            item.setForeground(QBrush(QColor('red')))
+                        item.setForeground(get_gain_loss_brush(value))
                 elif col_name in ['lastTrade(d)', 'dayChange']:
                     match = re.search(r'\(([-+]?[\d.]+)\)', str(value))
                     if match:
                         try:
                             change_val = float(match.group(1))
                             if change_val > 0:
-                                item.setForeground(QBrush(QColor('green')))
+                                item.setForeground(get_gain_loss_brush(change_val))
                             elif change_val < 0:
-                                item.setForeground(QBrush(QColor('red')))
+                                item.setForeground(get_gain_loss_brush(change_val))
                         except ValueError:
                             pass
 
@@ -768,7 +753,7 @@ class EtradeView(QObject):
             self.holdingsTable.setColumnCount(len(final_data.columns))
             self.holdingsTable.setHorizontalHeaderLabels(final_data.columns.tolist())            
             #set font for table
-            self.holdingsTable.setFont(QFont("Consolas", 14))
+            self.holdingsTable.setFont(StandardFonts.LARGE)
 
             for i in range(len(final_data)):
                 for j in range(len(final_data.columns)):
@@ -789,13 +774,7 @@ class EtradeView(QObject):
     def populate_accounttables_footer(self, fresh_data=None):
 
         def _format_gain_loss_label(label, value):
-            base_style = "background-color: transparent; border: none; font-size: 14px;"
-            if value > 0:
-                label.setStyleSheet(base_style + "color: green;")
-            elif value < 0:
-                label.setStyleSheet(base_style + "color: red;")
-            else:
-                label.setStyleSheet(base_style)
+            apply_gain_loss_color(label, value)
 
         def _safe_get_value(df, key, default=0.0):
             try:
@@ -820,19 +799,19 @@ class EtradeView(QObject):
         total_gain_loss = _safe_get_value(accounttotals, 'totalGainLoss')
         total_gain_loss_pct = _safe_get_value(accounttotals, 'totalGainLossPct')
         
-        self.todaysGainLossLabel.setFont(QFont("Consolas", 10, QFont.Weight.Bold))
+        self.todaysGainLossLabel.setFont(StandardFonts.MEDIUM_BOLD)
         self.todaysGainLossLabel.setText(f"${todays_gain_loss:.2f}")
         _format_gain_loss_label(self.todaysGainLossLabel, todays_gain_loss)
         
-        self.todaysGainLossPctLabel.setFont(QFont("Consolas", 10, QFont.Weight.Bold))
+        self.todaysGainLossPctLabel.setFont(StandardFonts.MEDIUM_BOLD)
         self.todaysGainLossPctLabel.setText(f"{todays_gain_loss_pct:.2f}%")
         _format_gain_loss_label(self.todaysGainLossPctLabel, todays_gain_loss_pct)
         
-        self.totalGainLossLabel.setFont(QFont("Consolas", 10, QFont.Weight.Bold))
+        self.totalGainLossLabel.setFont(StandardFonts.MEDIUM_BOLD)
         self.totalGainLossLabel.setText(f"${total_gain_loss:.2f}")
         _format_gain_loss_label(self.totalGainLossLabel, total_gain_loss)
 
-        self.totalGainLossPctLabel.setFont(QFont("Consolas", 10, QFont.Weight.Bold))
+        self.totalGainLossPctLabel.setFont(StandardFonts.MEDIUM_BOLD)
         self.totalGainLossPctLabel.setText(f"{total_gain_loss_pct:.2f}%")
         _format_gain_loss_label(self.totalGainLossPctLabel, total_gain_loss_pct)
 
