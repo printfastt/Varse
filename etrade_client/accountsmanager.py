@@ -157,6 +157,20 @@ class AccountsManager:
         
         return balances
 
+    def calculate_total_assets_across_accounts(self):
+        total_assets = 0.0
+        for account in self.accounts_list:
+            try:
+                if hasattr(account, 'accounttotals') and account.accounttotals is not None:
+                    total_market_value = account.accounttotals.get('totalMarketValue', 0.0) or 0.0
+                    cash_balance = account.accounttotals.get('cashBalance', 0.0) or 0.0
+                    account_net_value = total_market_value + cash_balance
+                    total_assets += account_net_value
+            except Exception as e:
+                logger.error(f"Error calculating assets for account {account.accountIdKey}: {e}")
+                continue
+        return total_assets
+
 
 
 

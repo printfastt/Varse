@@ -638,7 +638,9 @@ class EtradeView(QObject):
         self.marginableSecuritiesPPLabel.setText(f"${_safe_get_value(balances, 'marginBuyingPower'):.2f}")
         self.marginLabel.setText(f"${_safe_get_value(balances, 'marginBalance'):.2f}")
         self.cashInvestableLabel.setText(f"${_safe_get_value(balances, 'cashAvailableForInvestment'):.2f}")
-        #need to add totalAssetsLabel.
+        
+        total_assets = self.accounts_manager.calculate_total_assets_across_accounts()
+        self.totalAssetsLabel.setText(f"${total_assets:.2f}")
 
 
 if __name__ == "__main__":
