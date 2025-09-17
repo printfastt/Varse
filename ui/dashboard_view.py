@@ -4,8 +4,9 @@ from PIL.SpiderImagePlugin import isInt
 from PyQt6.QtCore import QDate, QObject, Qt, QThread
 from PyQt6.QtGui import QBrush, QColor, QAction, QActionGroup
 from PyQt6.QtWidgets import QWidget, QLineEdit, QPushButton, QApplication, QMainWindow, QLabel, QComboBox, QSplitter, \
-    QTableWidgetItem, QTableWidget, QFrame, QMenu, QWidgetAction
+    QTableWidgetItem, QTableWidget, QFrame, QMenu, QWidgetAction, QHBoxLayout, QVBoxLayout
 from PyQt6 import uic
+from PyQt6.QtGui import QPainter, QPen, QColor, QFont
 import pandas as pd
 import plotly.express as px
 from PyQt6.QtWebEngineWidgets import QWebEngineView
@@ -15,6 +16,201 @@ import re
 from etrade_client.auth.etrade_auth import oauth
 from etrade_client.accountsmanager import AccountsManager
 from etrade_client.pollworker import PollWorker
+from datetime import datetime, timedelta
+
+class MiniChart(QWidget):
+    def __init__(self, values, width=60, height=20):
+        super().__init__()
+        self.values = values
+        self.setFixedSize(width, height)
+        
+    def paintEvent(self, event):
+        if not self.values or len(self.values) < 2:
+            return
+            
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        
+        margin = 2
+        chart_width = self.width() - 2 * margin
+        chart_height = self.height() - 2 * margin
+        
+        min_val = min(self.values)
+        max_val = max(self.values)
+        val_range = max_val - min_val if max_val != min_val else 1
+        
+        points = []
+        for i, value in enumerate(self.values):
+            x = margin + (i / (len(self.values) - 1)) * chart_width
+            y = margin + chart_height - ((value - min_val) / val_range) * chart_height
+            points.append((x, y))
+        
+        pen = QPen(QColor('#4a90e2'), 1)
+        painter.setPen(pen)
+        
+        for i in range(len(points) - 1):
+            painter.drawLine(int(points[i][0]), int(points[i][1]), 
+                           int(points[i+1][0]), int(points[i+1][1]))
+
+class EconomicRow(QFrame):
+    def __init__(self, name, data):
+        super().__init__()
+        self.name = name
+        self.data = data
+        self.setup_ui()
+        
+    def setup_ui(self):
+        self.setFrameStyle(QFrame.Shape.NoFrame)
+        self.setStyleSheet("""
+            QFrame {
+                background-color: #1e1e1e;
+                border: none;
+                margin: 0px;
+                padding: 0px;
+            }
+            QLabel {
+                color: #e0e0e0;
+                background-color: transparent;
+                border: none;
+            }
+        """)
+        
+        layout = QHBoxLayout()
+        layout.setContentsMargins(5, 2, 5, 2)
+        layout.setSpacing(10)
+        
+        # Name
+        name_label = QLabel(self.name)
+        name_label.setFont(QFont("Consolas", 9))
+        name_label.setFixedWidth(70)
+        name_label.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        
+        # Current value
+        current_text = f"{self.data['current']:.2f}"
+        if 'Treas' in self.name or 'CPI' in self.name or 'Fed' in self.name:
+            current_text += "%"
+        current_label = QLabel(current_text)
+        current_label.setFont(QFont("Consolas", 10, QFont.Weight.Bold))
+        current_label.setFixedWidth(60)
+        current_label.setAlignment(Qt.AlignmentFlag.AlignRight)
+        
+        # Change
+        change_text = f"{self.data['change']:+.2f}"
+        change_label = QLabel(change_text)
+        change_label.setFont(QFont("Consolas", 10, QFont.Weight.Bold))
+        change_label.setFixedWidth(50)
+        change_label.setAlignment(Qt.AlignmentFlag.AlignRight)
+        
+        if self.data['change'] > 0:
+            change_label.setStyleSheet("color: green;")
+        elif self.data['change'] < 0:
+            change_label.setStyleSheet("color: red;")
+        else:
+            change_label.setStyleSheet("color: #888888;")
+        
+        # Last 3 values
+        last_3_values = self.data.get('last_3', [])
+        if len(last_3_values) >= 3:
+            if 'Treas' in self.name or 'CPI' in self.name or 'Fed' in self.name:
+                last_3_text = f"{last_3_values[0]:.2f} {last_3_values[1]:.2f} {last_3_values[2]:.2f}"
+            else:
+                last_3_text = f"{last_3_values[0]:.1f} {last_3_values[1]:.1f} {last_3_values[2]:.1f}"
+        else:
+            last_3_text = "-- -- --"
+            
+        last_3_label = QLabel(last_3_text)
+        last_3_label.setFont(QFont("Consolas", 8))
+        last_3_label.setStyleSheet("color: #aaaaaa;")
+        last_3_label.setFixedWidth(120)
+        last_3_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        
+        # mini chart
+        chart = MiniChart(self.data['values'])
+        
+        # date
+        date_label = QLabel(self.data['date'])
+        date_label.setFont(QFont("Consolas", 8))
+        date_label.setStyleSheet("color: #888888;")
+        date_label.setFixedWidth(70)
+        date_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        
+        # add widgets
+        layout.addWidget(name_label)
+        layout.addWidget(current_label)
+        layout.addWidget(change_label)
+        layout.addWidget(last_3_label)
+        layout.addWidget(chart)
+        layout.addWidget(date_label)
+        layout.addStretch()
+        
+        self.setLayout(layout)
+
+class EconomicDataView(QObject):
+    def __init__(self, components, dashboard):
+        super().__init__()
+        self.dashboard = dashboard
+        self.economicDataContainer = components['economicDataContainer']
+        self.economicDataFooter = components['economicDataFooter']
+        
+        # set container background to match dashboard
+        self.economicDataContainer.setStyleSheet("""
+            QWidget {
+                background-color: #1e1e1e;
+            }
+        """)
+        
+        self.fred = None
+        self.indicators = {
+            'Federal Funds Rate': 'FEDFUNDS',
+            '10Y Treasury Bonds': 'GS10',
+            'VIX': 'VIXCLS',
+            'Unemployment': 'UNRATE',
+            'CPI': 'CPIAUCSL',
+            'Sentiment': 'UMCSENT',
+            '2Y Treasury Bonds': 'GS2',
+            'Oil WTI': 'DCOILWTICO',
+            'DXY': 'DTWEXBGS'
+        }
+        
+        # Initialize FRED API
+        try:
+            from fredapi import Fred
+            from FRED.config import FRED_API_KEY
+            self.fred = Fred(api_key=FRED_API_KEY)
+        except ImportError:
+            print("FRED API not available - using mock data")
+        
+        self.rows = []
+        self.populate_economic_data()
+        
+    def populate_economic_data(self):
+        # Clear existing rows
+        layout = self.economicDataContainer.layout()
+        for i in reversed(range(layout.count())):
+            item = layout.itemAt(i)
+            if item.widget() and isinstance(item.widget(), EconomicRow):
+                item.widget().setParent(None)
+        
+        # Mock data for now (replace with FRED data when available)
+        mock_data = {
+            'Fed Funds': {'current': 5.25, 'change': 0.25, 'date': '12/15/2024', 'values': [4.50, 4.75, 5.00, 5.25, 5.25, 5.50], 'last_3': [4.75, 5.00, 5.25]},
+            '10Y Treas': {'current': 4.15, 'change': -0.08, 'date': '12/16/2024', 'values': [4.31, 4.23, 4.28, 4.15, 4.12, 4.18], 'last_3': [4.23, 4.28, 4.15]},
+            'VIX': {'current': 18.5, 'change': 2.3, 'date': '12/16/2024', 'values': [15.2, 16.8, 16.2, 18.5, 19.1, 17.8], 'last_3': [16.8, 16.2, 18.5]},
+            'Unemploy': {'current': 3.7, 'change': 0.1, 'date': '11/30/2024', 'values': [3.5, 3.6, 3.6, 3.7, 3.7, 3.8], 'last_3': [3.6, 3.6, 3.7]},
+            'CPI': {'current': 3.2, 'change': -0.1, 'date': '12/10/2024', 'values': [3.7, 3.5, 3.3, 3.2, 3.1, 3.0], 'last_3': [3.5, 3.3, 3.2]},
+            'Sentiment': {'current': 71.8, 'change': 4.2, 'date': '12/13/2024', 'values': [63.9, 68.5, 67.6, 71.8, 73.2, 69.5], 'last_3': [68.5, 67.6, 71.8]}
+        }
+        
+        # Create rows
+        self.rows = []
+        for name, data in mock_data.items():
+            row = EconomicRow(name, data)
+            self.rows.append(row)
+            # Insert before the spacer
+            layout.insertWidget(layout.count() - 1, row)
+        
+        # Update footer
+        self.economicDataFooter.setText(f"Updated: {datetime.now().strftime('%H:%M:%S')}")
 
 class DashboardView(QMainWindow):
     #declaring type for ide
@@ -67,6 +263,10 @@ class DashboardView(QMainWindow):
     nonMarginableSecuritiesPPLabel: QLabel
     marginableSecuritiesPPLabel: QLabel
     marginLabel: QLabel
+    
+    #economic data components
+    economicDataContainer: QWidget
+    economicDataFooter: QLabel
 
 
     def __init__(self):
@@ -139,9 +339,15 @@ class DashboardView(QMainWindow):
             'marginLabel': self.marginLabel
 
         }
+        
+        economic_components = {
+            'economicDataContainer': self.economicDataContainer,
+            'economicDataFooter': self.economicDataFooter
+        }
 
         self.ChartView = ChartView(chart_components, self)
         self.EtradeView = EtradeView(etrade_components, self)
+        self.EconomicDataView = EconomicDataView(economic_components, self)
         self.date = str(QDate.currentDate().toPyDate())
 
         #Configure
