@@ -131,7 +131,7 @@ class ChartStyle:
     LINE_WIDTH = 3
     TITLE_FONT_SIZE = 14
     BODY_MARGIN = dict(l=0, r=0, b=0, t=35, pad=0)
-    MINI_CHART_MARGIN = 2
+    MINI_CHART_MARGIN = 1
 
 # ===============================
 # UTILITY FUNCTIONS

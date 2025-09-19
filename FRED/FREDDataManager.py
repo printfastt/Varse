@@ -1,21 +1,29 @@
-from jedi.inference.helpers import values_from_qualified_names
-
 
 class FREDDataManager:
     def __init__(self):
         self.fred = None
         self.indicators = {
-            'GDP': 'GDP',                       # Gross Domestic Product
-            'Unemployment Rate': 'UNRATE',      # Unemployment Rate
-            'Inflation (CPI)': 'CPIAUCSL',      # Consumer Price Index
-            'Core CPI': 'CPILFESL',             # Core CPI (food and energy)
-            'Fed Funds Rate': 'FEDFUNDS',       # Federal Funds Rate
-            '10-Year Treasury': 'GS10',         # 10-Year Treasury Rate
-            '2-Year Treasury': 'GS2',           # 2-Year Treasury Rate
-            'VIX': 'VIXCLS',                    # VIX Volatility Index
-            'Dollar Index': 'DTWEXBGS',         # Trade Weighted Dollar Index
-            'Oil Prices': 'DCOILWTICO',         # WTI Crude Oil Prices
-            'Consumer Sentiment': 'UMCSENT',    # University of Michigan Consumer Sentiment
+            'Real GDP': 'GDP',
+            'Real GDP Growth Rate':'A191RL1Q225SBEA',
+            'Industrial Production':'INDPRO',
+            'Unemployment Rate': 'UNRATE',
+            'Inflation (CPI)': 'CPIAUCSL',
+            'Core CPI': 'CPILFESL',
+            'Fed Funds Rate': 'FEDFUNDS',
+            '10-Year Treasury': 'GS10',
+            '2-Year Treasury': 'GS2',
+            '30-Year Mortgage Rate':'MORTGAGE30US',
+            'Commercial Bank Prime Rate':'MPRIME',
+            'AAA Corporate B Spread':'AAA10Y',
+            'High Yield Spread':'BAMLH0A0HYM2',
+            'Housing Starts':'HOUST',
+            'New Home Sales': 'HSN1F',
+            'Dollar Index': 'DTWEXBGS',         
+            'Oil Prices': 'DCOILWTICO',
+            'Consumer Sentiment': 'UMCSENT',
+            'VIX': 'VIXCLS',
+            'Imports': 'IMPGS',
+            'Exports': 'EXPGS'
         }
         self.EconomicViewRowData = {}
 

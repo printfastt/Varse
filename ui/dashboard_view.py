@@ -79,7 +79,7 @@ class EconomicRow(QFrame):
         
         # Current value
         current_text = f"{self.data['current']:.2f}"
-        if 'Treas' in self.name or 'CPI' in self.name or 'Fed' in self.name:
+        if 'Treas' in self.name or 'CPI' in self.name or 'Fed' in self.name or 'Mortgage' in self.name or 'Rate' in self.name:
             current_text += "%"
         current_label = QLabel(current_text)
         current_label.setFont(StandardFonts.MEDIUM_BOLD)
