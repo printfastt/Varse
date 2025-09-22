@@ -158,3 +158,4 @@ def get_gain_loss_brush(value: float):
         return QBrush(Colors.LOSS_COLOR)
     else:
         return QBrush(Colors.NEUTRAL_COLOR)
+

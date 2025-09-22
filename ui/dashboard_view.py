@@ -4,7 +4,7 @@ from PIL.SpiderImagePlugin import isInt
 from PyQt6.QtCore import QDate, QObject, Qt, QThread
 from PyQt6.QtGui import QBrush, QColor, QAction, QActionGroup
 from PyQt6.QtWidgets import QWidget, QLineEdit, QPushButton, QApplication, QMainWindow, QLabel, QComboBox, QSplitter, \
-    QTableWidgetItem, QTableWidget, QFrame, QMenu, QWidgetAction, QHBoxLayout, QVBoxLayout
+    QTableWidgetItem, QTableWidget, QFrame, QMenu, QWidgetAction, QHBoxLayout, QVBoxLayout, QTabWidget
 from PyQt6 import uic
 from PyQt6.QtGui import QPainter, QPen, QColor, QFont
 import pandas as pd
@@ -21,6 +21,7 @@ from ui.ui_constants import (
     StandardFonts, Colors, ColorStrings, StyleSheets, Layout, ChartStyle,
     apply_gain_loss_color, get_gain_loss_brush
 )
+from researchtab import ResearchTab
 
 class MiniChart(QWidget):
     def __init__(self, values, width=Layout.MINI_CHART_WIDTH, height=Layout.MINI_CHART_HEIGHT):
@@ -211,11 +212,15 @@ class DashboardView(QMainWindow):
     leftSplitter: QSplitter
     rightSplitter: QSplitter
 
+    #menu
     holdingsTable: QTableWidget
     actionSimple : QAction
     actionDynamic: QAction
     actionFull: QAction
     actionCustom: QAction
+
+    menuResearch: QMenu
+    # menuNewResearchTab : QAction
 
     #upper accounttotal footer
     todaysGainLossLabel: QLabel
@@ -259,8 +264,8 @@ class DashboardView(QMainWindow):
         #DYNAMIC LAYOUT ADJUSTMENTS
 
 
-
-
+        self.researchWindowCount=0
+        self.researchWindows = []
 
         chart_components = {
             # Controls for top-right quad
@@ -317,6 +322,21 @@ class DashboardView(QMainWindow):
         self.EtradeView = EtradeView(etrade_components, self)
         self.EconomicDataView = EconomicDataView(economic_components, self)
         self.date = str(QDate.currentDate().toPyDate())
+        self._init_research_menu()
+
+    def _init_research_menu(self):
+        self.menuNewResearchTab = QAction('New Research Tab',self)
+        self.menuNewResearchTab.triggered.connect(self._new_research_window)
+        self.menuResearch.addAction(self.menuNewResearchTab)
+
+
+    def _new_research_window(self, title="Research Tab"):
+        self.researchWindowCount+=1
+        researchWindow = ResearchTab()
+        researchWindow.show()
+        self.researchWindows.append(researchWindow)
+
+
 
         #Configure
         # self.dateLabel.setText(QDate.currentDate().toString())

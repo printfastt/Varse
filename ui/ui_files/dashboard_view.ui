@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1417</width>
-    <height>1338</height>
+    <width>1000</width>
+    <height>1062</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -1202,8 +1202,8 @@ QScrollBar::sub-line:vertical {
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>979</width>
-                  <height>513</height>
+                  <width>562</width>
+                  <height>380</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="economicDataContainerLayout">
@@ -2006,7 +2006,7 @@ QScrollBar::sub-line:vertical {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1417</width>
+     <width>1000</width>
      <height>29</height>
     </rect>
    </property>
@@ -2112,10 +2112,16 @@ QScrollBar::sub-line:vertical {
     </property>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menuResearch">
+    <property name="title">
+     <string>Research</string>
+    </property>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
    <addaction name="menuGraph"/>
    <addaction name="menuHelp"/>
+   <addaction name="menuResearch"/>
   </widget>
   <widget class="QStatusBar" name="statusbar">
    <property name="sizeGripEnabled">
@@ -2178,6 +2184,11 @@ QScrollBar::sub-line:vertical {
    </property>
    <property name="text">
     <string>Custom</string>
+   </property>
+  </action>
+  <action name="menuNewResearchTab">
+   <property name="text">
+    <string>New Research Tab</string>
    </property>
   </action>
  </widget>
