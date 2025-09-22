@@ -1,5 +1,4 @@
 import sys
-import yfinance as yf
 from PIL.SpiderImagePlugin import isInt
 from PyQt6.QtCore import QDate, QObject, Qt, QThread
 from PyQt6.QtGui import QBrush, QColor, QAction, QActionGroup
@@ -22,6 +21,7 @@ from ui.ui_constants import (
     apply_gain_loss_color, get_gain_loss_brush
 )
 from researchtab import ResearchTab
+from YFinance.YFinanceDataManager import YFinanceDataManager
 
 class MiniChart(QWidget):
     def __init__(self, values, width=Layout.MINI_CHART_WIDTH, height=Layout.MINI_CHART_HEIGHT):
@@ -364,17 +364,9 @@ class ChartView:
         self.BR_TR_ChartWidget = components['BR_TR_ChartWidget']
         self.BR_BL_ChartWidget = components['BR_BL_ChartWidget']
         self.BR_BR_ChartWidget = components['BR_BR_ChartWidget']
-        self.timeframe_intervals = {
-            "1d": "1m",
-            "5d": "5m",
-            "1mo": "1h",
-            "3mo": "1h",
-            "1y": "1d",
-            "2y": "1d",
-            "5y": "1wk",
-            "max": "1wk",
-        }
-
+        # Initialize YFinance data manager
+        self.yfinance_manager = YFinanceDataManager()
+        
         self.gridcolor = ChartStyle.GRID_COLOR
 
 
@@ -428,42 +420,17 @@ class ChartView:
 
     def chart_symbol(self, symbol, widget, timeframe_input):
         try:
-            symbol_data = yf.download(symbol, period=timeframe_input, interval=self.timeframe_intervals[timeframe_input])
-            symbol_closes = symbol_data[['Close']].dropna()
-            symbol_closes.columns = symbol_closes.columns.droplevel('Ticker')
+            # use YFinanceDataManager for data management
+            symbol_closes, ticker_info = self.yfinance_manager.get_symbol_data(symbol, timeframe_input)
             
-            def format_large_number(num):
-                if num is None or num == 0:
-                    return "N/A"
-                if abs(num) >= 1e12:
-                    return f"{num/1e12:.1f}T"
-                elif abs(num) >= 1e9:
-                    return f"{num/1e9:.1f}B"
-                elif abs(num) >= 1e6:
-                    return f"{num/1e6:.0f}M"
-                else:
-                    return f"{num:.2f}"
+            if symbol_closes is None or ticker_info is None:
+                print(f"No data available for {symbol}")
+                return
             
-            def safe_get_info(ticker_info, key, default="N/A"):
-                try:
-                    value = ticker_info.get(key, default)
-                    return value if value is not None else default
-                except:
-                    return default
+            # creates chart title using the data manager
+            modified_title = self.yfinance_manager.create_chart_title(symbol, ticker_info)
             
-            ticker = yf.Ticker(symbol)
-            info = ticker.info
-            
-            open_price = safe_get_info(info, 'open', 0)
-            day_high = safe_get_info(info, 'dayHigh', 0)
-            day_low = safe_get_info(info, 'dayLow', 0)
-            market_cap = safe_get_info(info, 'marketCap', 0)
-            week52_low = safe_get_info(info, 'fiftyTwoWeekLow', 0)
-            week52_high = safe_get_info(info, 'fiftyTwoWeekHigh', 0)
-            
-            modified_title = (f"{symbol} |  Open:{open_price:.2f}  High:{day_high:.2f}  Low:{day_low:.2f} "
-                            f" CAP:{format_large_number(market_cap)}  52L:{week52_low:.2f}  52H:{week52_high:.2f}")
-            
+            # creates the plotly chart
             fig = px.line(symbol_closes, y='Close', x=symbol_closes.index, title=modified_title)
 
             fig.update_layout(
@@ -507,9 +474,8 @@ class ChartView:
 
             widget.setHtml(html)
 
-
         except Exception as e:
-            print(e)
+            print(f"Error charting symbol {symbol}: {e}")
 
     def press_refresh_button_top(self):
         """Handle refresh for top-right quad charts"""
